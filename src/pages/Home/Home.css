@@ -1,0 +1,31 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+textarea {
+    margin: 5rem 50rem;
+    max-width: 90rem;
+    height: 50rem;
+    font-size: 1.5rem;
+    border: black solid 5px;
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.buttons-container {
+    text-align: center;
+}
+
+button{
+    margin: 0 2rem;
+    padding: 2rem;
+    border: black solid 2px;
+    border-radius: 20px ;
+}
+
+button:hover{
+    background-color: #959baf;
+}
