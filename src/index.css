@@ -12,12 +12,14 @@ html {
 }
 
 .main-header {
-  background-color: aqua;
+  background-color: lightslategray;
   height: 10rem ;
   font-size: 7rem;
+  font-style: ;
   text-align: center;
   margin: 1rem;
   border-radius: 10px;
+  text-decoration: underline;
 }
 
 code {

@@ -2,6 +2,7 @@ import React from 'react';
 import "./Restaurant.css";
 import Delivery from "../../components/Delivery";
 import Customers from "../../components/Customers";
+import Production from "../../components/Production";
 
 
 
@@ -13,7 +14,7 @@ const Restaurant: React.FC = () => {
                 <Customers />
                 <Delivery />
             </div>
-            <div className={"container__right"}>Production Slots</div>
+            <Production/>
         </div>
     )
 }

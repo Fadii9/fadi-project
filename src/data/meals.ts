@@ -22,3 +22,4 @@ const meals: mealsList = [{
     mealName: "Baguette",
     ingredients: ["Dough"]
 }]
+export default meals;

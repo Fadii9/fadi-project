@@ -1,0 +1,85 @@
+.delivery_status {
+    height: 50%;
+    width: 95%;
+    border: black solid 3px;
+    border-radius: 10px;
+    margin: 1rem 2rem;
+}
+
+.delivery_container_text {
+    background-color: lightslategray;
+    color: aliceblue;
+    text-align: center;
+    font-size: 3rem;
+    margin: auto;
+    border-bottom: black solid 3px;
+    border-radius: 10px 10px 0 0;
+    height: 12%;
+    padding-top: 1.2rem;
+}
+
+.delivery_status_container {
+    height: 85%;
+    display: flex;
+    justify-content: space-around;
+}
+.delivery {
+    background-color: lightslategray;
+    width: 28%;
+    margin: 2.5rem 0;
+    border: black solid 3px;
+    border-radius: 20px;
+}
+
+.delivery1{
+
+}
+
+.delivery2{
+
+}
+
+.delivery3{
+
+}
+
+.delivery_text{
+    background-color: aliceblue;
+    height: 16%;
+    border-bottom: black solid 3px;
+    border-radius: 20px 20px 0 0 ;
+    text-align: center;
+    font-size: 2.5rem;
+    padding-top: 1rem;
+
+
+}
+
+.delivery_update {
+    font-size: 2rem;
+    margin: 2rem 0 0 0.5rem;
+
+
+}
+
+.delivery_time {
+    font-size: 3rem;
+    width: 100%;
+    text-align: center;
+    margin: 1.25rem 0;
+}
+
+.delivery_screen {
+    margin: 0 1rem;
+    height: 17%;
+    border: black solid 2px ;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 2.1rem;
+    font-size: 2.5rem;
+    background-color: #ff5e00;
+}
+
+.delivery_screen:hover {
+background-color: #6fd108;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from "./pages/Home/Home";
 import Restaurant from "./pages/Restaurant/Restaurant";
-import { BrowserRouter as Router, Routes, Route , useNavigate} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 
 function App() {
@@ -13,7 +13,6 @@ function App() {
         <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/restaurant" element={<Restaurant/>} />
-
         </Routes>
 
     </div>

@@ -76,3 +76,4 @@ const ingredients :ingList = [
         prepTime: 10000
     }
 ];
+export default ingredients;
