@@ -27,14 +27,15 @@
 }
 
 .queue {
+    clip-path: polygon(0 17%, 87% 17%, 87% 0, 100% 50%, 87% 98%, 87% 83%, 0 83%);
     background-color: lightslategray;
-    height: 22.5%;
-    margin: 1rem 5rem;
-    border: black solid 3px;
+    height: 30%;
+    margin: 1rem 4rem;
     border-radius: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    /*border: black solid 3px;*/
 }
 
 .circle {

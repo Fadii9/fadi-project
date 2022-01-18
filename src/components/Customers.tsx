@@ -1,6 +1,8 @@
 import React from 'react';
 import "./Customers.css"
 
+import customersData from "../data/customersData"
+
 
 const Customers:React.FC = () => {
 
