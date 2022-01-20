@@ -1,10 +1,11 @@
 import React from 'react';
-import "./Customers.css"
+import { useSelector, useDispatch } from 'react-redux';
 
-import customersData from "../data/customersData"
+import "./Customers.css";
 
 
 const Customers:React.FC = () => {
+
 
     return (
         <div className={"customers_status"}>
