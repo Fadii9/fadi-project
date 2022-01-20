@@ -2,23 +2,23 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialMealsState = {slot1:[], slot2:[] ,slot3:[] };
 
-const mealsSlice = createSlice({
+const meals = createSlice({
     name: 'meals',
     initialState: initialMealsState,
     reducers: {
-        slot1Handler(state) {
+        addToSlot1(state , action) {
 
         },
-        slot2Handler(state) {
+        addToSlot2(state , action) {
 
         },
-        slot3Handler(state, action) {
+        addToSlot3(state, action) {
 
         },
 
     },
 });
 
-export const mealsActions = mealsSlice.actions;
+export const mealsActions = meals.actions;
 
-export default mealsSlice.reducer;
+export default meals.reducer;

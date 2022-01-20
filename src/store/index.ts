@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import customersReducer from './customersSlice';
-import mealsReducer from './mealsSlice';
-import deliveryReducer from './deliverySlice';
+import customersReducer from './customers';
+import mealsReducer from './meals';
+import deliveryReducer from './delivery';
 
 
 
-const store = configureStore({
-    reducer: { customers: customersReducer, meals: mealsReducer },
+export default configureStore({
+    reducer: {
+        customers: customersReducer,
+        meals: mealsReducer ,
+        delivery: deliveryReducer },
 });
 
-export default store;

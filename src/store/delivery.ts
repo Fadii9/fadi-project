@@ -2,23 +2,23 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialDeliveryState = {delivery1:[], delivery2:[] , delivery3:[] };
 
-const deliverySlice = createSlice({
+const delivery = createSlice({
     name: 'delivery',
     initialState: initialDeliveryState,
     reducers: {
-        delivery1Handler(state) {
+        addToDelivery1(state , action) {
 
         },
-        delivery2Handler(state) {
+        addToDelivery2(state , action) {
 
         },
-        delivery3Handler(state, action) {
+        addToDelivery3(state, action) {
 
         },
 
     },
 });
 
-export const deliveryActions = deliverySlice.actions;
+export const deliveryActions = delivery.actions;
 
-export default deliverySlice.reducer;
+export default delivery.reducer;
