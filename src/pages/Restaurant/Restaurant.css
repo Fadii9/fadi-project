@@ -12,8 +12,7 @@
 }
 
 
-.container__left , .container__right{
-    /*border: black solid 3px;*/
+.container__right{
     border-radius: 10px;
     height: 80vh;
     margin: 1rem;
@@ -25,9 +24,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
+    margin: 1rem;
     justify-content: space-between;
     height: 83vh;
     width: 40%;
+
+
+}
+
+@media screen and (max-width:880px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+
+
+    .container__left {
+        height: 83vh;
+        width: 90%;
+    }
 
 
 }

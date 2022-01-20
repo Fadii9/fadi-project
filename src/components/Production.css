@@ -11,7 +11,7 @@
     color: aliceblue;
     height: 5.75%;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2vw;
     padding-top: 1.2rem;
     border-bottom: black solid 3px;
     border-radius: 10px 10px 0 0;
@@ -71,7 +71,7 @@
     height: 100%;
     width: 27.5%;
     border-right: black solid 3px ;
-    font-size: 2.8rem;
+    font-size: 1.8vw;
 
 }
 
@@ -87,7 +87,7 @@
 }
 
 .slot_status_text{
-    font-size: 2.8rem;
+    font-size: 1.9vw;
     margin-bottom: 2rem;
 
 }
@@ -102,4 +102,24 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+@media screen and (max-width:880px) {
+    .Production_status {
+        width: 85%;
+    }
+
+    .slot_container {
+        height: 88%;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+
+    .slot_status_ings{
+        height: 2vh;
+        width: 80%;
+        margin: 0 5rem;
+        justify-content: space-between;
+    }
 }

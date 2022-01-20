@@ -6,31 +6,29 @@
     background-color: lightslategray;
     border-radius: 10px;
     margin: 1rem;
-
 }
 
 textarea {
     margin: 3rem 50rem;
     max-width: 90rem;
     height: 65rem;
-    font-size: 1vw;
+    font-size: 1.5rem;
     border: black solid 5px;
     border-radius: 20px;
     padding: 2rem;
-
 }
 
 .buttons-container {
     text-align: center;
 }
 
-button{
-    margin: 1rem 2rem 4rem;
+button {
+    margin: 1rem 2rem;
+    margin-bottom: 4rem;
     padding: 2rem;
     border: black solid 2px;
-    border-radius: 20px ;
-}
-
-button:hover{
-    background-color: #959baf;
+    border-radius: 20px;
+    &:hover {
+        background-color: #959baf;
+    }
 }

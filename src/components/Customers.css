@@ -6,19 +6,19 @@
     margin: 1rem 2rem;
 
 }
+
 .customers_text{
     background-color: lightslategray;
     color: aliceblue;
     height: 12%;
     padding-top: 1.2rem;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2vw;
     border-bottom: black solid 3px;
     border-radius: 10px 10px 0 0;
 
-
-
 }
+
 .queues_container {
     height: 85%;
     display: flex;
@@ -51,4 +51,14 @@
 .circle:hover {
     background-color: #6fd108;
     box-shadow: 0 0 0 0.5rem black;
+}
+
+@media screen and (max-width:880px) {
+    .circle {
+        width: 1rem;
+        height: 1rem;
+        border: 0.5px solid #111;
+        border-radius: 2.5rem;
+        box-shadow: 0 0 0 0.25rem aliceblue;
+    }
 }
