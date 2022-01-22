@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import "./Customers.css";
 
 import { useDispatch, useSelector} from "react-redux"
-import {customersActions} from "../../store/customers"
+import {queue1Actions} from "../../store/queue1"
 
 import QueueCard from "./QueueCard"
 
@@ -10,13 +10,26 @@ import QueueCard from "./QueueCard"
 const Customers:React.FC = () => {
     const dispatch = useDispatch()
 
-
     // @ts-ignore
-    const {queue1, queue2 , queue3 ,waitingCustomers} = useSelector(state => state.customers);
+    const queue1 = useSelector(state => state.queue1Slice.queue1State);
 
-    const firstCustomer = waitingCustomers[0];
+    useEffect ( () => {
+        
+        
+        console.log("Before dispach: " , queue1);
+        
+        dispatch(queue1Actions.addToQueue1({
+            id: "c1",
+            name: "Customer1",
+            order: ["Hamburger", "Salad"]
+        }))
+        
+                       
 
-    dispatch(customersActions.addToQueue1(firstCustomer))
+
+    },[])
+    
+    console.log("After dispach: " , queue1);
 
     return (
         <div className={"customers_status"}>

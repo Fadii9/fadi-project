@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import customersData from "../data/customersData"
 
-console.log(customersData)
+// console.log(customersData)
 
 const customers = createSlice({
     name: 'customers',
