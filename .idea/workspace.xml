@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7bf47ea3-2dda-4501-91ab-33fc7f912ea4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/customers/QueueCard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/customers/QueueCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/delivery/DeliveryCard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/delivery/DeliveryCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/production/SlotCard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/production/SlotCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Customers.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/Customers.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Customers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/Customers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Delivery.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/Delivery.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Delivery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/Delivery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Production.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/Production.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Production.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/Production.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Restaurant/Restaurant.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Restaurant/Restaurant.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/customersSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/deliverySlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/delivery.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/customers/Customers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/Customers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/customers/QueueCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/QueueCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/customers/QueueCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/QueueCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/customers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/mealsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/meals.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/queue1.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/queue1.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

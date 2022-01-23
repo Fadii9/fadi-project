@@ -2,31 +2,25 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import customersData from "../data/customersData"
 
-// console.log(customersData)
 
-const customers = createSlice({
+
+// @ts-ignore
+const customersSlice = createSlice({
     name: 'customers',
     initialState: {
-        waitingCustomers: customersData,
-        queue1:[] ,
-        queue2:[] ,
-        queue3:[] ,
+        customersState: customersData,
     },
     reducers: {
-        addToQueue1: (state, action) => {
+        takeOrder: (state) =>{
+            return {...state,
+                customersState: [
+                    ...state.customersState.slice(1, -1)
+                ]
+            }
         },
-        addToQueue2: (state , action) => {
-
-        },
-        addToQueue3: (state, action) =>{
-
-        },
-        TakeOrder(state, action) {
-
-        },
-    },
+   }
 });
 
-export const customersActions = customers.actions;
+export const customersActions = customersSlice.actions;
 
-export default customers.reducer;
+export default customersSlice.reducer;

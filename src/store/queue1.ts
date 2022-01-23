@@ -11,10 +11,13 @@ const queue1Slice = createSlice({
             return { ...state, queue1State: [...state.queue1State, action.payload] 
             };
         },
-        queue1ActionTest: (state) => {
-            console.log("test tt");
-            
-        }
+        removeFromQueue1: (state) =>{
+            return {...state,
+                queue1State: [
+                    ...state.queue1State.slice(1, -1)
+                ]
+            }
+        },
     }
 });
 

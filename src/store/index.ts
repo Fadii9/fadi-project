@@ -9,7 +9,7 @@ import queue1Slice from './queue1';
 
 export default configureStore({
     reducer: {
-        customers: customersReducer,
+        customersSlice: customersReducer,
         meals: mealsReducer ,
         delivery: deliveryReducer ,
         queue1Slice: queue1Slice },

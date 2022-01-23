@@ -1,10 +1,11 @@
 import React, {useEffect, useLayoutEffect} from 'react';
-import "./Customers.css";
-
 import { useDispatch, useSelector} from "react-redux"
-import {queue1Actions} from "../../store/queue1"
 
 import QueueCard from "./QueueCard"
+import "./Customers.css";
+
+import {queue1Actions} from "../../store/queue1"
+import {customersActions} from "../../store/customers"
 
 
 const Customers:React.FC = () => {
@@ -12,32 +13,40 @@ const Customers:React.FC = () => {
 
     // @ts-ignore
     const queue1 = useSelector(state => state.queue1Slice.queue1State);
+    // @ts-ignore
+    const waitingCustomers = useSelector(state => state.customersSlice.customersState);
 
-    useEffect ( () => {
-        
-        
-        console.log("Before dispach: " , queue1);
-        
-        dispatch(queue1Actions.addToQueue1({
-            id: "c1",
-            name: "Customer1",
-            order: ["Hamburger", "Salad"]
-        }))
-        
-                       
+        useEffect ( () => {
+            const firstCustomer = waitingCustomers[0];
+            console.log("Queue1: " , queue1);
+            console.log("First customer: ", firstCustomer)
+
+            if (queue1.length <= 4) {
+                setTimeout(() => {
+                    dispatch(queue1Actions.addToQueue1(firstCustomer))
+                }, 2000);
+                dispatch(customersActions.takeOrder())
+            }
+
+            // if (queue1.length > 0) {
+            //     setTimeout(() => {
+            //         dispatch(queue1Actions.removeFromQueue1())
+            //     }, 5000);
+            // }
 
 
-    },[])
+
+
+        },[queue1])
     
-    console.log("After dispach: " , queue1);
 
     return (
         <div className={"customers_status"}>
             <div className={"customers_text"}>Customers Queues</div>
             <div className={"queues_container"}>
-                <QueueCard/>
-                <QueueCard/>
-                <QueueCard/>
+                <QueueCard inUse={true} queue={queue1} />
+                <QueueCard inUse={false} queue={queue1}/>
+                <QueueCard inUse={false} queue={queue1}/>
             </div>
         </div>
     )
