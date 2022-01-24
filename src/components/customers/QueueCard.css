@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 3.5rem;
+    font-size: 2vw;
     /*border: black solid 3px;*/
 }
 
@@ -24,6 +24,13 @@
 .green {
     background-color: #6fd108;
     box-shadow: 0 0 0 0.5rem black;
+}
+
+.not_in_use {
+    font-size: 1.8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (max-width:880px) {

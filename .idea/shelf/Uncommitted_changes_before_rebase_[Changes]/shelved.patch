@@ -1,0 +1,240 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"7bf47ea3-2dda-4501-91ab-33fc7f912ea4\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/components/customers/Customers.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/components/customers/Customers.tsx\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/components/customers/QueueCard.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/components/customers/QueueCard.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/components/customers/QueueCard.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/components/customers/QueueCard.tsx\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/store/customers.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/store/customers.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/store/index.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/store/index.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/store/queue1.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/store/queue1.ts\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"TypeScript File\" />\n        <option value=\"TypeScript JSX File\" />\n        <option value=\"CSS File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"ADD_SUFFIX_TO_CHERRY_PICKS_OF_PUBLISHED_COMMITS\" value=\"false\" />\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"ProjectErrors\" />\n  </component>\n  <component name=\"ProjectId\" id=\"23okv4GIC0xJKf4mZatbf2cIUB4\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File\" value=\"HTML\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/components/production\" />\n    <property name=\"list.type.of.created.stylesheet\" value=\"CSS\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"org.jetbrains.plugins.github.ui.GithubSettingsConfigurable\" />\n    <property name=\"ts.external.directory.path\" value=\"$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external\" />\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/sass\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/components/production\" />\n      <recent name=\"$PROJECT_DIR$/src/components/delivery\" />\n      <recent name=\"$PROJECT_DIR$/src/components/customers\" />\n      <recent name=\"$PROJECT_DIR$/sass/pages/\" />\n      <recent name=\"$PROJECT_DIR$/src/pages/Restaurant\" />\n    </key>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"7bf47ea3-2dda-4501-91ab-33fc7f912ea4\" name=\"Changes\" comment=\"\" />\n      <created>1642408053273</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1642408053273</updated>\n      <workItem from=\"1642408054295\" duration=\"4896000\" />\n      <workItem from=\"1642413135019\" duration=\"7812000\" />\n      <workItem from=\"1642423924757\" duration=\"29000\" />\n      <workItem from=\"1642423971925\" duration=\"15000\" />\n      <workItem from=\"1642423988501\" duration=\"57000\" />\n      <workItem from=\"1642424046781\" duration=\"7000\" />\n      <workItem from=\"1642424063856\" duration=\"30000\" />\n      <workItem from=\"1642424132238\" duration=\"20000\" />\n      <workItem from=\"1642424153359\" duration=\"103000\" />\n      <workItem from=\"1642424264626\" duration=\"25810000\" />\n      <workItem from=\"1642661928353\" duration=\"6683000\" />\n      <workItem from=\"1642668656750\" duration=\"18454000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -7,10 +7,15 @@
+     <list default="true" id="7bf47ea3-2dda-4501-91ab-33fc7f912ea4" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/components/customers/Customers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/Customers.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/components/customers/QueueCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/QueueCard.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/components/customers/QueueCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/QueueCard.tsx" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/components/delivery/Delivery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/Delivery.tsx" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/components/delivery/DeliveryCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/DeliveryCard.tsx" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/components/production/Production.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/Production.tsx" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/components/production/SlotCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/SlotCard.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/components/production/SlotCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/SlotCard.tsx" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/store/customers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/store/delivery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/delivery.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/store/meals.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/meals.ts" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/store/queue1.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/queue1.ts" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -29,6 +34,11 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="ADD_SUFFIX_TO_CHERRY_PICKS_OF_PUBLISHED_COMMITS" value="false" />
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="queue-redux-update" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+Index: src/components/production/Production.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport \"./Production.css\"\n\nimport Slot from \"./SlotCard\"\n\nconst Production:React.FC = () => {\n\n    return (\n        <div className={\"Production_status\"}>\n            <div className={\"Production_text\"}>Production Slots</div>\n            <div className={\"slot_container\"}>\n                <Slot/>\n                <Slot/>\n                <Slot/>\n            </div>\n        </div>\n    )\n}\n\nexport default Production;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/production/Production.tsx b/src/components/production/Production.tsx
+--- a/src/components/production/Production.tsx	
++++ b/src/components/production/Production.tsx	
+@@ -3,15 +3,15 @@
+ 
+ import Slot from "./SlotCard"
+ 
+-const Production:React.FC = () => {
++const Production : React.FC = () => {
+ 
+     return (
+         <div className={"Production_status"}>
+             <div className={"Production_text"}>Production Slots</div>
+             <div className={"slot_container"}>
+-                <Slot/>
+-                <Slot/>
+-                <Slot/>
++                <Slot inUse={true}/>
++                <Slot inUse={false}/>
++                <Slot inUse={false}/>
+             </div>
+         </div>
+     )
+Index: src/components/customers/QueueCard.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport \"./QueueCard.css\";\n\n\nconst QueueCard:React.FC<{queue : [], inUse :boolean}> = ({queue, inUse}) => {\n\n    return (\n        inUse?\n        <div className={\"queue\"}>\n            <div className={queue.length > 4 ? `circle green` : \"circle\"}></div>\n            <div className={queue.length > 3 ? `circle green` : \"circle\"}></div>\n            <div className={queue.length > 2 ? `circle green` : \"circle\"}></div>\n            <div className={queue.length > 1 ? `circle green` : \"circle\"}></div>\n            <div className={queue.length > 0 ? `circle green` : \"circle\"}></div>\n        </div> :\n            <div className={\"queue\"}>\n                Not In Use\n            </div>\n    )\n}\n\nexport default QueueCard;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/customers/QueueCard.tsx b/src/components/customers/QueueCard.tsx
+--- a/src/components/customers/QueueCard.tsx	
++++ b/src/components/customers/QueueCard.tsx	
+@@ -2,7 +2,7 @@
+ import "./QueueCard.css";
+ 
+ 
+-const QueueCard:React.FC<{queue : [], inUse :boolean}> = ({queue, inUse}) => {
++const QueueCard : React.FC<{queue : [], inUse :boolean}> = ({queue, inUse}) => {
+ 
+     return (
+         inUse?
+Index: src/components/production/SlotCard.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>.slot {\n    background-color: lightslategray;\n    height: 30%;\n    margin: 0.25rem 1.5rem;\n    border: black solid 3px;\n    border-radius: 20px;\n    display: flex;\n    justify-content: space-around;\n    align-items: center;\n}\n\n.slot_image_container{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100%;\n    width: 22.5%;\n    border-radius: 20px 0 0 20px;\n    border-right: black solid 3px ;\n\n\n}\n\n.slot_image{\n    height: 85%;\n    width: 85%;\n    border: black solid 3px ;\n    border-radius: 20px;\n\n}\n\n.slot_details{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100%;\n    width: 27.5%;\n    border-right: black solid 3px ;\n    font-size: 1.8vw;\n\n}\n\n.slot_status{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    height: 100%;\n    width: 50%;\n    border-radius: 0 20px 20px 0;\n\n}\n\n.slot_status_text{\n    font-size: 1.9vw;\n    margin-bottom: 2rem;\n\n}\n\n.slot_status_ings{\n    background-color: lightslategray;\n    height: 30%;\n    width: 80%;\n    margin: 1rem 5rem;\n    border: black solid 3px;\n    border-radius: 20px;\n    display: flex;\n    justify-content: space-around;\n    align-items: center;\n}\n\n@media screen and (max-width:880px) {\n    .Production_status {\n        width: 85%;\n    }\n\n\n    .slot_status_ings{\n        height: 2vh;\n        width: 80%;\n        margin: 0 5rem;\n        justify-content: space-between;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/production/SlotCard.css b/src/components/production/SlotCard.css
+--- a/src/components/production/SlotCard.css	
++++ b/src/components/production/SlotCard.css	
+@@ -7,6 +7,8 @@
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
++    font-size: 4rem;
++
+ }
+ 
+ .slot_image_container{
+Index: src/components/production/SlotCard.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport \"./SlotCard.css\";\n\n\nconst SlotCard:React.FC = () => {\n\n    return (\n        <div className={\"slot\"}>\n            <div className={\"slot_image_container\"}>\n                <img className={\"slot_image\"}/>\n            </div>\n            <div className={\"slot_details\"}>\n                Order ID: __ <br/>\n                Producing: _____ <br/>\n                Estimated Time: <br/> HH:MM:SS\n            </div>\n            <div className={\"slot_status\"}>\n                <div className={\"slot_status_text\"}>Production Status:</div>\n                <div className={\"slot_status_ings\"}></div>\n            </div>\n        </div>\n    )\n}\n\nexport default SlotCard;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/production/SlotCard.tsx b/src/components/production/SlotCard.tsx
+--- a/src/components/production/SlotCard.tsx	
++++ b/src/components/production/SlotCard.tsx	
+@@ -1,12 +1,12 @@
+ import React from 'react';
+ import "./SlotCard.css";
+ 
+-
+-const SlotCard:React.FC = () => {
++const SlotCard : React.FC<{inUse :boolean}> = ({inUse}) => {
+ 
+     return (
++        inUse?
+         <div className={"slot"}>
+-            <div className={"slot_image_container"}>
++           <div className={"slot_image_container"}>
+                 <img className={"slot_image"}/>
+             </div>
+             <div className={"slot_details"}>
+@@ -18,7 +18,8 @@
+                 <div className={"slot_status_text"}>Production Status:</div>
+                 <div className={"slot_status_ings"}></div>
+             </div>
+-        </div>
++        </div> :
++            <div className={"slot"}>Not In Use</div>
+     )
+ }
+ 
+Index: src/components/delivery/Delivery.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport \"./Delivery.css\"\n\nimport DeliveryCard from \"./DeliveryCard\"\n\nconst Delivery:React.FC = () => {\n\n    return (\n        <div className={\"delivery_status\"}>\n            <div className={\"delivery_container_text\"}>Delivery Status</div>\n                <div className={\"delivery_status_container\"}>\n                    <DeliveryCard slotNumber={1}/>\n                    <DeliveryCard slotNumber={2}/>\n                    <DeliveryCard slotNumber={3}/>\n            </div>\n        </div>\n    )\n}\n\nexport default Delivery;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/delivery/Delivery.tsx b/src/components/delivery/Delivery.tsx
+--- a/src/components/delivery/Delivery.tsx	
++++ b/src/components/delivery/Delivery.tsx	
+@@ -3,7 +3,7 @@
+ 
+ import DeliveryCard from "./DeliveryCard"
+ 
+-const Delivery:React.FC = () => {
++const Delivery : React.FC = () => {
+ 
+     return (
+         <div className={"delivery_status"}>
+Index: src/components/delivery/DeliveryCard.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport \"./DeliveryCard.css\";\n\n\nconst DeliveryCard: React.FC<{ slotNumber: number }> = ({slotNumber}) => {\n\n    return (\n        <div className={\"delivery\"}>\n            <div className={\"delivery_text\"}>Delivery #{slotNumber}</div>\n            <div className={\"delivery_update\"}>\n                Order ID: ___ <br/>\n                Delivery Time:\n            </div>\n            <div className={\"delivery_time\"}>00:00:00</div>\n            <div className={\"delivery_screen\"}>Waiting...</div>\n        </div>\n    )\n}\n\nexport default DeliveryCard;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/delivery/DeliveryCard.tsx b/src/components/delivery/DeliveryCard.tsx
+--- a/src/components/delivery/DeliveryCard.tsx	
++++ b/src/components/delivery/DeliveryCard.tsx	
+@@ -2,7 +2,7 @@
+ import "./DeliveryCard.css";
+ 
+ 
+-const DeliveryCard: React.FC<{ slotNumber: number }> = ({slotNumber}) => {
++const DeliveryCard : React.FC<{ slotNumber: number }> = ({slotNumber}) => {
+ 
+     return (
+         <div className={"delivery"}>
+Index: src/store/meals.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { createSlice } from '@reduxjs/toolkit';\n\nconst initialMealsState = {slot1:[], slot2:[] ,slot3:[] };\n\nconst meals = createSlice({\n    name: 'meals',\n    initialState: initialMealsState,\n    reducers: {\n        addToSlot1(state , action) {\n\n        },\n        addToSlot2(state , action) {\n\n        },\n        addToSlot3(state, action) {\n\n        },\n\n    },\n});\n\nexport const mealsActions = meals.actions;\n\nexport default meals.reducer;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/store/meals.ts b/src/store/meals.ts
+--- a/src/store/meals.ts	
++++ b/src/store/meals.ts	
+@@ -6,16 +6,9 @@
+     name: 'meals',
+     initialState: initialMealsState,
+     reducers: {
+-        addToSlot1(state , action) {
+-
+-        },
+-        addToSlot2(state , action) {
++        addToSlot(state , action) {
+ 
+         },
+-        addToSlot3(state, action) {
+-
+-        },
+-
+     },
+ });
+ 
+Index: src/store/delivery.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { createSlice } from '@reduxjs/toolkit';\n\nconst initialDeliveryState = {delivery1:[], delivery2:[] , delivery3:[] };\n\nconst delivery = createSlice({\n    name: 'delivery',\n    initialState: initialDeliveryState,\n    reducers: {\n        addToDelivery1(state , action) {\n\n        },\n        addToDelivery2(state , action) {\n\n        },\n        addToDelivery3(state, action) {\n\n        },\n\n    },\n});\n\nexport const deliveryActions = delivery.actions;\n\nexport default delivery.reducer;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/store/delivery.ts b/src/store/delivery.ts
+--- a/src/store/delivery.ts	
++++ b/src/store/delivery.ts	
+@@ -6,17 +6,10 @@
+     name: 'delivery',
+     initialState: initialDeliveryState,
+     reducers: {
+-        addToDelivery1(state , action) {
+-
+-        },
+-        addToDelivery2(state , action) {
++        addToDelivery(state , action) {
+ 
+         },
+-        addToDelivery3(state, action) {
+-
+-        },
+-
+-    },
++   },
+ });
+ 
+ export const deliveryActions = delivery.actions;

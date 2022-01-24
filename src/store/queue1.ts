@@ -14,7 +14,7 @@ const queue1Slice = createSlice({
         removeFromQueue1: (state) =>{
             return {...state,
                 queue1State: [
-                    ...state.queue1State.slice(1, -1)
+                    ...state.queue1State.slice(1)
                 ]
             }
         },

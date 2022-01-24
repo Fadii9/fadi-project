@@ -6,13 +6,7 @@ const delivery = createSlice({
     name: 'delivery',
     initialState: initialDeliveryState,
     reducers: {
-        addToDelivery1(state , action) {
-
-        },
-        addToDelivery2(state , action) {
-
-        },
-        addToDelivery3(state, action) {
+        addToDelivery(state , action) {
 
         },
 
