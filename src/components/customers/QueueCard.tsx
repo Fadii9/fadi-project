@@ -2,7 +2,7 @@ import React from 'react';
 import "./QueueCard.css";
 
 
-const QueueCard:React.FC<{queue : [], inUse :boolean}> = ({queue, inUse}) => {
+const QueueCard : React.FC<{queue : [], inUse :boolean}> = ({queue, inUse}) => {
 
     return (
         inUse?

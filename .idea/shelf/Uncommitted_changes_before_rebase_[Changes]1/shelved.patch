@@ -1,0 +1,103 @@
+Index: src/store/customers.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { createSlice } from '@reduxjs/toolkit';\n\nimport customersData from \"../data/customersData\"\n\n\n\n// @ts-ignore\nconst customersSlice = createSlice({\n    name: 'customers',\n    initialState: {\n        customersState: customersData,\n    },\n    reducers: {\n        takeOrder: (state) =>{\n            return {...state,\n                customersState: [\n                    ...state.customersState.slice(1, -1)\n                ]\n            }\n        },\n   }\n});\n\nexport const customersActions = customersSlice.actions;\n\nexport default customersSlice.reducer;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/store/customers.ts b/src/store/customers.ts
+--- a/src/store/customers.ts	
++++ b/src/store/customers.ts	
+@@ -2,16 +2,13 @@
+ 
+ import customersData from "../data/customersData"
+ 
+-
+-
+-// @ts-ignore
+ const customersSlice = createSlice({
+     name: 'customers',
+     initialState: {
+         customersState: customersData,
+     },
+     reducers: {
+-        takeOrder: (state) =>{
++        takeOrder: (state) => {
+             return {...state,
+                 customersState: [
+                     ...state.customersState.slice(1, -1)
+Index: src/components/customers/Customers.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, {useEffect, useLayoutEffect} from 'react';\nimport { useDispatch, useSelector} from \"react-redux\"\n\nimport QueueCard from \"./QueueCard\"\nimport \"./Customers.css\";\n\nimport {queue1Actions} from \"../../store/queue1\"\nimport {customersActions} from \"../../store/customers\"\n\n\nconst Customers:React.FC = () => {\n    const dispatch = useDispatch()\n\n    // @ts-ignore\n    const queue1 = useSelector(state => state.queue1Slice.queue1State);\n    // @ts-ignore\n    const waitingCustomers = useSelector(state => state.customersSlice.customersState);\n\n        useEffect ( () => {\n            const firstCustomer = waitingCustomers[0];\n            console.log(\"Queue1: \" , queue1);\n            console.log(\"First customer: \", firstCustomer)\n\n            if (queue1.length <= 4) {\n                setTimeout(() => {\n                    dispatch(queue1Actions.addToQueue1(firstCustomer))\n                }, 2000);\n                dispatch(customersActions.takeOrder())\n            }\n\n            // if (queue1.length > 0) {\n            //     setTimeout(() => {\n            //         dispatch(queue1Actions.removeFromQueue1())\n            //     }, 5000);\n            // }\n\n\n\n\n        },[queue1])\n    \n\n    return (\n        <div className={\"customers_status\"}>\n            <div className={\"customers_text\"}>Customers Queues</div>\n            <div className={\"queues_container\"}>\n                <QueueCard inUse={true} queue={queue1} />\n                <QueueCard inUse={false} queue={queue1}/>\n                <QueueCard inUse={false} queue={queue1}/>\n            </div>\n        </div>\n    )\n}\n\nexport default Customers;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/customers/Customers.tsx b/src/components/customers/Customers.tsx
+--- a/src/components/customers/Customers.tsx	
++++ b/src/components/customers/Customers.tsx	
+@@ -8,9 +8,10 @@
+ import {customersActions} from "../../store/customers"
+ 
+ 
+-const Customers:React.FC = () => {
++const Customers : React.FC = () => {
+     const dispatch = useDispatch()
+ 
++
+     // @ts-ignore
+     const queue1 = useSelector(state => state.queue1Slice.queue1State);
+     // @ts-ignore
+@@ -21,25 +22,19 @@
+             console.log("Queue1: " , queue1);
+             console.log("First customer: ", firstCustomer)
+ 
+-            if (queue1.length <= 4) {
++            const fullQueue = 4;
++            if (queue1.length <= fullQueue) {
+                 setTimeout(() => {
+-                    dispatch(queue1Actions.addToQueue1(firstCustomer))
+-                }, 2000);
+-                dispatch(customersActions.takeOrder())
++                    dispatch(customersActions.takeOrder())
++                    dispatch(queue1Actions.addToQueue1(firstCustomer))
++                }, 1000);
+             }
+-
+-            // if (queue1.length > 0) {
+-            //     setTimeout(() => {
+-            //         dispatch(queue1Actions.removeFromQueue1())
+-            //     }, 5000);
+-            // }
+-
+-
+ 
+ 
+-        },[queue1])
+-    
++        }, [queue1])
++
+ 
++
+     return (
+         <div className={"customers_status"}>
+             <div className={"customers_text"}>Customers Queues</div>
+Index: src/store/queue1.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { createSlice } from '@reduxjs/toolkit';\n\n\nconst queue1Slice = createSlice({\n    name: 'queue1',\n    initialState: {\n        queue1State:  new Array()\n    },\n    reducers: {\n        addToQueue1: (state, action) => {\n            return { ...state, queue1State: [...state.queue1State, action.payload] \n            };\n        },\n        removeFromQueue1: (state) =>{\n            return {...state,\n                queue1State: [\n                    ...state.queue1State.slice(1, -1)\n                ]\n            }\n        },\n    }\n});\n\nexport const queue1Actions = queue1Slice.actions;\n\nexport default queue1Slice.reducer;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/store/queue1.ts b/src/store/queue1.ts
+--- a/src/store/queue1.ts	
++++ b/src/store/queue1.ts	
+@@ -11,7 +11,7 @@
+             return { ...state, queue1State: [...state.queue1State, action.payload] 
+             };
+         },
+-        removeFromQueue1: (state) =>{
++        removeFromQueue1: (state) => {
+             return {...state,
+                 queue1State: [
+                     ...state.queue1State.slice(1, -1)

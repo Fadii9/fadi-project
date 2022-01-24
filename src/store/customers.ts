@@ -2,9 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import customersData from "../data/customersData"
 
-
-
-// @ts-ignore
 const customersSlice = createSlice({
     name: 'customers',
     initialState: {
@@ -14,7 +11,7 @@ const customersSlice = createSlice({
         takeOrder: (state) =>{
             return {...state,
                 customersState: [
-                    ...state.customersState.slice(1, -1)
+                    ...state.customersState.slice(1)
                 ]
             }
         },
