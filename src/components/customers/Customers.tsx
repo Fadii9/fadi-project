@@ -21,10 +21,10 @@ const Customers : React.FC<{time : number}> = ({time}) => {
 
 
                if (queue1.length < fullQueue && time !=0) {
-                   console.log("First customer: ", firstCustomer)
+                   // console.log("First customer: ", firstCustomer)
                    dispatch(customersActions.takeOrder())
                    dispatch(queue1Actions.addToQueue1(firstCustomer))
-                   console.log("Queue1: " , queue1);
+                   // console.log("Queue1: " , queue1);
                }
 
 

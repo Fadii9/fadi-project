@@ -33,7 +33,8 @@
 }
 
 .buttons_container{
-    width: 120px;
+    display: flex;
+    flex-direction: column;
 }
 
 @media screen and (max-width:880px) {
@@ -43,14 +44,14 @@
         padding: 1rem 0;
     }
 
-
-
     .container__left {
         height: 83vh;
         width: 90%;
     }
 
-
+    .buttons_container{
+        flex-direction: row;
+    }
 }
 
 

@@ -3,7 +3,7 @@ import "./Production.css"
 
 import Slot from "./SlotCard"
 
-const Production : React.FC<{time : number}> = ({time}) => {
+const Production : React.FC<{ time : number}> = ({ time }) => {
 
     return (
         <div className={"Production_status"}>

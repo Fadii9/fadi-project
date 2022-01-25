@@ -1,5 +1,7 @@
 import React ,{useState ,useEffect} from 'react';
 import { useDispatch, useSelector} from "react-redux"
+import { RootState } from "../../store/index"
+
 
 import "./SlotCard.css";
 
@@ -8,30 +10,30 @@ import ingsData from "../../data/ingredientsData";
 
 import {slot1Actions} from "../../store/slot1"
 import {queue1Actions} from "../../store/queue1"
+import {delivery1Actions} from "../../store/delivery1"
 
 
 
-const SlotCard : React.FC<{inUse : boolean, time : number}> = ({inUse , time}) => {
+const SlotCard : React.FC<{inUse : boolean, time : number}> = ({ inUse , time }) => {
     const dispatch = useDispatch();
     let estTime = 0;
-
+    let producing = false;
+    let showIngs;
 
     // @ts-ignore
-    const slot1 = useSelector(state => state.slot1Slice.slot1State);
+    const slot1 = useSelector((state) => state.slot1Slice.slot1State);
     // @ts-ignore
-    const queue1 = useSelector(state => state.queue1Slice.queue1State);
+    const queue1 = useSelector((state) => state.queue1Slice.queue1State);
 
     let emptySlot = JSON.stringify(slot1) === '{}';
 
-
-    if (queue1.length > 1 && emptySlot) {
+    if (queue1.length > 1 && emptySlot && time%3 == 0) {
         dispatch(slot1Actions.addToSlot(queue1[0]))
         dispatch(queue1Actions.removeFromQueue1())
-        emptySlot = true;
-
     }
-    let showIngs;
-    if (!emptySlot && estTime == 0) {
+
+
+    if (!emptySlot) {
         let meals = slot1.order
         let mealsIngs = meals.map((meal :string) => {
             for (let i in mealsData){
@@ -41,12 +43,20 @@ const SlotCard : React.FC<{inUse : boolean, time : number}> = ({inUse , time}) =
         })
 
         showIngs = mealsIngs.join(",");
+
         mealsIngs[0].map((ing : string) => {
         estTime += ingsData.find(o => o.ing === ing)!.prepTime;
         })
 
+        estTime -= time;
 
+        producing = true;
+    }
 
+    if (!emptySlot && producing && estTime == 0){
+        producing = false;
+        dispatch(delivery1Actions.addToDelivery1(slot1))
+        dispatch(slot1Actions.emptySlot());
     }
 
 
