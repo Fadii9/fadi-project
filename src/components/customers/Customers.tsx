@@ -9,7 +9,7 @@ import "./Customers.css";
 import {queue1Actions} from "../../store/queue1"
 import {customersActions} from "../../store/customers"
 
-const Customers : React.FC<{time : number}> = ({time}) => {
+const Customers: React.FC<{time : number}> = ({ time }) => {
     const dispatch = useDispatch()
 
     const queue1 = useSelector((state: RootState) => state.queue1Slice.queue1State);

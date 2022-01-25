@@ -9,7 +9,7 @@ import Customers from "../../components/customers/Customers";
 import Production from "../../components/production/Production";
 
 
-const Restaurant : React.FC = () => {
+const Restaurant: React.FC = () => {
     const { time, start, pause, reset, status } = useTimer({autostart : false});
 
 
