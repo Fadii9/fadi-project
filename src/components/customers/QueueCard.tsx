@@ -5,7 +5,7 @@ import "./QueueCard.css";
 const QueueCard: React.FC<{queue : [], inUse :boolean}> = ({ queue, inUse }) => {
 
     return (
-        inUse?
+        inUse ?
         <div className={"queue"}>
             <div className={queue.length > 4 ? `circle green` : "circle"}></div>
             <div className={queue.length > 3 ? `circle green` : "circle"}></div>
