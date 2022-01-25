@@ -23,7 +23,7 @@ const Restaurant : React.FC = () => {
             </div>
             <div className={"container__left"} >
                 <Customers time={time}/>
-                <Delivery />
+                <Delivery time={time} />
             </div>
             <Production time={time}/>
         </div>

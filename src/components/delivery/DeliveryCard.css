@@ -52,10 +52,6 @@
     background-color: #ff5e00;
 }
 
-.delivery_screen:hover {
-    background-color: #6fd108;
-}
-
 @media screen and (max-width:880px) {
     .delivery {
         justify-content: space-around;

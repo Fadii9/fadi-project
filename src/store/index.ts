@@ -5,8 +5,6 @@ import slot1Reducer from './slot1';
 import delivery1Reducer from './delivery1';
 import queue1Slice from './queue1';
 
-
-
 const store = configureStore({
     reducer: {
         delivery1Slice: delivery1Reducer,
@@ -30,4 +28,3 @@ export type RootState = {
 }
 
 export default store
-
