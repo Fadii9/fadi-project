@@ -4,38 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7bf47ea3-2dda-4501-91ab-33fc7f912ea4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_1_2022,_10_50_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_1_2022__10_50__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/slot1.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/customers/Customers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/Customers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/customers/QueueCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/QueueCard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/customers/QueueCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/QueueCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/delivery/Delivery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/Delivery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/delivery/DeliveryCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/DeliveryCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/production/Production.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/Production.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/production/SlotCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/SlotCard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/production/SlotCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/SlotCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/allData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/allData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/customersData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/customersData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/ingredientsData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/ingredientsData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/mealsData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/mealsData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Restaurant/Restaurant.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Restaurant/Restaurant.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Restaurant/Restaurant.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Restaurant/Restaurant.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/customers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/delivery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/delivery.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/meals.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/queue1.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/queue1.ts" afterDir="false" />
-    </list>
+    <list default="true" id="7bf47ea3-2dda-4501-91ab-33fc7f912ea4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

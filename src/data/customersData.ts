@@ -14,7 +14,7 @@ const customers: customersList = [
     {
         id: "c2",
         name: "Customer2",
-        order: ["Hamburger", "Salad"]
+        order: ["Salad"]
     },
 
     {
@@ -26,13 +26,13 @@ const customers: customersList = [
     {
         id: "c4",
         name: "Customer4",
-        order: ["Pizza", "Hamburger"]
+        order: ["Pizza"]
     },
 
     {
         id: "c5",
         name: "Customer5",
-        order: ["spaghetti", "Pizza"]
+        order: ["Spaghetti", "Pizza"]
     },
 
     {
@@ -44,13 +44,13 @@ const customers: customersList = [
     {
         id: "c7",
         name: "Customer7",
-        order: ["spaghetti", "Pizza", "Hamburger"]
+        order: ["Spaghetti", "Pizza", "Hamburger"]
     },
 
     {
         id: "c8",
         name: "Customer8",
-        order: ["spaghetti", "Pizza", "Steak"]
+        order: ["Spaghetti", "Pizza", "Steak"]
     },
 
     {
@@ -62,7 +62,7 @@ const customers: customersList = [
     {
         id: "c10",
         name: "Customer10",
-        order: ["spaghetti", "Salad"]
+        order: ["Spaghetti", "Salad"]
     },
     {
         id: "c11",
@@ -91,7 +91,7 @@ const customers: customersList = [
     {
         id: "c15",
         name: "Customer15",
-        order: ["spaghetti", "Pizza"]
+        order: ["Spaghetti", "Pizza"]
     },
 
     {
@@ -103,13 +103,13 @@ const customers: customersList = [
     {
         id: "c17",
         name: "Customer17",
-        order: ["spaghetti", "Pizza", "Hamburger"]
+        order: ["Spaghetti", "Pizza", "Hamburger"]
     },
 
     {
         id: "c18",
         name: "Customer18",
-        order: ["spaghetti", "Pizza", "Steak"]
+        order: ["Spaghetti", "Pizza", "Steak"]
     },
 
     {
@@ -121,7 +121,7 @@ const customers: customersList = [
     {
         id: "c20",
         name: "Customer20",
-        order: ["spaghetti", "Salad"]
+        order: ["Spaghetti", "Salad"]
     },
 
 ];

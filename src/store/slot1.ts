@@ -12,6 +12,13 @@ const slot1Slice = createSlice({
                 slot1State: action.payload
             }
         },
+        emptySlot: (state) =>{
+            return {...state,
+                slot1State:
+                    {}
+
+            }
+        },
 
     },
 });

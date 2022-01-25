@@ -1,5 +1,7 @@
 import React, {useEffect, useLayoutEffect} from 'react';
-import { useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector} from "react-redux";
+import { RootState } from "../../store/index"
+
 
 import QueueCard from "./QueueCard"
 import "./Customers.css";
@@ -7,13 +9,11 @@ import "./Customers.css";
 import {queue1Actions} from "../../store/queue1"
 import {customersActions} from "../../store/customers"
 
-const Customers : React.FC<{time : number}> = ({time}) => {
+const Customers: React.FC<{time : number}> = ({ time }) => {
     const dispatch = useDispatch()
 
-    // @ts-ignore
-    const queue1 = useSelector(state => state.queue1Slice.queue1State);
-    // @ts-ignore
-    const waitingCustomers = useSelector(state => state.customersSlice.customersState);
+    const queue1 = useSelector((state: RootState) => state.queue1Slice.queue1State);
+    const waitingCustomers = useSelector((state: RootState) => state.customersSlice.customersState);
 
         useEffect ( () => {
               const firstCustomer = waitingCustomers[0];
@@ -21,10 +21,10 @@ const Customers : React.FC<{time : number}> = ({time}) => {
 
 
                if (queue1.length < fullQueue && time !=0) {
-                   console.log("First customer: ", firstCustomer)
+                   // console.log("First customer: ", firstCustomer)
                    dispatch(customersActions.takeOrder())
                    dispatch(queue1Actions.addToQueue1(firstCustomer))
-                   console.log("Queue1: " , queue1);
+                   // console.log("Queue1: " , queue1);
                }
 
 
