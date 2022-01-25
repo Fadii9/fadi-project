@@ -1,9 +1,7 @@
 import React from 'react';
 import "./SlotCard.css";
 
-
-const SlotCard:React.FC = () => {
-
+const SlotCard: React.FC = () => {
     return (
         <div className={"slot"}>
             <div className={"slot_image_container"}>

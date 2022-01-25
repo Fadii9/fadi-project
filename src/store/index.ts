@@ -7,7 +7,7 @@ import queue1Slice from './queue1';
 
 
 
-export default configureStore({
+const store = configureStore({
     reducer: {
         customersSlice: customersReducer,
         meals: mealsReducer ,
@@ -15,4 +15,19 @@ export default configureStore({
         queue1Slice: queue1Slice },
 
 });
+
+export interface States {
+    id: string;
+    order: any;
+    slot1State: any;
+    queue1State: any;
+    customersState: any
+    delivery1State: any
+}
+
+export type RootState = {
+    [slotKey : string]: States,
+}
+
+export default store
 

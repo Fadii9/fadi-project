@@ -1,21 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialDeliveryState = {delivery1:[], delivery2:[] , delivery3:[] };
 
 const delivery = createSlice({
     name: 'delivery',
-    initialState: initialDeliveryState,
+    initialState: {
+        delivery1State: {}
+    },
     reducers: {
-        addToDelivery1(state , action) {
+        addToDelivery(state , action) {
 
         },
-        addToDelivery2(state , action) {
-
-        },
-        addToDelivery3(state, action) {
-
-        },
-
     },
 });
 

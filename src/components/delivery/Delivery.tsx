@@ -3,7 +3,7 @@ import "./Delivery.css"
 
 import DeliveryCard from "./DeliveryCard"
 
-const Delivery:React.FC = () => {
+const Delivery: React.FC = () => {
 
     return (
         <div className={"delivery_status"}>
