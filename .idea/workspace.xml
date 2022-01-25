@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7bf47ea3-2dda-4501-91ab-33fc7f912ea4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/customersSlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/deliverySlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/mealsSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Customers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Customers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/action-creators/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/action-types/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/actions/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/reducers/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/reducers/restaurantReducer.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/customers/Customers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/Customers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/delivery/Delivery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/Delivery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/production/Production.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/Production.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/production/SlotCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/SlotCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/customers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/delivery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/delivery.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +51,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="HTML" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/sass" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/production" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -76,10 +67,11 @@
       <recent name="$PROJECT_DIR$/sass" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/production" />
+      <recent name="$PROJECT_DIR$/src/components/delivery" />
+      <recent name="$PROJECT_DIR$/src/components/customers" />
       <recent name="$PROJECT_DIR$/sass/pages/" />
       <recent name="$PROJECT_DIR$/src/pages/Restaurant" />
-      <recent name="$PROJECT_DIR$/src/pages/Home" />
-      <recent name="$PROJECT_DIR$/src/data" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -101,7 +93,7 @@
       <workItem from="1642424153359" duration="103000" />
       <workItem from="1642424264626" duration="25810000" />
       <workItem from="1642661928353" duration="6683000" />
-      <workItem from="1642668656750" duration="2002000" />
+      <workItem from="1642668656750" duration="18454000" />
     </task>
     <servers />
   </component>

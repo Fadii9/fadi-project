@@ -1,0 +1,25 @@
+.delivery_status {
+    height: 50%;
+    width: 95%;
+    border: black solid 3px;
+    border-radius: 10px;
+    margin: 1rem 2rem;
+}
+
+.delivery_container_text {
+    background-color: lightslategray;
+    color: aliceblue;
+    text-align: center;
+    font-size: 2vw;
+    margin: auto;
+    border-bottom: black solid 3px;
+    border-radius: 10px 10px 0 0;
+    height: 12%;
+    padding-top: 1.2rem;
+}
+
+.delivery_status_container {
+    height: 85%;
+    display: flex;
+    justify-content: space-around;
+}
