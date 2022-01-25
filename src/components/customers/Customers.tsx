@@ -1,5 +1,7 @@
 import React, {useEffect, useLayoutEffect} from 'react';
-import { useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector} from "react-redux";
+import { RootState } from "../../store/index"
+
 
 import QueueCard from "./QueueCard"
 import "./Customers.css";
@@ -10,10 +12,8 @@ import {customersActions} from "../../store/customers"
 const Customers : React.FC<{time : number}> = ({time}) => {
     const dispatch = useDispatch()
 
-    // @ts-ignore
-    const queue1 = useSelector(state => state.queue1Slice.queue1State);
-    // @ts-ignore
-    const waitingCustomers = useSelector(state => state.customersSlice.customersState);
+    const queue1 = useSelector((state: RootState) => state.queue1Slice.queue1State);
+    const waitingCustomers = useSelector((state: RootState) => state.customersSlice.customersState);
 
         useEffect ( () => {
               const firstCustomer = waitingCustomers[0];

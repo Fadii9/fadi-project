@@ -2,7 +2,6 @@ import React ,{useState ,useEffect} from 'react';
 import { useDispatch, useSelector} from "react-redux"
 import { RootState } from "../../store/index"
 
-
 import "./SlotCard.css";
 
 import mealsData from "../../data/mealsData";
@@ -14,16 +13,14 @@ import {delivery1Actions} from "../../store/delivery1"
 
 
 
-const SlotCard : React.FC<{inUse : boolean, time : number}> = ({ inUse , time }) => {
+const SlotCard: React.FC<{inUse: boolean, time: number}> = ({ inUse , time }) => {
     const dispatch = useDispatch();
     let estTime = 0;
     let producing = false;
     let showIngs;
 
-    // @ts-ignore
-    const slot1 = useSelector((state) => state.slot1Slice.slot1State);
-    // @ts-ignore
-    const queue1 = useSelector((state) => state.queue1Slice.queue1State);
+    const slot1 = useSelector((state: RootState) => state.slot1Slice.slot1State);
+    const queue1 = useSelector((state: RootState) => state.queue1Slice.queue1State);
 
     let emptySlot = JSON.stringify(slot1) === '{}';
 

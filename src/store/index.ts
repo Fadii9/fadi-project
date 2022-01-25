@@ -16,7 +16,18 @@ const store = configureStore({
     }
 });
 
-export type RootState = ReturnType<typeof store.getState>
+export interface States {
+    id: string;
+    order: any;
+    slot1State: any;
+    queue1State: any;
+    customersState: any
+    delivery1State: any
+}
+
+export type RootState = {
+    [slotKey : string]: States,
+}
 
 export default store
 

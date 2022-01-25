@@ -1,5 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector} from "react-redux"
+import { RootState } from "../../store/index"
+
 
 import "./DeliveryCard.css";
 
@@ -10,8 +12,7 @@ import {delivery1Actions} from "../../store/delivery1"
 const DeliveryCard : React.FC<{ slotNumber: number, inUse : boolean }> = ({ slotNumber , inUse }) => {
 
 
-    // @ts-ignore
-    const delivery1 = useSelector((state) => state.delivery1Slice.delivery1State);
+    const delivery1 = useSelector((state: RootState) => state.delivery1Slice.delivery1State);
 
     let emptyDelivery = JSON.stringify(delivery1) === '{}';
 
