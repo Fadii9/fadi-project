@@ -125,121 +125,121 @@ const customers: customersList = [
     },
 
     {
-        id: "c2",
-        name: "Customer1",
-        order: ["Hamburger"]
-    },
-
-    {
-        id: "c2",
-        name: "Customer2",
-        order: ["Salad"]
-    },
-
-    {
-        id: "c2",
-        name: "Customer3",
-        order: ["Steak"]
-    },
-
-    {
-        id: "c2",
-        name: "Customer4",
-        order: ["Pizza"]
-    },
-
-    {
-        id: "c2",
-        name: "Customer5",
-        order: ["Spaghetti"]
-    },
-
-    {
-        id: "c2",
-        name: "Customer6",
-        order: ["Salad"]
-    },
-
-    {
-        id: "c2",
-        name: "Customer7",
-        order: ["Hamburger"]
-    },
-
-    {
-        id: "c2",
-        name: "Customer8",
-        order: ["Steak"]
-    },
-
-    {
-        id: "c2",
-        name: "Customer9",
-        order: ["Baguette"]
-    },
-
-    {
-        id: "c20",
-        name: "Customer10",
-        order: ["Salad"]
-    },
-    {
         id: "c21",
-        name: "Customer11",
-        order: ["Salad"]
+        name: "Customer21",
+        order: ["Hamburger"]
     },
 
     {
         id: "c22",
-        name: "Customer12",
-        order: ["Hamburger"]
+        name: "Customer22",
+        order: ["Salad"]
     },
 
     {
         id: "c23",
-        name: "Customer13",
-        order: ["Pizza"]
+        name: "Customer23",
+        order: ["Steak"]
     },
 
     {
         id: "c24",
-        name: "Customer14",
-        order: ["Hamburger"]
-    },
-
-    {
-        id: "c15",
-        name: "Customer15",
-        order: ["Spaghetti"]
-    },
-
-    {
-        id: "c16",
-        name: "Customer16",
+        name: "Customer24",
         order: ["Pizza"]
     },
 
     {
-        id: "c17",
-        name: "Customer17",
-        order: ["Hamburger"]
-    },
-
-    {
-        id: "c18",
-        name: "Customer18",
+        id: "c25",
+        name: "Customer25",
         order: ["Spaghetti"]
     },
 
     {
-        id: "c19",
-        name: "Customer19",
+        id: "c26",
+        name: "Customer26",
+        order: ["Salad"]
+    },
+
+    {
+        id: "c27",
+        name: "Customer27",
+        order: ["Hamburger"]
+    },
+
+    {
+        id: "c28",
+        name: "Customer28",
+        order: ["Steak"]
+    },
+
+    {
+        id: "c29",
+        name: "Customer29",
         order: ["Baguette"]
     },
 
     {
-        id: "c20",
-        name: "Customer20",
+        id: "c30",
+        name: "Customer30",
+        order: ["Salad"]
+    },
+    {
+        id: "c31",
+        name: "Customer31",
+        order: ["Salad"]
+    },
+
+    {
+        id: "c32",
+        name: "Customer32",
+        order: ["Hamburger"]
+    },
+
+    {
+        id: "c33",
+        name: "Customer33",
+        order: ["Pizza"]
+    },
+
+    {
+        id: "c34",
+        name: "Customer34",
+        order: ["Hamburger"]
+    },
+
+    {
+        id: "c35",
+        name: "Customer35",
+        order: ["Spaghetti"]
+    },
+
+    {
+        id: "c36",
+        name: "Customer36",
+        order: ["Pizza"]
+    },
+
+    {
+        id: "c37",
+        name: "Customer37",
+        order: ["Hamburger"]
+    },
+
+    {
+        id: "c38",
+        name: "Customer38",
+        order: ["Spaghetti"]
+    },
+
+    {
+        id: "c39",
+        name: "Customer39",
+        order: ["Baguette"]
+    },
+
+    {
+        id: "c40",
+        name: "Customer40",
         order: ["Spaghetti"]
     }
 

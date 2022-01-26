@@ -2,12 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import customersReducer from "./customers";
 import slotsReducer from "./slots";
-import delivery1Reducer from "./delivery1";
+import deliveriesReducer from "./deliveries";
 import queuesSlice from "./queues";
 
 const store = configureStore({
   reducer: {
-    delivery1Slice: delivery1Reducer,
+    deliveriesSlice: deliveriesReducer,
     queuesSlice: queuesSlice,
     customersSlice: customersReducer,
     slotsSlice: slotsReducer,

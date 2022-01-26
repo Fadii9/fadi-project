@@ -4,25 +4,27 @@ import { RootState } from "../../store/index";
 
 import "./DeliveryCard.css";
 
-import { delivery1Actions } from "../../store/delivery1";
+import { deliveriesActions } from "../../store/deliveries";
+
+type DeliveryNumber = '1' | '2' | '3';
+type DeliveryState = `slot${DeliveryNumber}State`;
 
 const DeliveryCard: React.FC<{
-  slotNumber: number;
+    deliveryNumber: DeliveryNumber;
   inUse: boolean;
   time: number;
-}> = ({ slotNumber, inUse, time }) => {
+}> = ({ deliveryNumber, inUse, time }) => {
   const dispatch = useDispatch();
-  const delivery1 = useSelector(
-    (state: RootState) => state.delivery1Slice.delivery1State
+  const delivery = useSelector((state: RootState) => state.deliveriesSlice[`delivery${deliveryNumber}State`]
   );
-  let emptyDelivery = JSON.stringify(delivery1) === "{}";
+  let emptyDelivery = JSON.stringify(delivery) === "{}";
   const [startTime, setStartTime] = useState(0);
   const [isUsed, setIsUsed] = useState(false);
   let deliveryTime = 0;
 
   useEffect(() => {
     setStartTime(time);
-  }, [delivery1]);
+  }, [delivery]);
 
   if (!emptyDelivery && deliveryTime == 0) {
     deliveryTime = 5;
@@ -32,11 +34,18 @@ const DeliveryCard: React.FC<{
     deliveryTime -= time - startTime;
   }
 
+    if (deliveryTime == 0 && !emptyDelivery) {
+        console.log(deliveryNumber ,"----empty")
+        console.log(`emptyDelivery${deliveryNumber}` ,"----test")
+
+        dispatch(deliveriesActions[`emptyDelivery${deliveryNumber}`]())
+    }
+
   return inUse ? (
     <div className={"delivery"}>
-      <div className={"delivery_text"}>Delivery #{slotNumber}</div>
+      <div className={"delivery_text"}>Delivery #{deliveryNumber}</div>
       <div className={"delivery_update"}>
-        Order ID: {delivery1.id} <br />
+        Order ID: {delivery.id} <br />
         Delivery Time:
       </div>
       <div className={"delivery_time"}>
