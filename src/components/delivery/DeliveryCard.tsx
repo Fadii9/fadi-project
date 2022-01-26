@@ -6,18 +6,20 @@ import "./DeliveryCard.css";
 
 import { deliveriesActions } from "../../store/deliveries";
 
-type DeliveryNumber = '1' | '2' | '3';
+type DeliveryNumber = "1" | "2" | "3";
 type DeliveryState = `slot${DeliveryNumber}State`;
 
 const DeliveryCard: React.FC<{
-    deliveryNumber: DeliveryNumber;
+  deliveryNumber: DeliveryNumber;
   inUse: boolean;
   time: number;
 }> = ({ deliveryNumber, inUse, time }) => {
   const dispatch = useDispatch();
-  const delivery = useSelector((state: RootState) => state.deliveriesSlice[`delivery${deliveryNumber}State`]
+  const delivery = useSelector(
+    (state: RootState) =>
+      state.deliveriesSlice[`delivery${deliveryNumber}State`]
   );
-  let emptyDelivery = JSON.stringify(delivery) === "{}";
+  let emptyDelivery = !delivery.id;
   const [startTime, setStartTime] = useState(0);
   const [isUsed, setIsUsed] = useState(false);
   let deliveryTime = 0;
@@ -34,12 +36,9 @@ const DeliveryCard: React.FC<{
     deliveryTime -= time - startTime;
   }
 
-    if (deliveryTime == 0 && !emptyDelivery) {
-        console.log(deliveryNumber ,"----empty")
-        console.log(`emptyDelivery${deliveryNumber}` ,"----test")
-
-        dispatch(deliveriesActions[`emptyDelivery${deliveryNumber}`]())
-    }
+  if (deliveryTime == 0 && !emptyDelivery) {
+    dispatch(deliveriesActions[`emptyDelivery${deliveryNumber}`]());
+  }
 
   return inUse ? (
     <div className={"delivery"}>

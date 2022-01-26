@@ -28,10 +28,12 @@ const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber 
   const [startTime, setStartTime] = useState(0);
   const slotName: SlotState = `slot${slotNumber}State`;
   const slot = useSelector((state: RootState) => state.slotsSlice[slotName]);
-  let emptySlot = JSON.stringify(slot) === "{}";
+  let emptySlot = !slot.id;
+
   const queue = useSelector((state: RootState) => state.queuesSlice[`queue${slotNumber}State`]);
   const delivery1 = useSelector((state: RootState) => state.deliveriesSlice[`delivery${slotNumber}State`]);
-  const emptyDelivery = JSON.stringify(delivery1) === "{}";
+  let emptyDelivery = !delivery1.id;
+
 
   useEffect(() => {
     setStartTime(time);
