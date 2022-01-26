@@ -9,7 +9,7 @@ import ingsData from "../../data/ingredientsData";
 
 import { slotsActions } from "../../store/slots";
 import { queuesActions } from "../../store/queues";
-import { delivery1Actions } from "../../store/delivery1";
+import { deliveriesActions } from "../../store/deliveries";
 
 type SlotNumber = '1' | '2' | '3';
 type SlotState = `slot${SlotNumber}State`;
@@ -20,23 +20,23 @@ const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber 
   slotNumber
 }) => {
   const dispatch = useDispatch();
+  let image;
+  let showIngs;
   let estTime = 0;
   let receivedTime = 0;
   let producing = false;
-  let showIngs;
-  let image;
   const [startTime, setStartTime] = useState(0);
   const slotName: SlotState = `slot${slotNumber}State`;
   const slot = useSelector((state: RootState) => state.slotsSlice[slotName]);
-
+  let emptySlot = JSON.stringify(slot) === "{}";
   const queue = useSelector((state: RootState) => state.queuesSlice[`queue${slotNumber}State`]);
-  const delivery1 = useSelector((state: RootState) => state.delivery1Slice[`delivery${slotNumber}State`]);
+  const delivery1 = useSelector((state: RootState) => state.deliveriesSlice[`delivery${slotNumber}State`]);
+  const emptyDelivery = JSON.stringify(delivery1) === "{}";
 
   useEffect(() => {
     setStartTime(time);
   }, [slot]);
 
-  let emptySlot = JSON.stringify(slot) === "{}";
 
   if (queue.length > 1 && emptySlot && time % 2 == 0) {
     dispatch(slotsActions[`addToSlot${slotNumber}`](queue[0]));
@@ -71,10 +71,9 @@ const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber 
     !emptySlot &&
     producing &&
     estTime == 0
-      // && JSON.stringify(delivery1) === "{}"
   ) {
     producing = false;
-    dispatch(delivery1Actions.addToDelivery1(slot));
+    dispatch(deliveriesActions[`addToDelivery${slotNumber}`](slot));
     dispatch(slotsActions[`emptySlot${slotNumber}`]());
   }
   return inUse ? (
