@@ -5,24 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7bf47ea3-2dda-4501-91ab-33fc7f912ea4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mealsImages/baguette.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mealsImages/hamburger.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mealsImages/pizza.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mealsImages/salad.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mealsImages/spaghetti.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mealsImages/steak.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/queues.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/slots.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/customers/Customers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/Customers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/customers/QueueCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/QueueCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/customers/QueueCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/QueueCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/delivery/Delivery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/Delivery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/delivery/DeliveryCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/DeliveryCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/production/Production.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/Production.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/production/SlotCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/production/SlotCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/customersData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/customersData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/mealsData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/mealsData.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Restaurant/Restaurant.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Restaurant/Restaurant.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/customers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/delivery1.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/delivery1.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/queue1.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/queue1.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/slot1.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/slot1.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/queue1.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/slot1.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +81,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="HTML" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/production" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -86,12 +89,13 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/production" />
       <recent name="$PROJECT_DIR$/sass" />
     </key>
     <key name="MoveFile.RECENT_KEYS">

@@ -9,8 +9,8 @@ const Delivery: React.FC<{ time: number }> = ({ time }) => {
       <div className={"delivery_container_text"}>Delivery Status</div>
       <div className={"delivery_status_container"}>
         <DeliveryCard time={time} slotNumber={1} inUse={true} />
-        <DeliveryCard time={time} slotNumber={2} inUse={false} />
-        <DeliveryCard time={time} slotNumber={3} inUse={false} />
+        <DeliveryCard time={time} slotNumber={2} inUse={true} />
+        <DeliveryCard time={time} slotNumber={3} inUse={true} />
       </div>
     </div>
   );

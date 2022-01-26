@@ -8,9 +8,10 @@ import Customers from "../../components/customers/Customers";
 import Production from "../../components/production/Production";
 
 const Restaurant: React.FC = () => {
-  const { time, start, pause, reset, status } = useTimer({ autostart: false });
+    let timeInterval = 1000;
+    const { time, start, pause, reset, status , } = useTimer({ autostart: false, interval: timeInterval });
 
-  return (
+    return (
     <div className={"container"}>
       <div className={"buttons_container"}>
         <button onClick={start}>Start</button>
