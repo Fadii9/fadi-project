@@ -1,21 +1,19 @@
-import React from 'react';
+import React from "react";
 import Home from "./pages/Home/Home";
 import Restaurant from "./pages/Restaurant/Restaurant";
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-      <Router>
-    <div className="App">
+    <Router>
+      <div className="App">
         <header className={"main-header"}>Fadi's Restaurant</header>
         <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/restaurant" element={<Restaurant/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/restaurant" element={<Restaurant />} />
         </Routes>
-
-    </div>
-      </Router>
+      </div>
+    </Router>
   );
 }
 

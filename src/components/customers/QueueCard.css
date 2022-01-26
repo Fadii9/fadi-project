@@ -12,7 +12,10 @@
 }
 
 .circle {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
     background: aliceblue;
     width: 3.5rem;
     height: 3.5rem;
