@@ -30,8 +30,12 @@
     justify-content: space-between;
     height: 83vh;
     width: 40%;
+}
 
-
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .buttons_container{
@@ -53,8 +57,13 @@
 
     .buttons_container{
         flex-direction: row;
+        height: 10%;
+        margin-top: 12%;
+        padding-bottom: 0;
     }
 }
+
+
 
 
 

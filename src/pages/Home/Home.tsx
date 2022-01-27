@@ -14,7 +14,7 @@ const Home: React.FC = () => {
   return (
     <div className={"main-container"}>
       <textarea value={json}></textarea>
-      <div className={"buttons-container"}>
+      <div className={"home-buttons-container"}>
         <button onClick={clickHandler}>Show JSON</button>
         <button onClick={() => navigate("/restaurant")}>
           Start Simulation

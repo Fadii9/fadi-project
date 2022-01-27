@@ -14,6 +14,9 @@ import { deliveriesActions } from "../../store/deliveries";
 type SlotNumber = "1" | "2" | "3";
 type SlotState = `slot${SlotNumber}State`;
 
+type DeliveryNumber = 1 | 2 | 3;
+type DeliveryState = `addToDelivery${DeliveryNumber}`;
+
 const SlotCard: React.FC<{
   inUse: boolean;
   time: number;
@@ -32,7 +35,7 @@ const SlotCard: React.FC<{
   let emptySlot = !slot.id;
 
   //queues states
-   const queue1 = useSelector(
+  const queue1 = useSelector(
     (state: RootState) => state.queuesSlice.queue1State
   );
   const queue2 = useSelector(
@@ -44,8 +47,8 @@ const SlotCard: React.FC<{
   const allQueues = [queue1, queue2, queue3];
 
   //available delivery state
-  let deliveryNumber = useSelector(
-      (state: RootState) => state.deliveriesSlice.availbleDeliveryState
+  let deliveryNumber: DeliveryNumber = useSelector(
+    (state: RootState) => state.deliveriesSlice.availbleDeliveryState
   );
 
   //check if there is a customer in each queue
@@ -55,7 +58,7 @@ const SlotCard: React.FC<{
     queue3.length > 0,
   ];
 
-  // select the queue with the first customer that got in
+  // find the queue with the first customer that got in
   if (cusInQ1 && !cusInQ2 && !cusInQ3) {
     queue = queue1;
   } else if (cusInQ1 && cusInQ2 && !cusInQ3) {
@@ -109,19 +112,23 @@ const SlotCard: React.FC<{
     showIngs = mealsIngs.join(",");
 
     // calculating meal preperation time according to the ingredients
-    mealsIngs[0].map((ing: string) => {estTime += ingsData.find((o) => o.ing === ing)!.prepTime})
+    mealsIngs[0].map((ing: string) => {
+      estTime += ingsData.find((o) => o.ing === ing)!.prepTime;
+    });
     estTime -= time - startTime;
   }
-
+  let DeliveryAction: DeliveryState = `addToDelivery${deliveryNumber}`;
 
   // checking if finished preparing meal and send to available delivery
-  if (!emptySlot && producing && estTime == 0 &&  deliveryNumber != 0) {
+  if (
+    !emptySlot &&
+    producing &&
+    estTime == 0
+  ) {
     producing = false;
-    // @ts-ignore
-    dispatch(deliveriesActions[`addToDelivery${deliveryNumber}`](slot));
+    dispatch(deliveriesActions[DeliveryAction](slot));
     dispatch(slotsActions[`emptySlot${slotNumber}`]());
   }
-
 
   return inUse ? (
     <div className={"slot"}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/index";
 
@@ -12,7 +12,7 @@ const Customers: React.FC<{ time: number }> = ({ time }) => {
   const dispatch = useDispatch();
   const fullQueue = 5; //full queue length
 
-  //waiting customers, before getting in queue
+  //waiting customers state, before getting in queue
   const waitingCustomers = useSelector((state: RootState) => state.customersSlice.customersState);
 
   //queues states
@@ -26,7 +26,7 @@ const Customers: React.FC<{ time: number }> = ({ time }) => {
   //check if there is an available space in the queues
   const availableQueue = queue1.length < fullQueue || queue2.length < fullQueue ||queue3.length < fullQueue
 
-// every 2 seconds, insert a new cutomer to the shortest queue
+// every 2 seconds, insert a new customer to the shortest queue
   useEffect(() => {
     if (waitingCustomers.length > 0){
     let firstCustomer = waitingCustomers[0];
@@ -61,9 +61,9 @@ const Customers: React.FC<{ time: number }> = ({ time }) => {
     <div className={"customers_status"}>
       <div className={"customers_text"}>Customers Queues</div>
       <div className={"queues_container"}>
-        <QueueCard inUse={true} queue={queue1} />
-        <QueueCard inUse={true} queue={queue2} />
-        <QueueCard inUse={true} queue={queue3} />
+        <QueueCard inUse={true} queue={queue1} queueNumber={1}/>
+        <QueueCard inUse={true} queue={queue2} queueNumber={2}/>
+        <QueueCard inUse={true} queue={queue3} queueNumber={3}/>
       </div>
     </div>
   );
