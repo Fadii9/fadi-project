@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/index";
+
 import { useTimer } from "use-timer";
 
 import "./Restaurant.css";
@@ -8,8 +11,10 @@ import Customers from "../../components/customers/Customers";
 import Production from "../../components/production/Production";
 
 const Restaurant: React.FC = () => {
-    let timeInterval = 1000;
+    let timeInterval = 500;
     const { time, start, pause, reset, status , } = useTimer({ autostart: false, interval: timeInterval });
+
+
 
     return (
     <div className={"container"}>

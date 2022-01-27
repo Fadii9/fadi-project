@@ -28,6 +28,7 @@ const Customers: React.FC<{ time: number }> = ({ time }) => {
 
 // every 2 seconds, insert a new cutomer to the shortest queue
   useEffect(() => {
+    if (waitingCustomers.length > 0){
     let firstCustomer = waitingCustomers[0];
 
     if (availableQueue && time != 0 && time%2 == 0) {
@@ -54,7 +55,7 @@ const Customers: React.FC<{ time: number }> = ({ time }) => {
           break
       }
     }
-  }, [time]);
+  }}, [time]);
 
   return (
     <div className={"customers_status"}>

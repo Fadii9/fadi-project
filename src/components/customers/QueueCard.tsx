@@ -4,12 +4,13 @@ import "./QueueCard.css";
 
 const QueueCard: React.FC<{queue : {id: string}[], inUse :boolean}> = ({ queue, inUse }) => {
     let emptyQueue = JSON.stringify(queue) === "{}";
-    let firstInqueue, firstName;
+    let firstInqueue , firstName = "";
 
     if (queue.length > 0){
         firstInqueue=queue[0];
         firstName = firstInqueue.id
     }
+
 
     return (
         inUse ?
