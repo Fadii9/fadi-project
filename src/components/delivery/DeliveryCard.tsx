@@ -15,27 +15,32 @@ const DeliveryCard: React.FC<{
   time: number;
 }> = ({ deliveryNumber, inUse, time }) => {
   const dispatch = useDispatch();
+
+  //get the delivery state according to thr station
   const delivery = useSelector(
     (state: RootState) =>
       state.deliveriesSlice[`delivery${deliveryNumber}State`]
   );
-  let emptyDelivery = !delivery.id;
+  let emptyDelivery = !delivery.id; // check if empty station
   const [startTime, setStartTime] = useState(0);
-  const [isUsed, setIsUsed] = useState(false);
+  const [isUsed, setIsUsed] = useState(false); //able/disable stations
   let deliveryTime = 0;
 
+  //check when started delivery
   useEffect(() => {
     setStartTime(time);
   }, [delivery]);
 
+  //delivery time
   if (!emptyDelivery && deliveryTime == 0) {
     deliveryTime = 5;
   }
-
+ //time countdown
   if (deliveryTime != 0) {
     deliveryTime -= time - startTime;
   }
 
+  //empty station when time is finished
   if (deliveryTime == 0 && !emptyDelivery) {
     dispatch(deliveriesActions[`emptyDelivery${deliveryNumber}`]());
   }

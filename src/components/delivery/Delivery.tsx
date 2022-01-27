@@ -10,6 +10,7 @@ import DeliveryCard from "./DeliveryCard";
 const Delivery: React.FC<{ time: number }> = ({ time }) => {
   const dispatch = useDispatch();
 
+  //delivery stations states
     const delivery1 = useSelector(
     (state: RootState) => state.deliveriesSlice.delivery1State
   );
@@ -20,13 +21,14 @@ const Delivery: React.FC<{ time: number }> = ({ time }) => {
     (state: RootState) => state.deliveriesSlice.delivery3State
   );
 
+  //check each state if empty
   const [delivery1isEmpty, delivery2isEmpty, delivery3isEmpty] = [
     !delivery1.id,
     !delivery2.id,
     !delivery3.id,
   ];
 
-
+//set the availabe delivery station
   useEffect(() => {
       if (delivery1isEmpty) {
           dispatch(deliveriesActions.setAvailbeDelivery(1));

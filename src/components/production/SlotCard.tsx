@@ -31,13 +31,8 @@ const SlotCard: React.FC<{
   const slot = useSelector((state: RootState) => state.slotsSlice[slotName]);
   let emptySlot = !slot.id;
 
-  let deliveryNumber = useSelector(
-      (state: RootState) => state.deliveriesSlice.availbleDeliveryState
-  );
-
-
-
-  const queue1 = useSelector(
+  //queues states
+   const queue1 = useSelector(
     (state: RootState) => state.queuesSlice.queue1State
   );
   const queue2 = useSelector(
@@ -47,6 +42,11 @@ const SlotCard: React.FC<{
     (state: RootState) => state.queuesSlice.queue3State
   );
   const allQueues = [queue1, queue2, queue3];
+
+  //available delivery state
+  let deliveryNumber = useSelector(
+      (state: RootState) => state.deliveriesSlice.availbleDeliveryState
+  );
 
   //check if there is a customer in each queue
   const [cusInQ1, cusInQ2, cusInQ3] = [
@@ -100,6 +100,7 @@ const SlotCard: React.FC<{
       }
     });
 
+    // find image according to the meal
     image = meals.map((meal: string) => {
       for (let i in mealsData) {
         if (mealsData[i].mealName == meal) return mealsData[i];
@@ -111,6 +112,7 @@ const SlotCard: React.FC<{
     mealsIngs[0].map((ing: string) => {estTime += ingsData.find((o) => o.ing === ing)!.prepTime})
     estTime -= time - startTime;
   }
+
 
   // checking if finished preparing meal and send to available delivery
   if (!emptySlot && producing && estTime == 0 &&  deliveryNumber != 0) {

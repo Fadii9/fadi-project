@@ -10,19 +10,23 @@ import { customersActions } from "../../store/customers";
 
 const Customers: React.FC<{ time: number }> = ({ time }) => {
   const dispatch = useDispatch();
-  const fullQueue = 5;
+  const fullQueue = 5; //full queue length
 
+  //waiting customers, before getting in queue
+  const waitingCustomers = useSelector((state: RootState) => state.customersSlice.customersState);
+
+  //queues states
   const queue1 = useSelector((state: RootState) => state.queuesSlice.queue1State);
   const queue2 = useSelector((state: RootState) => state.queuesSlice.queue2State);
   const queue3 = useSelector((state: RootState) => state.queuesSlice.queue3State);
-  const waitingCustomers = useSelector((state: RootState) => state.customersSlice.customersState);
-
   const allQueues = [queue1 , queue2, queue3]
-  const shortestQueue = allQueues.reduce(function(p,c) {return p.length>c.length?c:p;});
-  const longestQueue = allQueues.reduce(function(p,c) {return p.length<c.length?c:p;});
+  const shortestQueue = allQueues.reduce(function(p,c) {return p.length>c.length?c:p;}); //find shortest queue
+  const longestQueue = allQueues.reduce(function(p,c) {return p.length<c.length?c:p;}); //find longest queue
 
+  //check if there is an available space in the queues
   const availableQueue = queue1.length < fullQueue || queue2.length < fullQueue ||queue3.length < fullQueue
 
+// every 2 seconds, insert a new cutomer to the shortest queue
   useEffect(() => {
     let firstCustomer = waitingCustomers[0];
 
