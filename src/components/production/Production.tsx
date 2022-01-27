@@ -12,7 +12,6 @@ import Slot from "./SlotCard";
 const Production: React.FC<{ time: number }> = ({ time }) => {
   const dispatch = useDispatch();
 
-
   return (
     <div className={"Production_status"}>
       <div className={"Production_text"}>Production Slots</div>

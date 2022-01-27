@@ -6,6 +6,7 @@ const deliveries = createSlice({
     delivery1State: {},
     delivery2State: {},
     delivery3State: {},
+    availbleDeliveryState: 0
   },
   reducers: {
     addToDelivery1: (state, action) => {
@@ -27,6 +28,10 @@ const deliveries = createSlice({
     },
     emptyDelivery3: (state) => {
       return { ...state, delivery3State: {} };
+    },
+
+    setAvailbeDelivery: (state, action) => {
+      return { ...state, availbleDeliveryState: action.payload };
     },
   },
 });
