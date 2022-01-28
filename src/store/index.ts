@@ -26,6 +26,7 @@ export interface States {
   delivery1State: any;
   delivery2State: any;
   delivery3State: any;
+  availbleDeliveryState: any;
   customersState: any;
 }
 

@@ -20,8 +20,9 @@ textarea {
 
 }
 
-.buttons-container {
-    text-align: center;
+.home-buttons-container {
+    display: flex;
+    justify-content: center;
 }
 
 button{

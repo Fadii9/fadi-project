@@ -2,6 +2,7 @@ export type customersList = {
     id: string;
     name: string;
     order: string[]
+    addedTime?: number
 }[]
 
 const customers: customersList = [

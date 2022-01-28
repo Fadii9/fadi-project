@@ -29,11 +29,25 @@
     box-shadow: 0 0 0 0.5rem black;
 }
 
+.green:hover{
+    cursor: help;
+}
+
 .not_in_use {
     font-size: 1.8vw;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.queue-button{
+    padding: 1.3rem;
+    margin: 1rem;
+}
+
+.edit-screen{
+    z-index: 9999;
+    position: absolute;
 }
 
 @media screen and (max-width:880px) {

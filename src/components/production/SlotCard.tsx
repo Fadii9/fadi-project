@@ -11,16 +11,20 @@ import { slotsActions } from "../../store/slots";
 import { queuesActions } from "../../store/queues";
 import { deliveriesActions } from "../../store/deliveries";
 
-type SlotNumber = '1' | '2' | '3';
+type SlotNumber = "1" | "2" | "3";
 type SlotState = `slot${SlotNumber}State`;
 
-const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber }> = ({
-  inUse,
-  time,
-  slotNumber
-}) => {
+type DeliveryNumber = 1 | 2 | 3;
+type DeliveryState = `addToDelivery${DeliveryNumber}`;
+
+const SlotCard: React.FC<{
+  inUse: boolean;
+  time: number;
+  slotNumber: SlotNumber;
+}> = ({ inUse, time, slotNumber }) => {
   const dispatch = useDispatch();
   let image;
+  let queue = [];
   let showIngs;
   let estTime = 0;
   let receivedTime = 0;
@@ -30,54 +34,102 @@ const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber 
   const slot = useSelector((state: RootState) => state.slotsSlice[slotName]);
   let emptySlot = !slot.id;
 
-  const queue = useSelector((state: RootState) => state.queuesSlice[`queue${slotNumber}State`]);
-  const delivery1 = useSelector((state: RootState) => state.deliveriesSlice[`delivery${slotNumber}State`]);
-  let emptyDelivery = !delivery1.id;
+  //queues states
+  const queue1 = useSelector(
+    (state: RootState) => state.queuesSlice.queue1State
+  );
+  const queue2 = useSelector(
+    (state: RootState) => state.queuesSlice.queue2State
+  );
+  const queue3 = useSelector(
+    (state: RootState) => state.queuesSlice.queue3State
+  );
+  const allQueues = [queue1, queue2, queue3];
 
+  //available delivery state
+  let deliveryNumber: DeliveryNumber = useSelector(
+    (state: RootState) => state.deliveriesSlice.availbleDeliveryState
+  );
 
+  //check if there is a customer in each queue
+  const [cusInQ1, cusInQ2, cusInQ3] = [
+    queue1.length > 0,
+    queue2.length > 0,
+    queue3.length > 0,
+  ];
+
+  // find the queue with the first customer that got in
+  if (cusInQ1 && !cusInQ2 && !cusInQ3) {
+    queue = queue1;
+  } else if (cusInQ1 && cusInQ2 && !cusInQ3) {
+    queue1[0].addedTime < queue2[0].addedTime
+      ? (queue = queue1)
+      : (queue = queue2);
+  } else if (cusInQ1 && cusInQ2 && cusInQ3) {
+    queue = [queue1, queue2, queue3].reduce(function (prev, curr) {
+      return prev[0].addedTime < curr[0].addedTime ? prev : curr;
+    });
+  }
+
+  // removing first customer in line, and adding to preperation slot
+  if (queue.length > 1 && emptySlot && time % 2 == 0) {
+    dispatch(slotsActions[`addToSlot${slotNumber}`](queue[0]));
+
+    switch (queue) {
+      case queue1:
+        dispatch(queuesActions.removeFromQueue1());
+        break;
+      case queue2:
+        dispatch(queuesActions.removeFromQueue2());
+        break;
+      case queue3:
+        dispatch(queuesActions.removeFromQueue3());
+        break;
+    }
+  }
+
+  // set statring meal preperation time
   useEffect(() => {
     setStartTime(time);
   }, [slot]);
 
-
-  if (queue.length > 1 && emptySlot && time % 2 == 0) {
-    dispatch(slotsActions[`addToSlot${slotNumber}`](queue[0]));
-    dispatch(queuesActions[`removeFromQueue${slotNumber}`]());
-  }
+  // getting meals ingredients & detailes
   if (!emptySlot) {
-    let meals = slot.order
+    producing = true;
+    let meals = slot.order;
     let mealsIngs = meals.map((meal: string) => {
       for (let i in mealsData) {
         if (mealsData[i].mealName == meal) return mealsData[i].ingredients;
       }
     });
 
-     image = meals.map((meal: string) => {
+    // find image according to the meal
+    image = meals.map((meal: string) => {
       for (let i in mealsData) {
         if (mealsData[i].mealName == meal) return mealsData[i];
       }
     });
-
     showIngs = mealsIngs.join(",");
 
+    // calculating meal preperation time according to the ingredients
     mealsIngs[0].map((ing: string) => {
       estTime += ingsData.find((o) => o.ing === ing)!.prepTime;
     });
-
     estTime -= time - startTime;
-
-    producing = true;
   }
+  let DeliveryAction: DeliveryState = `addToDelivery${deliveryNumber}`;
 
+  // checking if finished preparing meal and send to available delivery
   if (
     !emptySlot &&
     producing &&
     estTime == 0
   ) {
     producing = false;
-    dispatch(deliveriesActions[`addToDelivery${slotNumber}`](slot));
+    dispatch(deliveriesActions[DeliveryAction](slot));
     dispatch(slotsActions[`emptySlot${slotNumber}`]());
   }
+
   return inUse ? (
     <div className={"slot"}>
       <div className={"slot_image_container"}>
