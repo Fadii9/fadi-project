@@ -21,7 +21,7 @@ const customers: customersList = [
     {
         id: "c3",
         name: "Customer3",
-        order: ["Pizza"]
+        order: ["Spaghetti"]
     },
 
     {
@@ -51,7 +51,7 @@ const customers: customersList = [
     {
         id: "c8",
         name: "Customer8",
-        order: ["Steak"]
+        order: ["Pizza"]
     },
 
     {
