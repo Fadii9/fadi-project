@@ -28,28 +28,24 @@ const Restaurant: React.FC = () => {
     initialTime = 0;
   }
 
-  const { time, start, pause } = useTimer({
+  // setting the timer
+    const { time, start, pause } = useTimer({
     autostart: false,
     initialTime: initialTime,
     interval: timeInterval,
   });
 
   localStorage.setItem(`time`, JSON.stringify(time));
-  console.log(time)
 
 
   const waitingCustomers = useSelector(
     (state: RootState) => state.customersSlice.customersState
   );
 
-
+  //checks localstorage for each state, if there is a stored value, update state
   useEffect(() => {
     if (myStorage.waitingCustomers) {
-      dispatch(
-        customersActions.localStorageToWating(
-          JSON.parse(myStorage.waitingCustomers)
-        )
-      );
+      dispatch(customersActions.localStorageToWating(JSON.parse(myStorage.waitingCustomers)));
     }
     if (myStorage.queue1 && myStorage.queue1 != "[]") {
       dispatch(queuesActions.localStorageToQueue1(JSON.parse(myStorage.queue1)));
