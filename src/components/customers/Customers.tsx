@@ -35,7 +35,6 @@ const Customers: React.FC<{ time: number }> = ({ time }) => {
      dispatch(customersActions.takeOrder());
       localStorage.setItem(`waitingCustomers`, JSON.stringify(waitingCustomers.slice(1)));
 
-
       switch (shortestQueue){
         case queue1 :
           dispatch(queuesActions.addToQueue1({

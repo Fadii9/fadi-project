@@ -65,7 +65,7 @@ const ingredients :ingList = [
         id: "i9",
         ing : "Dough",
         amount: 50,
-        prepTime: 1
+        prepTime: 4
     },
 
     {
