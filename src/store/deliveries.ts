@@ -15,6 +15,9 @@ const deliveries = createSlice({
     emptyDelivery1: (state) => {
       return { ...state, delivery1State: {} };
     },
+    localStorageToDelivery1: (state, action) => {
+      return { ...state, delivery1State: action.payload };
+    },
 
     addToDelivery2: (state, action) => {
       return { ...state, delivery2State: action.payload };
@@ -22,12 +25,18 @@ const deliveries = createSlice({
     emptyDelivery2: (state) => {
       return { ...state, delivery2State: {} };
     },
+    localStorageToDelivery2: (state, action) => {
+      return { ...state, delivery2State: action.payload };
+    },
 
     addToDelivery3: (state, action) => {
       return { ...state, delivery3State: action.payload };
     },
     emptyDelivery3: (state) => {
       return { ...state, delivery3State: {} };
+    },
+    localStorageToDelivery3: (state, action) => {
+      return { ...state, delivery3State: action.payload };
     },
 
     setAvailbeDelivery: (state, action) => {

@@ -11,6 +11,10 @@ const customersSlice = createSlice({
     takeOrder: (state) => {
       return { ...state, customersState: [...state.customersState.slice(1)] };
     },
+
+    localStorageToWating: (state, action) => {
+      return { ...state, customersState: action.payload };
+    },
   },
 });
 
