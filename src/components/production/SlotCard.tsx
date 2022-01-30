@@ -74,16 +74,20 @@ const SlotCard: React.FC<{
   // removing first customer in line, and adding to preperation slot
   if (queue.length > 1 && emptySlot && time % 2 == 0) {
     dispatch(slotsActions[`addToSlot${slotNumber}`](queue[0]));
+    localStorage.setItem(`slot${slotNumber}`, JSON.stringify(queue[0]));
 
     switch (queue) {
       case queue1:
         dispatch(queuesActions.removeFromQueue1());
+
         break;
       case queue2:
         dispatch(queuesActions.removeFromQueue2());
+
         break;
       case queue3:
         dispatch(queuesActions.removeFromQueue3());
+
         break;
     }
   }
@@ -117,7 +121,6 @@ const SlotCard: React.FC<{
     });
     estTime -= time - startTime;
   }
-  let DeliveryAction: DeliveryState = `addToDelivery${deliveryNumber}`;
 
   // checking if finished preparing meal and send to available delivery
   if (
@@ -126,8 +129,14 @@ const SlotCard: React.FC<{
     estTime == 0
   ) {
     producing = false;
+
+    let DeliveryAction: DeliveryState = `addToDelivery${deliveryNumber}`;
     dispatch(deliveriesActions[DeliveryAction](slot));
+    localStorage.setItem(`delivery${deliveryNumber}`, JSON.stringify(slot));
+
     dispatch(slotsActions[`emptySlot${slotNumber}`]());
+    localStorage.setItem(`slot${slotNumber}`, JSON.stringify({}));
+
   }
 
   return inUse ? (

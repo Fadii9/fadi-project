@@ -22,6 +22,8 @@ const QueueCard: React.FC<{
   if (queue.length > 0) {
     firstInqueue = queue[0];
     firstName = firstInqueue.id;
+      localStorage.setItem(`queue${queueNumber}`, JSON.stringify(queue));
+
   }
 
   const toggleEditing = () => {
@@ -33,7 +35,8 @@ const QueueCard: React.FC<{
     setEditing((prev) => !prev);
   };
 
-  return !editing ? (
+
+    return !editing ? (
     <div className={"queue"}>
       <div className={queue.length > 4 ? `circle green` : "circle"}></div>
       <div className={queue.length > 3 ? `circle green` : "circle"}></div>

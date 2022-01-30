@@ -15,6 +15,10 @@ const queuesSlice = createSlice({
       return { ...state, queue1State: [...state.queue1State.slice(1)] };
     },
 
+    localStorageToQueue1: (state, action) => {
+  return { ...state, queue1State: action.payload };
+},
+
     addToQueue2: (state, action) => {
       return { ...state, queue2State: [...state.queue2State, action.payload] };
     },
@@ -22,11 +26,19 @@ const queuesSlice = createSlice({
       return { ...state, queue2State: [...state.queue2State.slice(1)] };
     },
 
+    localStorageToQueue2: (state, action) => {
+      return { ...state, queue2State: action.payload };
+    },
+
     addToQueue3: (state, action) => {
       return { ...state, queue3State: [...state.queue3State, action.payload] };
     },
     removeFromQueue3: (state) => {
       return { ...state, queue3State: [...state.queue3State.slice(1)] };
+    },
+
+    localStorageToQueue3: (state, action) => {
+      return { ...state, queue3State: action.payload };
     },
   },
 });

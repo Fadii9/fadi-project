@@ -34,6 +34,8 @@ const DeliveryCard: React.FC<{
   //delivery time
   if (!emptyDelivery && deliveryTime == 0) {
     deliveryTime = 5;
+    localStorage.setItem(`delivery${deliveryNumber}`, JSON.stringify(delivery));
+
   }
  //time countdown
   if (deliveryTime != 0) {
@@ -45,7 +47,8 @@ const DeliveryCard: React.FC<{
     dispatch(deliveriesActions[`emptyDelivery${deliveryNumber}`]());
   }
 
-  return inUse ? (
+
+    return inUse ? (
     <div className={"delivery"}>
       <div className={"delivery_text"}>Delivery #{deliveryNumber}</div>
       <div className={"delivery_update"}>
