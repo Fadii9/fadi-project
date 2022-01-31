@@ -27,10 +27,12 @@ const SlotCard: React.FC<{
   let image;
   let showIngs;
   let queue = [];
+  let icons: string[] = [];
   let estTime = 0;
   let producing = false;
+  let availableIngs = true;
   let preparedAllMeals = false;
-  let mealsIngs: string[] = [];
+  let mealIngs: string[] = [];
   const [startTime, setStartTime] = useState(0);
   const slotName: SlotState = `slot${slotNumber}State`;
   const slot = useSelector((state: RootState) => state.slotsSlice[slotName]);
@@ -107,14 +109,21 @@ const SlotCard: React.FC<{
       meal = meals[0];
       for (let i in mealsData) {
         if (mealsData[i].mealName == meal) {
-          mealsIngs = mealsData[i].ingredients;
+          mealIngs = mealsData[i].ingredients;
           image = mealsData[i].imageUrl;
         }
       }
-      showIngs = mealsIngs.join(",");
+      mealIngs.map((ing) => ingsData.map((ingData) => {
+        ing == ingData.ing && icons.push(ingData.icon);
+        if (ing == ingData.ing && ingData.amount == 0) {
+          availableIngs = false}
+      }))
+
+      showIngs = mealIngs.join(" ");
+
 
       // calculating meal preparation time according to the ingredients
-      mealsIngs.map((ing: string) => {
+      mealIngs.map((ing: string) => {
         estTime += ingsData.find((o) => o.ing === ing)!.prepTime;
       });
       estTime -= time - startTime;
@@ -122,7 +131,7 @@ const SlotCard: React.FC<{
       preparedAllMeals = true; // if finished preparing all meals ,set preparedAllMeals to true
     }
 
-    // if finished a meal, remove it meals list, and start preparing the next meal
+    // if finished a meal, remove it from meals list, and start preparing the next meal
     if (estTime === 0) {
       meals = meals.slice(1);
       dispatch(
@@ -131,7 +140,12 @@ const SlotCard: React.FC<{
     }
   }
 
-  // checking if finished preparing meal and send to available delivery
+  //if meal is canceled, remove it from the queue after 5 seconds
+  !availableIngs && time == startTime + 5 && dispatch(slotsActions[`emptySlot${slotNumber}`]());
+
+
+
+  // checking if finished preparing all meals and send to available delivery
   if (!emptySlot && producing && preparedAllMeals) {
     producing = false;
 
@@ -144,7 +158,7 @@ const SlotCard: React.FC<{
   }
 
   return inUse ? (
-    <div className={slot.hasOwnProperty("vip") && slot.vip ? "slot vip-slot" : "slot"}>
+    <div className={availableIngs? slot.vip ? "slot vip-slot" : "slot" : "slot canceled-slot"}>
       <div className={"slot_image_container"}>
         {emptySlot ? (
           "Empty Slot"
@@ -158,14 +172,18 @@ const SlotCard: React.FC<{
         <span className={"title"}>Producing: </span>
         {meal} <br />
         <span className={"title"}>Estimated Time: </span>{" "}
-        {estTime > 0 && `${estTime} Seconds`}
+        {estTime > 0 && availableIngs && `${estTime} Seconds`}
       </div>
-      <div className={"slot_status"}>
-        {slot.vip && <div className={"vip-customer"}>&#11088; VIP &#11088;</div> }
-        <div className={"slot_status_text"}>Production Status:</div>
-        <div className={"slot_status_ings"}>{showIngs}</div>
+      {availableIngs?
+        <div className={"slot_status"}>
+          {slot.vip && <div className={"vip-customer"}>&#11088; VIP &#11088;</div> }
+          <div className={"slot_status_text"}>Production Status:</div>
+          <div className={"slot_status_ings"}>{showIngs}</div>
+       </div>
+          :
+      <div className={"canceled"}>&#10060; Canceled Meal &#10060;<br/> Out of ingredients!</div>
+      }
       </div>
-    </div>
   ) : (
     <div className={"slot"}>Not In Use</div>
   );

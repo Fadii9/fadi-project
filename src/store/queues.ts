@@ -16,8 +16,8 @@ const queuesSlice = createSlice({
     },
 
     localStorageToQueue1: (state, action) => {
-  return { ...state, queue1State: action.payload };
-},
+      return { ...state, queue1State: action.payload };
+    },
 
     addToQueue2: (state, action) => {
       return { ...state, queue2State: [...state.queue2State, action.payload] };
@@ -40,9 +40,12 @@ const queuesSlice = createSlice({
     localStorageToQueue3: (state, action) => {
       return { ...state, queue3State: action.payload };
     },
-      addVIP: (state, action) => {
-          return { ...state, queue1State: [action.payload,...state.queue1State] };
-      },
+    addVIP: (state, action) => {
+      return {
+        ...state,
+        queue1State: [action.payload].concat(state.queue1State),
+      };
+    },
   },
 });
 

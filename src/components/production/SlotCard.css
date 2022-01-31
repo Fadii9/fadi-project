@@ -15,8 +15,15 @@
     background-color: #c1213c;
 }
 
+.canceled-slot{
+    background-color: #ed9f1a;
+}
 .vip-customer {
     font-size: 4rem;
+}
+
+.canceled {
+    text-align: center;
 }
 
 .slot_image_container{

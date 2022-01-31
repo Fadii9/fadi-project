@@ -41,7 +41,7 @@ const QueueCard: React.FC<{
       <div className={queue.length > 2 ? `circle green` : "circle"}></div>
       <div className={queue.length > 1 ? `circle green` : "circle"}></div>
       <div
-        className={queue.length > 0 ? `circle green` : "circle"}
+        className={queue.length > 0 ? queue[0].vip? `circle red`: `circle green` : "circle"}
         onClick={() => {
           queue.length > 0 && toggleEditing();
         }}
