@@ -10,6 +10,19 @@
     font-size: 2vw;
 
 }
+
+
+@keyframes producingSlot {
+    from {background-color: lightslategray;}
+    to {background-color: #1ea41e;}
+}
+
+.producing-slot {
+    animation-name: producingSlot;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+}
+
 @keyframes vipSlot {
     from {background-color: lightslategray;}
     to {background-color: #c1213c;}
@@ -17,7 +30,7 @@
 
 .vip-slot {
     animation-name: vipSlot;
-    animation-duration: 0.3s;
+    animation-duration: 1s;
     -webkit-animation-fill-mode: forwards;
 }
 
@@ -28,7 +41,7 @@
 
 .canceled-slot{
     animation-name: canceledSlot;
-    animation-duration: 0.3s;
+    animation-duration: 1s;
     -webkit-animation-fill-mode: forwards;
 }
 .vip-customer {

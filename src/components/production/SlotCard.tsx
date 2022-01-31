@@ -157,8 +157,10 @@ const SlotCard: React.FC<{
     localStorage.setItem(`slot${slotNumber}`, JSON.stringify({}));
   }
 
+  const slotClass = availableIngs? !slot.vip ? !emptySlot? "slot producing-slot": "slot" :  "slot vip-slot"  : "slot canceled-slot"
+
   return inUse ? (
-    <div className={availableIngs? slot.vip ? "slot vip-slot" : "slot" : "slot canceled-slot"}>
+    <div className={slotClass}>
       <div className={"slot_image_container"}>
         {emptySlot ? (
           "Empty Slot"
