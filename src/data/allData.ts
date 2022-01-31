@@ -1,4 +1,4 @@
-let allData = {
+const allData = {
 customers:[
     {
         id: "c1",

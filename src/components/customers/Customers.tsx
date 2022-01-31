@@ -1,6 +1,7 @@
-import React, { useEffect, useLayoutEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/index";
+import React, {useEffect, useLayoutEffect} from 'react';
+import { useDispatch, useSelector} from "react-redux"
+import { RootState } from "../../store/index"
+
 
 import QueueCard from "./QueueCard";
 import "./Customers.css";

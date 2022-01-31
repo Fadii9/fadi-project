@@ -15,7 +15,7 @@ const DeliveryCard: React.FC<{
   const delivery1 = useSelector(
     (state: RootState) => state.delivery1Slice.delivery1State
   );
-  let emptyDelivery = JSON.stringify(delivery1) === "{}";
+  const emptyDelivery = JSON.stringify(delivery1) === "{}";
   const [startTime, setStartTime] = useState(0);
   const [isUsed, setIsUsed] = useState(false);
   let deliveryTime = 0;

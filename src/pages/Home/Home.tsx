@@ -8,7 +8,7 @@ const Home: React.FC = () => {
   const [json, setJson] = useState('Click on "Show JSON" button');
 
   const clickHandler = () => {
-    setJson(JSON.stringify(allData, undefined, 4));
+    setJson(JSON.stringify(allData, null, 4));
   };
 
   return (
