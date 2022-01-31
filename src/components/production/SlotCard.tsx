@@ -140,8 +140,8 @@ const SlotCard: React.FC<{
     }
   }
 
-  //if meal is canceled, remove it from the queue after 5 seconds
-  !availableIngs && time == startTime + 5 && dispatch(slotsActions[`emptySlot${slotNumber}`]());
+  //if meal is canceled, remove it from the queue slot 5 seconds, if there other meals in the order, will contenue producing them
+  !availableIngs && time == startTime + 5 && dispatch(slotsActions[`addToSlot${slotNumber}`]({ ...slot, order: slot.order.slice(1) }));
 
 
 
