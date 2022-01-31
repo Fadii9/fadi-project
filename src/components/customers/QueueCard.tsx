@@ -7,6 +7,7 @@ import "./QueueCard.css";
 
 type QueueNumber = 1 | 2 | 3;
 type QueueState = `removeFromQueue${QueueNumber}`;
+type ClearState = `cancelQueue${QueueNumber}`
 
 const QueueCard: React.FC<{
   queueNumber: QueueNumber;
@@ -17,33 +18,42 @@ const QueueCard: React.FC<{
   let emptyQueue = JSON.stringify(queue) === "{}";
   let firstInqueue, firstName = "";
   const [editing, setEditing] = useState(false);
-  let queueAction: QueueState = `removeFromQueue${queueNumber}`
+  const [isCanceled, setIsCanceled] = useState(false);
+  let RemoveFromQueueAction: QueueState = `removeFromQueue${queueNumber}`
+  let CancelQueueAction: ClearState = `cancelQueue${queueNumber}`
+
   if (queue.length > 0) {
     firstInqueue = queue[0];
     firstName = firstInqueue.id;
       localStorage.setItem(`queue${queueNumber}`, JSON.stringify(queue));
 
   }
-  const toggleEditing = () => {
+  const ToggleEditing = () => {
     setEditing((prev) => !prev);
   };
 
   const RemoveCustomer = () => {
-      dispatch(queuesActions[queueAction]());
+      dispatch(queuesActions[RemoveFromQueueAction]());
     setEditing((prev) => !prev);
   };
 
+  const CancelQueue = () => {
+      dispatch(queuesActions[CancelQueueAction]());
+      setIsCanceled((prev) => !prev);
+      setEditing((prev) => !prev);
+  }
 
-    return !editing ? (
+
+    return !isCanceled? (!editing ? (
     <div className={"queue"}>
       <div className={queue.length > 4 ? `circle green` : "circle"}></div>
       <div className={queue.length > 3 ? `circle green` : "circle"}></div>
       <div className={queue.length > 2 ? `circle green` : "circle"}></div>
       <div className={queue.length > 1 ? `circle green` : "circle"}></div>
       <div
-        className={queue.length > 0 ? `circle green` : "circle"}
+        className={queue.length > 0 ? queue[0].vip? `circle red`: `circle green` : "circle"}
         onClick={() => {
-          queue.length > 0 && toggleEditing();
+          queue.length > 0 && ToggleEditing();
         }}
       >
         {firstName}
@@ -54,11 +64,19 @@ const QueueCard: React.FC<{
       <button
         className={"queue-button"}
         onClick={() => {
-          toggleEditing();
+          ToggleEditing();
         }}
       >
         Back
       </button>
+        <button
+            className={"queue-button"}
+            onClick={() => {
+                CancelQueue();
+            }}
+        >
+            Cancel Queue
+        </button>
 
       <button
         onClick={() => {
@@ -69,7 +87,7 @@ const QueueCard: React.FC<{
         Remove Customer
       </button>
     </div>
-  );
+  )): <div className={"queue canceled"}>Not in use</div>
 };
 
 export default QueueCard;

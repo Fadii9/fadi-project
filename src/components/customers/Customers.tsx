@@ -53,7 +53,8 @@ const Customers: React.FC<{ time: number }> = ({ time }) => {
           JSON.stringify(waitingCustomers.slice(1))
         );
 
-        if (firstCustomer.vip == true) {
+        //checks if the inserted customer is vip, and add to queue
+        if (firstCustomer.vip) {
           dispatch(
             queuesActions.addVIP({
               ...firstCustomer,

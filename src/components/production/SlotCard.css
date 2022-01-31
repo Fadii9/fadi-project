@@ -1,22 +1,45 @@
 .slot {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     background-color: lightslategray;
     height: 30%;
     margin: 0.25rem 1.5rem;
     border: black solid 3px;
     border-radius: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     font-size: 2vw;
 
 }
-
-.vip-slot {
-    background-color: #c1213c;
+@keyframes vipSlot {
+    from {background-color: lightslategray;}
+    to {background-color: #c1213c;}
 }
 
+.vip-slot {
+    animation-name: vipSlot;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes canceledSlot {
+    from {background-color: lightslategray;}
+    to {background-color: #ed9f1a;}
+}
+
+.canceled-slot{
+    animation-name: canceledSlot;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: forwards;
+}
 .vip-customer {
     font-size: 4rem;
+}
+
+.canceled {
+    text-align: center;
+    width: 50%;
+    font-size: 3.5rem;
+
 }
 
 .slot_image_container{
