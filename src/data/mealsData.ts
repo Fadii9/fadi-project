@@ -1,7 +1,7 @@
 type mealsList = {
     id: string;
     mealName: string;
-    ingredients: string[]
+    ingredients: string[];
 }[]
 
 const meals: mealsList = [{
@@ -19,7 +19,7 @@ const meals: mealsList = [{
 }, {
     id: "m4",
     mealName: "Pizza",
-    ingredients: ["Dough" , "Tomato-sauce", "cheese"]
+    ingredients: ["Dough" , "Tomato-sauce", "Cheese"]
 }, {
     id: "m5",
     mealName: "Spaghetti",
