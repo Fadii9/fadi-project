@@ -12,6 +12,7 @@ const customersSlice = createSlice({
       return { ...state, customersState: [...state.customersState.slice(1)] };
     },
   },
+
 });
 
 export const customersActions = customersSlice.actions;

@@ -19,7 +19,7 @@ const DeliveryCard: React.FC<{
     (state: RootState) =>
       state.deliveriesSlice[`delivery${deliveryNumber}State`]
   );
-  let emptyDelivery = !delivery.id;
+  const emptyDelivery = !delivery.id;
   const [startTime, setStartTime] = useState(0);
   const [isUsed, setIsUsed] = useState(false);
   let deliveryTime = 0;
