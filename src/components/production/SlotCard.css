@@ -11,6 +11,14 @@
 
 }
 
+.vip-slot {
+    background-color: #c1213c;
+}
+
+.vip-customer {
+    font-size: 4rem;
+}
+
 .slot_image_container{
     display: flex;
     justify-content: center;

@@ -29,6 +29,12 @@
     box-shadow: 0 0 0 0.5rem black;
 }
 
+.red {
+    background-color: #d51e1e;
+    box-shadow: 0 0 0 0.5rem black;
+}
+
+
 .green:hover{
     cursor: help;
 }

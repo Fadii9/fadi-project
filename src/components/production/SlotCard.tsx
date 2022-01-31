@@ -144,7 +144,7 @@ const SlotCard: React.FC<{
   }
 
   return inUse ? (
-    <div className={"slot"}>
+    <div className={slot.hasOwnProperty("vip") && slot.vip ? "slot vip-slot" : "slot"}>
       <div className={"slot_image_container"}>
         {emptySlot ? (
           "Empty Slot"
@@ -161,6 +161,7 @@ const SlotCard: React.FC<{
         {estTime > 0 && `${estTime} Seconds`}
       </div>
       <div className={"slot_status"}>
+        {slot.vip && <div className={"vip-customer"}>&#11088; VIP &#11088;</div> }
         <div className={"slot_status_text"}>Production Status:</div>
         <div className={"slot_status_ings"}>{showIngs}</div>
       </div>
