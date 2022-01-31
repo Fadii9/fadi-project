@@ -40,6 +40,9 @@ const queuesSlice = createSlice({
     localStorageToQueue3: (state, action) => {
       return { ...state, queue3State: action.payload };
     },
+      addVIP: (state, action) => {
+          return { ...state, queue1State: [action.payload,...state.queue1State] };
+      },
   },
 });
 

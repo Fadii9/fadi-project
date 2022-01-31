@@ -1,21 +1,23 @@
 export type customersList = {
     id: string;
     name: string;
-    order: string[]
-    addedTime?: number
+    order: string[];
+    addedTime?: number;
+    vip?: boolean;
 }[]
 
 const customers: customersList = [
     {
         id: "c1",
         name: "Customer1",
-        order: ["Hamburger"]
+        order: ["Hamburger"],
     },
 
     {
         id: "c2",
         name: "Customer2",
-        order: ["Salad"]
+        order: ["Salad"],
+
     },
 
     {
@@ -39,7 +41,7 @@ const customers: customersList = [
     {
         id: "c6",
         name: "Customer6",
-        order: ["Salad"]
+        order: ["Salad"],
     },
 
     {
@@ -74,7 +76,8 @@ const customers: customersList = [
     {
         id: "c12",
         name: "Customer12",
-        order: ["Hamburger", "Pizza", "Steak"]
+        order: ["Hamburger", "Pizza", "Steak"],
+        vip: true
     },
 
     {
@@ -98,7 +101,8 @@ const customers: customersList = [
     {
         id: "c16",
         name: "Customer16",
-        order: ["Pizza"]
+        order: ["Pizza"],
+        vip: true
     },
 
     {
@@ -128,7 +132,8 @@ const customers: customersList = [
     {
         id: "c21",
         name: "Customer21",
-        order: ["Hamburger"]
+        order: ["Hamburger"],
+        vip: true
     },
 
     {
@@ -152,7 +157,8 @@ const customers: customersList = [
     {
         id: "c25",
         name: "Customer25",
-        order: ["Spaghetti"]
+        order: ["Spaghetti"],
+        vip: true
     },
 
     {
@@ -176,7 +182,8 @@ const customers: customersList = [
     {
         id: "c29",
         name: "Customer29",
-        order: ["Baguette"]
+        order: ["Baguette"],
+        vip: true
     },
 
     {
@@ -193,7 +200,8 @@ const customers: customersList = [
     {
         id: "c32",
         name: "Customer32",
-        order: ["Hamburger"]
+        order: ["Hamburger"],
+        vip: true
     },
 
     {
@@ -211,7 +219,8 @@ const customers: customersList = [
     {
         id: "c35",
         name: "Customer35",
-        order: ["Spaghetti"]
+        order: ["Spaghetti"],
+        vip: true
     },
 
     {

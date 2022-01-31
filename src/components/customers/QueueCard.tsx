@@ -10,7 +10,7 @@ type QueueState = `removeFromQueue${QueueNumber}`;
 
 const QueueCard: React.FC<{
   queueNumber: QueueNumber;
-  queue: { id: string }[];
+  queue: { id: string, vip?: boolean }[];
   inUse: boolean;
 }> = ({ queue, inUse, queueNumber }) => {
   const dispatch = useDispatch();
@@ -18,14 +18,12 @@ const QueueCard: React.FC<{
   let firstInqueue, firstName = "";
   const [editing, setEditing] = useState(false);
   let queueAction: QueueState = `removeFromQueue${queueNumber}`
-
   if (queue.length > 0) {
     firstInqueue = queue[0];
     firstName = firstInqueue.id;
       localStorage.setItem(`queue${queueNumber}`, JSON.stringify(queue));
 
   }
-
   const toggleEditing = () => {
     setEditing((prev) => !prev);
   };
