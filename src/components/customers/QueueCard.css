@@ -30,7 +30,7 @@
 @keyframes greenCircle {
     from {background-color: aliceblue;
         box-shadow: 0 0 0 0.5rem aliceblue;}
-    to {background-color: #6fd108;
+    to {background-color: #1ea41e;;
         box-shadow: 0 0 0 0.5rem black;}
 }
 .green {
