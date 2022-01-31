@@ -4,7 +4,6 @@ import { RootState } from "../../store/index";
 
 import "./SlotCard.css";
 
-
 import mealsData from "../../data/mealsData";
 import ingsData from "../../data/ingredientsData";
 
