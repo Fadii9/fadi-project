@@ -17,12 +17,6 @@ const store = configureStore({
 export interface States {
   id: string;
   order: any;
-  slot1State: any;
-  slot2State: any;
-  slot3State: any;
-  queue1State: any;
-  queue2State: any;
-  queue3State: any;
   delivery1State: any;
   delivery2State: any;
   delivery3State: any;

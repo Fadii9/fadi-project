@@ -11,7 +11,7 @@ import { slotsActions } from "../../store/slots";
 import { queuesActions } from "../../store/queues";
 import { deliveriesActions } from "../../store/deliveries";
 
-type SlotNumber = '1' | '2' | '3';
+type SlotNumber = number;
 type SlotState = `slot${SlotNumber}State`;
 
 const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber }> = ({
@@ -27,12 +27,15 @@ const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber 
   let producing = false;
   const [startTime, setStartTime] = useState(0);
   const slotName: SlotState = `slot${slotNumber}State`;
+  // @ts-ignore
   const slot = useSelector((state: RootState) => state.slotsSlice[slotName]);
   let emptySlot = !slot.id;
 
+  // @ts-ignore
   const queue = useSelector((state: RootState) => state.queuesSlice[`queue${slotNumber}State`]);
-  const delivery1 = useSelector((state: RootState) => state.deliveriesSlice[`delivery${slotNumber}State`]);
-  let emptyDelivery = !delivery1.id;
+  // @ts-ignore
+  const delivery = useSelector((state: RootState) => state.deliveriesSlice[`delivery${slotNumber}State`]);
+  let emptyDelivery = !delivery.id;
 
 
   useEffect(() => {
@@ -41,8 +44,10 @@ const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber 
 
 
   if (queue.length > 1 && emptySlot && time % 2 == 0) {
-    dispatch(slotsActions[`addToSlot${slotNumber}`](queue[0]));
-    dispatch(queuesActions[`removeFromQueue${slotNumber}`]());
+    // @ts-ignore
+    // dispatch(slotsActions.addtoSlot({slot: slotName , customer: queue[0]}));
+    // @ts-ignore
+    // dispatch(queuesActions[`removeFromQueue${slotNumber}`]());
   }
   if (!emptySlot) {
     let meals = slot.order
@@ -75,7 +80,9 @@ const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber 
     estTime == 0
   ) {
     producing = false;
+    // @ts-ignore
     dispatch(deliveriesActions[`addToDelivery${slotNumber}`](slot));
+    // @ts-ignore
     dispatch(slotsActions[`emptySlot${slotNumber}`]());
   }
   return inUse ? (

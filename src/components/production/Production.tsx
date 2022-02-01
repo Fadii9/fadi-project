@@ -9,17 +9,22 @@ import { queuesActions } from "../../store/queues";
 
 import Slot from "./SlotCard";
 
-const Production: React.FC<{ time: number }> = ({ time }) => {
+const Production: React.FC<{ time: number, slotsNumber: number }> = ({ time , slotsNumber }) => {
   const dispatch = useDispatch();
 
+    const slotsCountArray = Array.from(
+        { length: slotsNumber },
+        (_, i) => i + 1
+    );
+    const slotsComponent = slotsCountArray.map((number) => (
+        <Slot inUse={true} time={time} slotNumber={number}/>
+    ));
 
   return (
     <div className={"Production_status"}>
       <div className={"Production_text"}>Production Slots</div>
       <div className={"slot_container"}>
-        <Slot inUse={true} time={time} slotNumber={"1"}/>
-        <Slot inUse={true} time={time} slotNumber={"2"}/>
-        <Slot inUse={true} time={time} slotNumber={"3"}/>
+          {slotsComponent}
       </div>
     </div>
   );

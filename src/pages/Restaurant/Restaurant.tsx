@@ -7,9 +7,11 @@ import Delivery from "../../components/delivery/Delivery";
 import Customers from "../../components/customers/Customers";
 import Production from "../../components/production/Production";
 
+import {queuesNumber, slotsNumber, deliveriesNumber} from "../../data/stationsNumber"
+
 const Restaurant: React.FC = () => {
-    let timeInterval = 1000;
-    const { time, start, pause, reset, status , } = useTimer({ autostart: false, interval: timeInterval });
+    let timeInterval = 500;
+    const { time, start, pause, reset, status , } = useTimer({ autostart: true, interval: timeInterval });
 
     return (
     <div className={"container"}>
@@ -19,10 +21,10 @@ const Restaurant: React.FC = () => {
         <button onClick={() => window.location.reload()}>Reset</button>
       </div>
       <div className={"container__left"}>
-        <Customers time={time} />
-        <Delivery time={time} />
+        <Customers time={time} queuesNumber = {queuesNumber} />
+        <Delivery time={time} deliveriesNumber = {deliveriesNumber}/>
       </div>
-      <Production time={time} />
+      <Production time={time} slotsNumber = {slotsNumber} />
     </div>
   );
 };

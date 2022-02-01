@@ -1,32 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { slotsNumber } from "../data/stationsNumber";
+import { addToSlot, emptySlot } from "./reducers/slotsReducer";
+
+let initstate: Record<string, object> = {};
+
+for (let i = 1; i <= slotsNumber; i++) {
+  const queueName = `slot${i}State`;
+  initstate[queueName] = new Object();
+}
+
 const slotsSlice = createSlice({
   name: "slots",
-  initialState: {
-      slot1State: {},
-      slot2State: {},
-      slot3State: {},
-  },
+  initialState: initstate,
   reducers: {
-    addToSlot1(state, action) {
-      return { ...state, slot1State: action.payload };
+    addToSlot1: addToSlot,
+    emptySlot1: emptySlot,
     },
-    emptySlot1: (state) => {
-      return { ...state, slot1State: {} };
-    },
-    addToSlot2(state, action) {
-      return { ...state, slot2State: action.payload };
-    },
-    emptySlot2: (state) => {
-      return { ...state, slot2State: {} };
-    },
-    addToSlot3(state, action) {
-      return { ...state, slot3State: action.payload };
-    },
-    emptySlot3: (state) => {
-      return { ...state, slot3State: {} };
-    },
-  },
 });
 
 export const slotsActions = slotsSlice.actions;
