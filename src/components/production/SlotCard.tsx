@@ -14,11 +14,11 @@ import { deliveriesActions } from "../../store/deliveries";
 type SlotNumber = number;
 type SlotState = `slot${SlotNumber}State`;
 
-const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber }> = ({
-  inUse,
-  time,
-  slotNumber
-}) => {
+const SlotCard: React.FC<{
+  inUse: boolean;
+  time: number;
+  slotNumber: SlotNumber;
+}> = ({ inUse, time, slotNumber }) => {
   const dispatch = useDispatch();
   let image;
   let showIngs;
@@ -37,27 +37,25 @@ const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber 
   const delivery = useSelector((state: RootState) => state.deliveriesSlice[`delivery${slotNumber}State`]);
   let emptyDelivery = !delivery.id;
 
-
   useEffect(() => {
     setStartTime(time);
   }, [slot]);
 
-
   if (queue.length > 1 && emptySlot && time % 2 == 0) {
     // @ts-ignore
-    // dispatch(slotsActions.addtoSlot({slot: slotName , customer: queue[0]}));
+    dispatch(slotsActions.addToSlot({ slot: slotName, customer: queue[0] }));
     // @ts-ignore
-    // dispatch(queuesActions[`removeFromQueue${slotNumber}`]());
+    dispatch(queuesActions.removeFromQueue({queue: `queue${slotNumber}State`}))
   }
   if (!emptySlot) {
-    let meals = slot.order
+    let meals = slot.order;
     let mealsIngs = meals.map((meal: string) => {
       for (let i in mealsData) {
         if (mealsData[i].mealName == meal) return mealsData[i].ingredients;
       }
     });
 
-     image = meals.map((meal: string) => {
+    image = meals.map((meal: string) => {
       for (let i in mealsData) {
         if (mealsData[i].mealName == meal) return mealsData[i];
       }
@@ -74,16 +72,12 @@ const SlotCard: React.FC<{ inUse: boolean; time: number, slotNumber: SlotNumber 
     producing = true;
   }
 
-  if (
-    !emptySlot &&
-    producing &&
-    estTime == 0
-  ) {
+  if (!emptySlot && producing && estTime == 0) {
     producing = false;
     // @ts-ignore
     dispatch(deliveriesActions[`addToDelivery${slotNumber}`](slot));
     // @ts-ignore
-    dispatch(slotsActions[`emptySlot${slotNumber}`]());
+    dispatch(slotsActions.emptySlot({ slot: slotName }));
   }
   return inUse ? (
     <div className={"slot"}>

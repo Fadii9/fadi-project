@@ -14,8 +14,8 @@ const slotsSlice = createSlice({
   name: "slots",
   initialState: initstate,
   reducers: {
-    addToSlot1: addToSlot,
-    emptySlot1: emptySlot,
+    addToSlot: addToSlot,
+    emptySlot: emptySlot,
     },
 });
 

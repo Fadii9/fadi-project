@@ -13,6 +13,8 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
   queuesNumber,
 }) => {
   const dispatch = useDispatch();
+  const fullQueue = 5;
+  let firstCustomer;
 
   const allQueuesState = useSelector((state: RootState) => state.queuesSlice);
   const waitingCustomers = useSelector((state: RootState) => state.customersSlice.customersState);
@@ -27,21 +29,16 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
   };
   const queues = BuildQueues(allQueuesState);
   useEffect(() => {
-    const firstCustomer = waitingCustomers[0];
-    const fullQueue = 5;
+    firstCustomer = waitingCustomers[0];
 
     //check if there is availble space in one of the queues
     const availableSlot = !!queues.filter((queue) => queue.length < 5);
 
-
-
     const shortestQueue = queues.reduce(function(p,c) {return p.length>c.length?c:p;},{length:Infinity});
     const shortestQueueIndex = queues.indexOf(shortestQueue) + 1;
 
-
     if (availableSlot && time != 0 && time % 2 == 0) {
       dispatch(customersActions.takeOrder());
-
 
       dispatch(queuesActions.addToQueue({firstCustomer, queue: `queue${shortestQueueIndex}State`}))}
   }, [time]);

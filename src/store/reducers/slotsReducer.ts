@@ -12,10 +12,10 @@ export const addToSlot = (
 
 export const emptySlot = (
     state: object,
-    action: PayloadAction<{ queue: string }>
+    action: PayloadAction<{ slot: string}>
 ) => {
-    let stateName = action.payload.queue;
+    let stateName = action.payload.slot;
     let returnedState: any = { ...state };
-    returnedState[stateName] = {}
+    returnedState[stateName] = new Object()
     return returnedState;
 };
