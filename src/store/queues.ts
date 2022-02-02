@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { queuesStateText } from "../data/stringsFile";
 import { queuesNumber } from "../data/stationsNumber";
 import { addToQueue, removeFromQueue } from "./reducers/queueReducer";
 
@@ -11,7 +12,7 @@ for (let i = 1; i <= queuesNumber; i++) {
 }
 
 const queuesSlice = createSlice({
-  name: "queues",
+  name: queuesStateText.STATE_NAME,
   initialState: initstate,
   reducers: {
     addToQueue: addToQueue,

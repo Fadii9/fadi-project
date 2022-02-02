@@ -7,6 +7,8 @@ import "./SlotCard.css";
 import mealsData from "../../data/mealsData";
 import ingsData from "../../data/ingredientsData";
 
+import { slotText } from "../../data/stringsFile";
+
 import { slotsActions } from "../../store/slots";
 import { queuesActions } from "../../store/queues";
 import { deliveriesActions } from "../../store/deliveries";
@@ -45,7 +47,9 @@ const SlotCard: React.FC<{
     // @ts-ignore
     dispatch(slotsActions.addToSlot({ slot: slotName, customer: queue[0] }));
     // @ts-ignore
-    dispatch(queuesActions.removeFromQueue({queue: `queue${slotNumber}State`}))
+    dispatch(
+      queuesActions.removeFromQueue({ queue: `queue${slotNumber}State` })
+    );
   }
   if (!emptySlot) {
     let meals = slot.order;
@@ -93,20 +97,20 @@ const SlotCard: React.FC<{
         )}
       </div>
       <div className={"slot_details"}>
-        <span className={"title"}>Order ID: </span>
+        <span className={"title"}>{slotText.ORDER_ID_TITLE}</span>
         {slot.id} <br />
-        <span className={"title"}>Producing: </span>
+        <span className={"title"}>{slotText.PRODUICONG_TITLE}</span>
         {slot.order} <br />
-        <span className={"title"}>Estimated Time: </span>{" "}
+        <span className={"title"}>{slotText.EST_TIME_TITLE}</span>{" "}
         {estTime > 0 && `${estTime} Seconds`}
       </div>
       <div className={"slot_status"}>
-        <div className={"slot_status_text"}>Production Status:</div>
+        <div className={"slot_status_text"}>{ slotText.PRODUCTION_STATUS_TITLE }</div>
         <div className={"slot_status_ings"}>{showIngs}</div>
       </div>
     </div>
   ) : (
-    <div className={"slot"}>Not In Use</div>
+    <div className={"slot"}>{ slotText.NOT_IN_USE }</div>
   );
 };
 

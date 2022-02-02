@@ -16,11 +16,8 @@ const store = configureStore({
 
 export interface States {
   id: string;
-  order: any;
-  delivery1State: any;
-  delivery2State: any;
-  delivery3State: any;
-  customersState: any;
+  order: object;
+  customersState: object[];
 }
 
 export type RootState = {

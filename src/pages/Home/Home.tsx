@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Home.css";
 import allData from "../../data/allData";
 import { useNavigate } from "react-router-dom";
+import { homeText } from "../../data/stringsFile"
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -15,9 +16,9 @@ const Home: React.FC = () => {
     <div className={"main-container"}>
       <textarea value={json}></textarea>
       <div className={"buttons-container"}>
-        <button onClick={clickHandler}>Show JSON</button>
+        <button onClick={clickHandler}>{ homeText.JSON_BUTTON_TEXT }</button>
         <button onClick={() => navigate("/restaurant")}>
-          Start Simulation
+            { homeText.SIMULATION_BUTTON_TEXT }
         </button>
       </div>
     </div>

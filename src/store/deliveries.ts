@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { deliveriesStateText } from "../data/stringsFile"
 
 const deliveries = createSlice({
-  name: "deliveries",
+  name: deliveriesStateText.STATE_NAME,
   initialState: {
     delivery1State: {},
     delivery2State: {},

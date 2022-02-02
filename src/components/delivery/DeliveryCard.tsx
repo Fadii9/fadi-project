@@ -4,9 +4,10 @@ import { RootState } from "../../store/index";
 
 import "./DeliveryCard.css";
 
+import { deliveryCardText } from "../../data/stringsFile"
 import { deliveriesActions } from "../../store/deliveries";
 
-type DeliveryNumber = number
+type DeliveryNumber = number;
 type DeliveryState = `slot${DeliveryNumber}State`;
 
 const DeliveryCard: React.FC<{
@@ -15,10 +16,10 @@ const DeliveryCard: React.FC<{
   time: number;
 }> = ({ deliveryNumber, inUse, time }) => {
   const dispatch = useDispatch();
-    const delivery = useSelector(
+  const delivery = useSelector(
     (state: RootState) =>
-        // @ts-ignore
-        state.deliveriesSlice[`delivery${deliveryNumber}State`]
+      // @ts-ignore
+      state.deliveriesSlice[`delivery${deliveryNumber}State`]
   );
   const emptyDelivery = !delivery.id;
   const [startTime, setStartTime] = useState(0);
@@ -38,16 +39,16 @@ const DeliveryCard: React.FC<{
   }
 
   if (deliveryTime == 0 && !emptyDelivery) {
-      // @ts-ignore
-      dispatch(deliveriesActions[`emptyDelivery${deliveryNumber}`]());
+    // @ts-ignore
+    dispatch(deliveriesActions[`emptyDelivery${deliveryNumber}`]());
   }
 
   return inUse ? (
     <div className={"delivery"}>
-      <div className={"delivery_text"}>Delivery #{deliveryNumber}</div>
+      <div className={"delivery_text"}>{deliveryCardText.CARD_TITLE}#{deliveryNumber}</div>
       <div className={"delivery_update"}>
-        Order ID: {delivery.id} <br />
-        Delivery Time:
+          {deliveryCardText.ORDER_ID_TITLE}{delivery.id} <br />
+          {deliveryCardText.DELIVERY_TIME_TITLE}
       </div>
       <div className={"delivery_time"}>
         {deliveryTime && `${deliveryTime} seconds`}
@@ -55,7 +56,7 @@ const DeliveryCard: React.FC<{
       <div
         className={emptyDelivery ? "delivery_screen empty" : "delivery_screen"}
       >
-        {emptyDelivery ? "Waiting..." : "Delivering"}
+        {emptyDelivery ? deliveryCardText.WAITING_STATUS_TEXT : deliveryCardText.DELIVERING_STATUS_TEXT}
       </div>
     </div>
   ) : (

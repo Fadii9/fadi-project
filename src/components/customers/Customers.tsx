@@ -5,6 +5,8 @@ import { RootState } from "../../store/index";
 import QueueCard from "./QueueCard";
 import "./Customers.css";
 
+import { customersQueuesText } from "../../data/stringsFile"
+
 import { queuesActions } from "../../store/queues";
 import { customersActions } from "../../store/customers";
 
@@ -37,10 +39,12 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
     const shortestQueue = queues.reduce(function(p,c) {return p.length>c.length?c:p;},{length:Infinity});
     const shortestQueueIndex = queues.indexOf(shortestQueue) + 1;
 
-    if (availableSlot && time != 0 && time % 2 == 0) {
-      dispatch(customersActions.takeOrder());
+    const readyToAddCustomer: boolean = availableSlot && time != 0 && time % 2 == 0;
 
+    if (readyToAddCustomer) {
+      dispatch(customersActions.takeOrder());
       dispatch(queuesActions.addToQueue({firstCustomer, queue: `queue${shortestQueueIndex}State`}))}
+
   }, [time]);
 
   const queuesCountArray = Array.from(
@@ -54,7 +58,7 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
 
   return (
     <div className={"customers_status"}>
-      <div className={"customers_text"}>Customers Queues</div>
+      <div className={"customers_text"}>{ customersQueuesText.TITLE }</div>
       <div className={"queues_container"}>{queueComponent}</div>
     </div>
   );

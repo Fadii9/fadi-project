@@ -6,7 +6,10 @@ export const addToQueue = (
 ) => {
   let stateName = action.payload.queue;
   let returnedState: any = { ...state };
-  returnedState[stateName] = [...returnedState[stateName], action.payload.firstCustomer];
+  returnedState[stateName] = [
+    ...returnedState[stateName],
+    action.payload.firstCustomer,
+  ];
   return returnedState;
 };
 
