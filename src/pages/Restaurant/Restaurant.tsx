@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useTimer } from "use-timer";
 
 import "./Restaurant.css";
@@ -18,7 +18,7 @@ import { RESTURANT_BUTTON_TEXT } from "./constants/strings";
 
 const Restaurant: React.FC = () => {
   let timeInterval = 500;
-  const { time, start, pause, reset, status } = useTimer({
+  const { time, start, pause } = useTimer({
     autostart: false,
     interval: timeInterval,
   });

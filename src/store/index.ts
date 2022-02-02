@@ -21,13 +21,13 @@ export interface States {
   customersState: object[];
 }
 
-export interface Order {
-  products: Product[]
-}
+// export interface Order {
+//   products: Product[]
+// }
 
 export interface Customer {
   id: string ;
-  order: Order;
+  order: string[];
 }
 
 export interface CustomersState {
@@ -36,7 +36,7 @@ export interface CustomersState {
 
 export interface deliveryState {
   id: string;
-  order: Order;
+  order: string[];
 }
 
 export type RootState = {

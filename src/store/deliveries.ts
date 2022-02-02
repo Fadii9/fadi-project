@@ -7,7 +7,7 @@ let initstate: Record<string, object> = {};
 
 for (let i = 1; i <= deliveriesNumber; i++) {
   const queueName = `${i}`;
-  initstate[queueName] = new Object();
+  initstate[queueName] = {};
 }
 
 const deliveries = createSlice({
