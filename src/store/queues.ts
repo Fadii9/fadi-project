@@ -7,7 +7,7 @@ import { addToQueue, removeFromQueue } from "./reducers/queueReducer";
 let initstate: Record<string, object[]> = {};
 
 for (let i = 1; i <= queuesNumber; i++) {
-  const queueName = `queue${i}State`;
+  const queueName = `${i}`;
   initstate[queueName] = new Array();
 }
 

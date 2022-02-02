@@ -13,7 +13,7 @@ const Delivery: React.FC<{ time: number; deliveriesNumber: number }> = ({
     (_, i) => i + 1
   );
   const slotsComponent = slotsCountArray.map((number) => (
-    <DeliveryCard time={time} deliveryNumber={number} inUse={true} />
+    <DeliveryCard key={number} time={time} deliveryNumber={number} inUse={true} />
   ));
   return (
     <div className={"delivery_status"}>

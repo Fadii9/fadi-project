@@ -6,7 +6,7 @@ import { addToDelivery, removeFromDelivery } from "./reducers/deliveriesReducer"
 let initstate: Record<string, object> = {};
 
 for (let i = 1; i <= deliveriesNumber; i++) {
-  const queueName = `delivery${i}State`;
+  const queueName = `${i}`;
   initstate[queueName] = new Object();
 }
 

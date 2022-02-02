@@ -7,12 +7,6 @@ export const homeText = {
   SIMULATION_BUTTON_TEXT: "Start Simulation",
 };
 
-export const restaurantText = {
-  START_BUTTON_TEXT: "Start",
-  PAUSE_BUTTON_TEXT: "Pause",
-  RESET_BUTTON_TEXT: "Reset",
-};
-
 export const customersQueuesText = {
   TITLE: "Customers Queues",
 };

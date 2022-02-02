@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/index";
+import {Customer, RootState } from "../../store/index";
 
 import "./SlotCard.css";
 
@@ -13,14 +13,12 @@ import { slotsActions } from "../../store/slots";
 import { queuesActions } from "../../store/queues";
 import { deliveriesActions } from "../../store/deliveries";
 
-type SlotNumber = number;
-type SlotState = `slot${SlotNumber}State`;
-
 const SlotCard: React.FC<{
+  key: number;
   inUse: boolean;
   time: number;
-  slotNumber: SlotNumber;
-}> = ({ inUse, time, slotNumber }) => {
+  slotNumber: number;
+}> = ({ key, inUse, time, slotNumber }) => {
   const dispatch = useDispatch();
   let image;
   let showIngs;
@@ -28,36 +26,35 @@ const SlotCard: React.FC<{
   let receivedTime = 0;
   let producing = false;
   const [startTime, setStartTime] = useState(0);
-  const slotName: SlotState = `slot${slotNumber}State`;
-  // @ts-ignore
-  const slot = useSelector((state: RootState) => state.slotsSlice[slotName]);
+  const slotStateName = `${slotNumber}`;
+  const slot = useSelector((state: RootState) => state.slotsSlice[slotNumber]);
   let emptySlot = !slot.id;
 
+  const queueStateName = `${slotNumber}`
+  const queue: Customer[] = useSelector((state: RootState) => state.queuesSlice[slotNumber]);
 
-  // @ts-ignore
-  const queue = useSelector((state: RootState) => state.queuesSlice[`queue${slotNumber}State`]);
-  // @ts-ignore
-  const delivery = useSelector((state: RootState) => state.deliveriesSlice[`delivery${slotNumber}State`]);
+  const deliveryStateName = `${slotNumber}`;
+  const delivery = useSelector((state: RootState) => state.deliveriesSlice[slotNumber]);
   let emptyDelivery = !delivery.id;
 
   useEffect(() => {
     setStartTime(time);
   }, [slot]);
 
-  if (queue.length > 1 && emptySlot && time % 2 == 0) {
-    dispatch(slotsActions.addToSlot({ slot: slotName, customer: queue[0] }));
-    dispatch(queuesActions.removeFromQueue({ queue: `queue${slotNumber}State` })
-    );
+  if (queue && emptySlot && time % 2 == 0) {
+    dispatch(slotsActions.addToSlot({ slot: slotStateName, customer: queue }));
+    // dispatch(queuesActions.removeFromQueue({ queue: queueStateName }));
   }
+
   if (!emptySlot) {
-    let meals = slot.order;
-    let mealsIngs = meals.map((meal: string) => {
+    const {products} = slot.order;
+    let mealsIngs = products.map((meal: string) => {
       for (let i in mealsData) {
         if (mealsData[i].mealName == meal) return mealsData[i].ingredients;
       }
     });
 
-    image = meals.map((meal: string) => {
+    image = products.map((meal: string) => {
       for (let i in mealsData) {
         if (mealsData[i].mealName == meal) return mealsData[i];
       }
@@ -65,7 +62,7 @@ const SlotCard: React.FC<{
 
     showIngs = mealsIngs.join(",");
 
-    mealsIngs[0].map((ing: string) => {
+    mealsIngs[0]?.map((ing: string) => {
       estTime += ingsData.find((o) => o.ing === ing)!.prepTime;
     });
 
@@ -76,8 +73,8 @@ const SlotCard: React.FC<{
 
   if (!emptySlot && producing && estTime == 0) {
     producing = false;
-    dispatch(deliveriesActions.addToDelivery({delivery: `delivery${slotNumber}State` , customer: slot }));
-    dispatch(slotsActions.emptySlot({ slot: slotName }));
+    dispatch(deliveriesActions.addToDelivery({delivery: deliveryStateName , customer: slot }));
+    dispatch(slotsActions.emptySlot({ slot: slotStateName }));
   }
   return inUse ? (
     <div className={"slot"}>
@@ -86,7 +83,7 @@ const SlotCard: React.FC<{
           "Empty Slot"
         ) : (
           <img
-            src={image[0].imageUrl}
+            src={""}
             alt="Preparing!"
             className={"slot_image"}
           />

@@ -19,7 +19,7 @@ const Production: React.FC<{ time: number; slotsNumber: number }> = ({
 
   const slotsCountArray = Array.from({ length: slotsNumber }, (_, i) => i + 1);
   const slotsComponent = slotsCountArray.map((number) => (
-    <Slot inUse={true} time={time} slotNumber={number} />
+    <Slot key={number} inUse={true} time={time} slotNumber={number} />
   ));
 
   return (

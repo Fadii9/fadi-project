@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/index";
+import {Customer, RootState } from "../../store/index";
 
 import QueueCard from "./QueueCard";
 import "./Customers.css";
@@ -21,11 +21,10 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
   const allQueuesState = useSelector((state: RootState) => state.queuesSlice);
   const waitingCustomers = useSelector((state: RootState) => state.customersSlice.customersState);
 
-  const BuildQueues = (queuesState: object) => {
+  const BuildQueues = (queuesState: Customer[][]) => {
     let queuesArray = [];
     for (let i = 1; i <= queuesNumber; i++) {
-      // @ts-ignore
-      queuesArray.push(queuesState[`queue${i}State`]);
+      queuesArray.push(queuesState[i]);
     }
     return queuesArray;
   };
@@ -36,14 +35,16 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
     //check if there is availble space in one of the queues
     const availableSlot = !!queues.filter((queue) => queue.length < 5);
 
-    const shortestQueue = queues.reduce(function(p,c) {return p.length>c.length?c:p;},{length:Infinity});
+
+
+    const shortestQueue: any = queues.reduce(function(p,c) {return p.length>c.length?c:p;},{length:Infinity});
     const shortestQueueIndex = queues.indexOf(shortestQueue) + 1;
 
     const readyToAddCustomer: boolean = availableSlot && time != 0 && time % 2 == 0;
 
     if (readyToAddCustomer) {
       dispatch(customersActions.takeOrder());
-      dispatch(queuesActions.addToQueue({firstCustomer, queue: `queue${shortestQueueIndex}State`}))}
+      dispatch(queuesActions.addToQueue({firstCustomer, queue: `${shortestQueueIndex}`}))}
 
   }, [time]);
 
@@ -53,7 +54,7 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
   );
 
   const queueComponent = queuesCountArray.map((number) => (
-    <QueueCard inUse={true} queue={queues[number]} />
+    <QueueCard key={number} inUse={true} queue={queues[number]} />
   ));
 
   return (

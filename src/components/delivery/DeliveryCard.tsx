@@ -11,13 +11,13 @@ type DeliveryNumber = number;
 type DeliveryState = `slot${DeliveryNumber}State`;
 
 const DeliveryCard: React.FC<{
+    key: number;
   deliveryNumber: number;
   inUse: boolean;
   time: number;
-}> = ({ deliveryNumber, inUse, time }) => {
+}> = ({ key, deliveryNumber, inUse, time }) => {
   const dispatch = useDispatch();
-    // @ts-ignore
-  const delivery = useSelector((state: RootState) =>state.deliveriesSlice[`delivery${deliveryNumber}State`] );
+  const delivery = useSelector((state: RootState) =>state.deliveriesSlice[deliveryNumber] );
   const emptyDelivery = !delivery.id;
   const [startTime, setStartTime] = useState(0);
   const [isUsed, setIsUsed] = useState(false);
@@ -36,7 +36,7 @@ const DeliveryCard: React.FC<{
   }
 
   if (deliveryTime == 0 && !emptyDelivery) {
-      const deliveryStateName: string = `delivery${deliveryNumber}State`
+      const deliveryStateName = `${deliveryNumber}`
       dispatch(deliveriesActions.emptyDelivery({delivery: deliveryStateName}));
 
   }

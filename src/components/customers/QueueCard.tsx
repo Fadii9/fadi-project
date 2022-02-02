@@ -3,11 +3,12 @@ import "./QueueCard.css";
 import { queueText } from "../../data/stringsFile";
 
 interface QueueCardProps {
+  key: number;
   queue: { id: string }[];
   inUse: boolean;
 }
 
-const QueueCard: React.FC<QueueCardProps> = ({ queue, inUse }) => {
+const QueueCard: React.FC<QueueCardProps> = ({ key, queue, inUse }) => {
   let firstInqueue, firstName;
 
   if (queue.length > 0) {

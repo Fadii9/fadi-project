@@ -3,7 +3,6 @@ import { useTimer } from "use-timer";
 
 import "./Restaurant.css";
 
-import { restaurantText } from "../../data/stringsFile"
 
 import Delivery from "../../components/delivery/Delivery";
 import Customers from "../../components/customers/Customers";
@@ -15,6 +14,7 @@ import {
   slotsNumber,
   deliveriesNumber,
 } from "../../data/stationsNumber";
+import { RESTURANT_BUTTON_TEXT } from "./constants/strings";
 
 const Restaurant: React.FC = () => {
   let timeInterval = 500;
@@ -26,9 +26,9 @@ const Restaurant: React.FC = () => {
   return (
     <div className={"container"}>
       <div className={"buttons_container"}>
-        <button onClick={start}>{ restaurantText.START_BUTTON_TEXT }</button>
-        <button onClick={pause}>{ restaurantText.PAUSE_BUTTON_TEXT }</button>
-        <button onClick={() => window.location.reload()}>{ restaurantText.RESET_BUTTON_TEXT }</button>
+        <button onClick={start}>{ RESTURANT_BUTTON_TEXT.START }</button>
+        <button onClick={pause}>{ RESTURANT_BUTTON_TEXT.PAUSE }</button>
+        <button onClick={() => window.location.reload()}>{ RESTURANT_BUTTON_TEXT.RESET }</button>
       </div>
       <div className={"container__left"}>
         <Customers time={time} queuesNumber={queuesNumber} />
