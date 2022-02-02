@@ -25,16 +25,16 @@ export const productionText = {
   TITLE: "Production Slots",
 };
 
-export const deliveriesText = {
-  TITLE: "Deliveries Status",
-};
-
 export const slotText = {
   ORDER_ID_TITLE: "Order ID: ",
   PRODUICONG_TITLE: "Producing: ",
   EST_TIME_TITLE: "Estimated Time: ",
   PRODUCTION_STATUS_TITLE: "Production Status:",
   NOT_IN_USE: "Not In Use",
+};
+
+export const deliveriesText = {
+  TITLE: "Deliveries Status",
 };
 
 export const deliveryCardText = {

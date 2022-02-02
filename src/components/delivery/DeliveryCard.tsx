@@ -16,11 +16,8 @@ const DeliveryCard: React.FC<{
   time: number;
 }> = ({ deliveryNumber, inUse, time }) => {
   const dispatch = useDispatch();
-  const delivery = useSelector(
-    (state: RootState) =>
-      // @ts-ignore
-      state.deliveriesSlice[`delivery${deliveryNumber}State`]
-  );
+    // @ts-ignore
+  const delivery = useSelector((state: RootState) =>state.deliveriesSlice[`delivery${deliveryNumber}State`] );
   const emptyDelivery = !delivery.id;
   const [startTime, setStartTime] = useState(0);
   const [isUsed, setIsUsed] = useState(false);
@@ -39,8 +36,9 @@ const DeliveryCard: React.FC<{
   }
 
   if (deliveryTime == 0 && !emptyDelivery) {
-    // @ts-ignore
-    dispatch(deliveriesActions[`emptyDelivery${deliveryNumber}`]());
+      const deliveryStateName: string = `delivery${deliveryNumber}State`
+      dispatch(deliveriesActions.emptyDelivery({delivery: deliveryStateName}));
+
   }
 
   return inUse ? (

@@ -17,12 +17,14 @@ const store = configureStore({
 export interface States {
   id: string;
   order: object;
+  slotName?: string;
   customersState: object[];
 }
 
 export type RootState = {
-  [slotKey: string]: States;
+  [slotName: string]: States;
   slotsSlice: States;
+  queueSlice: States;
 };
 
 export default store;

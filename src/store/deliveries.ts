@@ -1,34 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { deliveriesNumber } from "../data/stationsNumber";
 import { deliveriesStateText } from "../data/stringsFile"
+import { addToDelivery, removeFromDelivery } from "./reducers/deliveriesReducer";
+
+let initstate: Record<string, object> = {};
+
+for (let i = 1; i <= deliveriesNumber; i++) {
+  const queueName = `delivery${i}State`;
+  initstate[queueName] = new Object();
+}
 
 const deliveries = createSlice({
   name: deliveriesStateText.STATE_NAME,
-  initialState: {
-    delivery1State: {},
-    delivery2State: {},
-    delivery3State: {},
-  },
+  initialState: initstate,
   reducers: {
-    addToDelivery1: (state, action) => {
-      return { ...state, delivery1State: action.payload };
-    },
-    emptyDelivery1: (state) => {
-      return { ...state, delivery1State: {} };
-    },
-
-    addToDelivery2: (state, action) => {
-      return { ...state, delivery2State: action.payload };
-    },
-    emptyDelivery2: (state) => {
-      return { ...state, delivery2State: {} };
-    },
-
-    addToDelivery3: (state, action) => {
-      return { ...state, delivery3State: action.payload };
-    },
-    emptyDelivery3: (state) => {
-      return { ...state, delivery3State: {} };
-    },
+    addToDelivery: addToDelivery,
+    emptyDelivery: removeFromDelivery,
   },
 });
 

@@ -33,6 +33,7 @@ const SlotCard: React.FC<{
   const slot = useSelector((state: RootState) => state.slotsSlice[slotName]);
   let emptySlot = !slot.id;
 
+
   // @ts-ignore
   const queue = useSelector((state: RootState) => state.queuesSlice[`queue${slotNumber}State`]);
   // @ts-ignore
@@ -44,11 +45,8 @@ const SlotCard: React.FC<{
   }, [slot]);
 
   if (queue.length > 1 && emptySlot && time % 2 == 0) {
-    // @ts-ignore
     dispatch(slotsActions.addToSlot({ slot: slotName, customer: queue[0] }));
-    // @ts-ignore
-    dispatch(
-      queuesActions.removeFromQueue({ queue: `queue${slotNumber}State` })
+    dispatch(queuesActions.removeFromQueue({ queue: `queue${slotNumber}State` })
     );
   }
   if (!emptySlot) {
@@ -78,9 +76,7 @@ const SlotCard: React.FC<{
 
   if (!emptySlot && producing && estTime == 0) {
     producing = false;
-    // @ts-ignore
-    dispatch(deliveriesActions[`addToDelivery${slotNumber}`](slot));
-    // @ts-ignore
+    dispatch(deliveriesActions.addToDelivery({delivery: `delivery${slotNumber}State` , customer: slot }));
     dispatch(slotsActions.emptySlot({ slot: slotName }));
   }
   return inUse ? (

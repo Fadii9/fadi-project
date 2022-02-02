@@ -16,6 +16,6 @@ export const emptySlot = (
 ) => {
   let stateName = action.payload.slot;
   let returnedState: any = { ...state };
-  returnedState[stateName] = new Object();
+  returnedState[stateName] = {};
   return returnedState;
 };

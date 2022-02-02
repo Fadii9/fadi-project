@@ -9,6 +9,7 @@ interface QueueCardProps {
 
 const QueueCard: React.FC<QueueCardProps> = ({ queue, inUse }) => {
   let firstInqueue, firstName;
+
   if (queue.length > 0) {
     firstInqueue = queue[0];
     firstName = firstInqueue.id;
