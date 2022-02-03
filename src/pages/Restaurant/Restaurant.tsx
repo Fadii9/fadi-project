@@ -17,7 +17,7 @@ import {
 import { RESTURANT_BUTTON_TEXT } from "./constants/strings";
 
 const Restaurant: React.FC = () => {
-  let timeInterval = 500;
+  const timeInterval = 500;
   const { time, start, pause } = useTimer({
     autostart: false,
     interval: timeInterval,

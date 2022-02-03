@@ -1,21 +1,22 @@
-import { PayloadAction } from "@reduxjs/toolkit";
+import {CaseReducer, PayloadAction } from "@reduxjs/toolkit";
+import { Customer, DeliveryState, SlotState } from "../index";
 
-export const addToSlot = (
-  state: Record<string, object>,
-  action: PayloadAction<{ slot: string; customer: object }>
+export const addToSlot: CaseReducer<Record<number, SlotState>, PayloadAction<{ slot: number; customer: SlotState }>> = (
+  state: Record<number, SlotState>,
+  action: PayloadAction<{ slot: number; customer: SlotState }>
 ) => {
-  let stateName = action.payload.slot;
-  let returnedState: Record<string, object> = { ...state };
+  const stateName = action.payload.slot;
+  const returnedState: Record<number, SlotState> = { ...state };
   returnedState[stateName] = action.payload.customer;
   return returnedState;
 };
 
 export const emptySlot = (
-  state: Record<string, object>,
-  action: PayloadAction<{ slot: string }>
+  state: Record<number, DeliveryState>,
+  action: PayloadAction<{ slot: number }>
 ) => {
-  let stateName = action.payload.slot;
-  let returnedState: Record<string, object> = { ...state };
+  const stateName = action.payload.slot;
+  const returnedState: Record<number, DeliveryState> = { ...state };
   returnedState[stateName] = {};
   return returnedState;
 };

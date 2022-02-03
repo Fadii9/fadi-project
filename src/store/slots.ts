@@ -1,19 +1,15 @@
 import { createSlice, Slice } from "@reduxjs/toolkit";
-
 import { SLOT_STATE_TEXT } from "./constants/strings";
 import { slotsNumber } from "../data/stationsNumber";
 import { addToSlot, emptySlot } from "./reducers/slotsReducer";
+import { SlotState } from ".";
+import {createInitialSlotsState } from "./utils/functions"
 
-let initstate: Record<string, object> = {};
+const initialState = createInitialSlotsState(slotsNumber)
 
-for (let i = 1; i <= slotsNumber; i++) {
-  const queueName = `${i}`;
-  initstate[queueName] = {};
-}
-
-const slotsSlice: Slice<Record<string, object>> = createSlice({
+const slotsSlice: Slice = createSlice({
   name: SLOT_STATE_TEXT.STATE_NAME,
-  initialState: initstate,
+  initialState: initialState,
   reducers: {
     addToSlot: addToSlot,
     emptySlot: emptySlot,

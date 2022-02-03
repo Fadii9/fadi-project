@@ -15,33 +15,31 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
   queuesNumber,
 }) => {
   const dispatch = useDispatch();
-  const fullQueue = 5;
-  let firstCustomer;
+  const maximumQueueCapacity = 5;
 
   const allQueuesState = useSelector((state: RootState) => state.queuesSlice);
   const waitingCustomers = useSelector((state: RootState) => state.customersSlice.customersState);
 
-  const BuildQueues = (queuesState: Customer[][]) => {
+  const buildQueues = (queuesState: Customer[][]) => {
     let queuesArray = [];
     for (let i = 1; i <= queuesNumber; i++) {
       queuesArray.push(queuesState[i]);
     }
     return queuesArray;
   };
-  const queues = BuildQueues(allQueuesState);
+  const queues = buildQueues(allQueuesState);
   useEffect(() => {
-    firstCustomer = waitingCustomers[0];
 
-    //check if there is availble space in one of the queues
-    const availablePlaceInQueue = !!queues.filter((queue) => queue.length < fullQueue);
+    const availablePlaceInQueue = !!queues.filter((queue) => queue.length < maximumQueueCapacity);
     const shortestQueue = queues.reduce(function(p,c) {return p.length>c.length?c:p;});
     const shortestQueueIndex = queues.indexOf(shortestQueue) + 1;
 
     const readyToAddCustomer: boolean = availablePlaceInQueue && time != 0 && time % 2 == 0;
 
     if (readyToAddCustomer) {
+      dispatch(queuesActions.addToQueue({ firstCustomer: waitingCustomers[0] , queue: `${shortestQueueIndex}`}))
       dispatch(customersActions.takeOrder())
-      dispatch(queuesActions.addToQueue({firstCustomer, queue: `${shortestQueueIndex}`}))
+
     }
   }, [time]);
 

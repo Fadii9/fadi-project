@@ -17,16 +17,13 @@ const store = configureStore({
 
 export interface States {
   id: string;
-  order: object;
-  customersState: object[];
+  order: string[];
+  customersState: Customer[];
 }
-
-// export interface Order {
-//   products: Product[]
-// }
 
 export interface Customer {
   id: string ;
+  name?: string;
   order: string[];
 }
 
@@ -34,15 +31,22 @@ export interface CustomersState {
   customersState: Customer[];
 }
 
-export interface deliveryState {
-  id: string;
-  order: string[];
+export interface SlotState {
+  id?: number;
+  name?: string;
+  order?: string[];
+}
+
+export interface DeliveryState {
+  id?: number;
+  name?: string;
+  order?: string[];
 }
 
 export type RootState = {
   slotsSlice: Customer[];
   queuesSlice: Customer[][];
-  deliveriesSlice: deliveryState[];
+  deliveriesSlice: DeliveryState[];
   customersSlice: CustomersState;
 };
 

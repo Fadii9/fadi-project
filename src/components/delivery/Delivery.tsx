@@ -2,7 +2,7 @@ import React from "react";
 import "./Delivery.css";
 
 import DeliveryCard from "./DeliveryCard";
-import { DELIVERIES_TEXT } from "./constants/strings"
+import { DELIVERIES_CARD_TEXT } from "./constants/strings"
 
 const Delivery: React.FC<{ time: number; deliveriesNumber: number }> = ({
   time,
@@ -17,7 +17,7 @@ const Delivery: React.FC<{ time: number; deliveriesNumber: number }> = ({
   ));
   return (
     <div className={"delivery_status"}>
-      <div className={"delivery_container_text"}>{DELIVERIES_TEXT.TITLE}</div>
+      <div className={"delivery_container_text"}>{DELIVERIES_CARD_TEXT.TITLE}</div>
       <div className={"delivery_status_container"}>{slotsComponent}</div>
     </div>
   );

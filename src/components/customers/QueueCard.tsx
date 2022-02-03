@@ -1,7 +1,7 @@
 import React from "react";
 import "./QueueCard.css";
 
-import { QUEUE_TEXT } from "./constants/strings"
+import { CUSTOMERS_QUEUE_TEXT } from "./constants/strings";
 
 interface QueueCardProps {
   key: number;
@@ -17,18 +17,20 @@ const QueueCard: React.FC<QueueCardProps> = ({ key, queue, inUse }) => {
     firstName = firstInqueue.id;
   }
 
+  const circlesCount = 5;
+  let circles = [];
+
+  for (let i = (circlesCount-1) ; i >= 0 ; i--){
+      circles.push(<div
+          className={
+              queue.length > i ? `circle green` : `circle`
+          }
+      >{i === 0 && firstName}</div>)
+  }
   return inUse ? (
-    <div className={"queue"}>
-      <div className={queue.length > 4 ? `circle green` : `circle`}></div>
-      <div className={queue.length > 3 ? `circle green` : `circle`}></div>
-      <div className={queue.length > 2 ? `circle green` : `circle`}></div>
-      <div className={queue.length > 1 ? `circle green` : `circle`}></div>
-      <div className={queue.length > 0 ? `circle green` : `circle`}>
-        {firstName}
-      </div>
-    </div>
+    <div className={"queue"}>{circles}</div>
   ) : (
-    <div className={"queue"}>{QUEUE_TEXT.NOT_IN_USE}</div>
+    <div className={"queue"}>{CUSTOMERS_QUEUE_TEXT.NOT_IN_USE}</div>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {Customer, RootState } from "../../store/index";
+import { Customer, RootState } from "../../store/index";
 
 import "./SlotCard.css";
 
@@ -20,50 +20,57 @@ const SlotCard: React.FC<{
   slotNumber: number;
 }> = ({ key, inUse, time, slotNumber }) => {
   const dispatch = useDispatch();
-  let imageUrl;
-  let showIngs;
+  let imageUrl, showIngs;
   let estTime = 0;
-  let receivedTime = 0;
+  const receivedTime = 0;
   let producing = false;
   const [startTime, setStartTime] = useState(0);
-  const slotStateName = `${slotNumber}`;
+  const slotStateName = slotNumber.toString();
   const slot = useSelector((state: RootState) => {
-    return state.slotsSlice[slotNumber]
+    return state.slotsSlice[slotNumber];
   });
-  let emptySlot = !slot.id;
+  const emptySlot = !slot.id;
 
-  const queueStateName = `${slotNumber}`
-  const queue: Customer[] = useSelector((state: RootState) => state.queuesSlice[slotNumber]);
+  const queueStateName = slotNumber.toString();
+  const queue: Customer[] = useSelector(
+    (state: RootState) => state.queuesSlice[slotNumber]
+  );
 
   const deliveryStateName = `${slotNumber}`;
-  const delivery = useSelector((state: RootState) => state.deliveriesSlice[slotNumber]);
+  const delivery = useSelector(
+    (state: RootState) => state.deliveriesSlice[slotNumber]
+  );
 
   useEffect(() => {
     setStartTime(time);
   }, [slot]);
 
   useEffect(() => {
-    if (queue.length && emptySlot && time % 2 == 0) {
-      dispatch(slotsActions.addToSlot({ slot: slotStateName, customer: queue[0] }))
-      dispatch(queuesActions.removeFromQueue({ queue: queueStateName }))
+    const readyToTakeCustomerOrder: boolean =
+      !!queue.length && emptySlot && time % 2 === 0;
+    if (readyToTakeCustomerOrder) {
+      dispatch(
+        slotsActions.addToSlot({ slot: slotStateName, customer: queue[0] })
+      );
+      dispatch(queuesActions.removeFromQueue({ queue: queueStateName }));
     }
   }, [queue]);
 
   if (!emptySlot) {
     const products = slot.order;
 
-    let mealsIngs = products.map((meal: string) => {
+    const mealsIngs = products.map((meal: string) => {
       for (let i in mealsData) {
         if (mealsData[i].mealName === meal) return mealsData[i].ingredients;
       }
     });
 
-    let image = products.map((meal: string) => {
+    const image = products.map((meal: string) => {
       for (let i in mealsData) {
         if (mealsData[i].mealName === meal) return mealsData[i];
       }
     });
-    imageUrl = image[0]!.imageUrl
+    imageUrl = image[0]?.imageUrl;
 
     showIngs = mealsIngs.join(",");
 
@@ -76,9 +83,16 @@ const SlotCard: React.FC<{
     producing = true;
   }
 
-  if (!emptySlot && producing && estTime === 0) {
+  const finishedProducingMeal: boolean =
+    !emptySlot && producing && estTime === 0;
+  if (finishedProducingMeal) {
     producing = false;
-    dispatch(deliveriesActions.addToDelivery({delivery: deliveryStateName , customer: slot }));
+    dispatch(
+      deliveriesActions.addToDelivery({
+        delivery: deliveryStateName,
+        customer: slot,
+      })
+    );
     dispatch(slotsActions.emptySlot({ slot: slotStateName }));
   }
   return inUse ? (
@@ -87,11 +101,7 @@ const SlotCard: React.FC<{
         {emptySlot ? (
           "Empty Slot"
         ) : (
-          <img
-              src={imageUrl}
-            alt="Preparing!"
-            className={"slot_image"}
-          />
+          <img src={imageUrl} alt="Preparing!" className={"slot_image"} />
         )}
       </div>
       <div className={"slot_details"}>
@@ -103,12 +113,14 @@ const SlotCard: React.FC<{
         {estTime > 0 && `${estTime} Seconds`}
       </div>
       <div className={"slot_status"}>
-        <div className={"slot_status_text"}>{ SLOT_TEXT.PRODUCTION_STATUS_TITLE }</div>
+        <div className={"slot_status_text"}>
+          {SLOT_TEXT.PRODUCTION_STATUS_TITLE}
+        </div>
         <div className={"slot_status_ings"}>{showIngs}</div>
       </div>
     </div>
   ) : (
-    <div className={"slot"}>{ SLOT_TEXT.NOT_IN_USE }</div>
+    <div className={"slot"}>{SLOT_TEXT.NOT_IN_USE}</div>
   );
 };
 

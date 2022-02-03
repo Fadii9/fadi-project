@@ -1,18 +1,15 @@
 import { createSlice, Slice } from "@reduxjs/toolkit";
 import { deliveriesNumber } from "../data/stationsNumber";
 import { DELIVERIES_STATE_TEXT } from "./constants/strings"
+import { createInitialDeliverisState } from "./utils/functions";
 import { addToDelivery, removeFromDelivery } from "./reducers/deliveriesReducer";
+import { Customer } from "./index"
 
-let initstate: Record<string, object> = {};
+let initState = createInitialDeliverisState(deliveriesNumber)
 
-for (let i = 1; i <= deliveriesNumber; i++) {
-  const queueName = `${i}`;
-  initstate[queueName] = {};
-}
-
-const deliveries: Slice<Record<string, object>>  = createSlice({
+const deliveries: Slice  = createSlice({
   name: DELIVERIES_STATE_TEXT.STATE_NAME,
-  initialState: initstate,
+  initialState: initState,
   reducers: {
     addToDelivery: addToDelivery,
     emptyDelivery: removeFromDelivery,

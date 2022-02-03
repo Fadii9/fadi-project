@@ -4,7 +4,7 @@ import { RootState } from "../../store/index";
 
 import "./Production.css";
 
-import { PRODUCTION_TEXT } from "./constants/strings";
+import { SLOT_TEXT } from "./constants/strings";
 
 import { slotsActions } from "../../store/slots";
 import { queuesActions } from "../../store/queues";
@@ -24,7 +24,7 @@ const Production: React.FC<{ time: number; slotsNumber: number }> = ({
 
   return (
     <div className={"Production_status"}>
-      <div className={"Production_text"}>{PRODUCTION_TEXT.TITLE}</div>
+      <div className={"Production_text"}>{SLOT_TEXT.TITLE}</div>
       <div className={"slot_container"}>{slotsComponent}</div>
     </div>
   );

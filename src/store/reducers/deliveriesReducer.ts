@@ -1,21 +1,22 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import {Customer, DeliveryState } from "../index";
 
 export const addToDelivery = (
-    state: Record<string, object>,
-    action: PayloadAction<{ delivery: string; customer: object }>
+    state: Record<number, DeliveryState>,
+    action: PayloadAction<{ delivery: number; customer: DeliveryState }>
 ) => {
-    let stateName = action.payload.delivery;
-    let returnedState = { ...state };
+    const stateName = action.payload.delivery;
+    const returnedState = { ...state };
     returnedState[stateName] = action.payload.customer;
     return returnedState;
 };
 
 export const removeFromDelivery = (
-    state: Record<string, object>,
-    action: PayloadAction<{ delivery: string }>
+    state: Record<number, DeliveryState>,
+    action: PayloadAction<{ delivery: number }>
 ) => {
-    let stateName = action.payload.delivery;
-    let returnedState: Record<string, object> = { ...state };
+    const stateName = action.payload.delivery;
+    const returnedState: Record<number, DeliveryState> = { ...state };
     returnedState[stateName] = {};
     return returnedState;
 };

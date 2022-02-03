@@ -1,11 +1,11 @@
-type ingList = {
+type IngredientsList = {
   id: string;
   ing: string;
   amount: number;
   prepTime: number;
 }[];
 
-const ingredients: ingList = [
+const ingredients: IngredientsList = [
   {
     id: "i1",
     ing: "Bread",
