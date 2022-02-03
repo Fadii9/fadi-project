@@ -22,8 +22,7 @@ const SlotCard: React.FC<{
   const dispatch = useDispatch();
   let imageUrl, showIngs;
   let estTime = 0;
-  const receivedTime = 0;
-  let producing = false;
+  let producing: boolean = false;
   const [startTime, setStartTime] = useState(0);
   const slotStateName = slotNumber.toString();
   const slot = useSelector((state: RootState) => {
@@ -74,8 +73,8 @@ const SlotCard: React.FC<{
 
     showIngs = mealsIngs.join(",");
 
-    mealsIngs[0]?.map((ing: string) => {
-      estTime += ingsData.find((o) => o.ing === ing)!.prepTime;
+    mealsIngs[0]?.map((ingredient: string) => {
+      estTime += ingsData.find((meal) => meal.ing === ingredient)!.prepTime;
     });
 
     estTime -= time - startTime;
