@@ -3,7 +3,7 @@ import { createSlice, Slice } from "@reduxjs/toolkit";
 import { CUSTOMERS_STATE_TEXT } from "./constants/strings"
 import customersData, { customersList } from "../data/customersData";
 
-const customersSlice:  Slice<{customersState: customersList}>  = createSlice({
+const customersSlice = createSlice({
   name: CUSTOMERS_STATE_TEXT.STATE_NAME,
   initialState: {
     customersState: customersData,

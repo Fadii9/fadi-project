@@ -40,7 +40,7 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
     const readyToAddCustomer: boolean = availablePlaceInQueue && time != 0 && time % 2 == 0;
 
     if (readyToAddCustomer) {
-      dispatch(customersActions.takeOrder());
+      dispatch(customersActions.takeOrder())
       dispatch(queuesActions.addToQueue({firstCustomer, queue: `${shortestQueueIndex}`}))
     }
   }, [time]);
