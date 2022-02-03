@@ -11,7 +11,7 @@ export const addToDelivery = (
 };
 
 export const removeFromDelivery = (
-    state: object,
+    state: Record<string, object>,
     action: PayloadAction<{ delivery: string }>
 ) => {
     let stateName = action.payload.delivery;
