@@ -24,18 +24,15 @@ const SlotCard: React.FC<{
   let estTime = 0;
   let producing: boolean = false;
   const [startTime, setStartTime] = useState(0);
-  const slotStateName = slotNumber.toString();
   const slot = useSelector((state: RootState) => {
     return state.slotsSlice[slotNumber];
   });
   const emptySlot = !slot.id;
 
-  const queueStateName = slotNumber.toString();
   const queue: Customer[] = useSelector(
     (state: RootState) => state.queuesSlice[slotNumber]
   );
 
-  const deliveryStateName = `${slotNumber}`;
   const delivery = useSelector(
     (state: RootState) => state.deliveriesSlice[slotNumber]
   );
@@ -49,9 +46,9 @@ const SlotCard: React.FC<{
       !!queue.length && emptySlot && time % 2 === 0;
     if (readyToTakeCustomerOrder) {
       dispatch(
-        slotsActions.addToSlot({ slot: slotStateName, customer: queue[0] })
+        slotsActions.addToSlot({ slot: slotNumber, customer: queue[0] })
       );
-      dispatch(queuesActions.removeFromQueue({ queue: queueStateName }));
+      dispatch(queuesActions.removeFromQueue({ queue: slotNumber }));
     }
   }, [queue]);
 
@@ -88,11 +85,11 @@ const SlotCard: React.FC<{
     producing = false;
     dispatch(
       deliveriesActions.addToDelivery({
-        delivery: deliveryStateName,
+        delivery: slotNumber,
         customer: slot,
       })
     );
-    dispatch(slotsActions.emptySlot({ slot: slotStateName }));
+    dispatch(slotsActions.emptySlot({ slot: slotNumber }));
   }
   return inUse ? (
     <div className={"slot"}>
