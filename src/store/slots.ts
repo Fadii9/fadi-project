@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, Slice } from "@reduxjs/toolkit";
 
 import { SLOT_STATE_TEXT } from "./constants/strings";
 import { slotsNumber } from "../data/stationsNumber";
@@ -11,7 +11,7 @@ for (let i = 1; i <= slotsNumber; i++) {
   initstate[queueName] = {};
 }
 
-const slotsSlice = createSlice({
+const slotsSlice: Slice<Record<string, object>> = createSlice({
   name: SLOT_STATE_TEXT.STATE_NAME,
   initialState: initstate,
   reducers: {

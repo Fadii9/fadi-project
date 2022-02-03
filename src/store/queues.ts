@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, Slice } from "@reduxjs/toolkit";
 
 import { DELIVERIES_STATE_TEXT } from "./constants/strings";
 import { queuesNumber } from "../data/stationsNumber";
@@ -11,7 +11,7 @@ for (let i = 1; i <= queuesNumber; i++) {
   initstate[queueName] = [];
 }
 
-const queuesSlice = createSlice({
+const queuesSlice: Slice<Record<string, object[]>> = createSlice({
   name: DELIVERIES_STATE_TEXT.STATE_NAME,
   initialState: initstate,
   reducers: {
