@@ -1,6 +1,7 @@
 import React from "react";
 import "./QueueCard.css";
-import { queueText } from "../../data/stringsFile";
+
+import { QUEUE_TEXT } from "./constants/strings"
 
 interface QueueCardProps {
   key: number;
@@ -27,7 +28,7 @@ const QueueCard: React.FC<QueueCardProps> = ({ key, queue, inUse }) => {
       </div>
     </div>
   ) : (
-    <div className={"queue"}>{queueText.NOT_IN_USE}</div>
+    <div className={"queue"}>{QUEUE_TEXT.NOT_IN_USE}</div>
   );
 };
 

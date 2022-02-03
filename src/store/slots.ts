@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { slotsStateText } from "../data/stringsFile"
+import { SLOT_STATE_TEXT } from "./constants/strings";
 import { slotsNumber } from "../data/stationsNumber";
 import { addToSlot, emptySlot } from "./reducers/slotsReducer";
 
@@ -12,7 +12,7 @@ for (let i = 1; i <= slotsNumber; i++) {
 }
 
 const slotsSlice = createSlice({
-  name: slotsStateText.STATE_NAME,
+  name: SLOT_STATE_TEXT.STATE_NAME,
   initialState: initstate,
   reducers: {
     addToSlot: addToSlot,

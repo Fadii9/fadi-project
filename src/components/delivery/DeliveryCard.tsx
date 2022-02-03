@@ -4,7 +4,7 @@ import { RootState } from "../../store/index";
 
 import "./DeliveryCard.css";
 
-import { deliveryCardText } from "../../data/stringsFile"
+import { DELIVERIES_CARD_TEXT } from "./constants/strings"
 import { deliveriesActions } from "../../store/deliveries";
 
 type DeliveryNumber = number;
@@ -43,10 +43,10 @@ const DeliveryCard: React.FC<{
 
   return inUse ? (
     <div className={"delivery"}>
-      <div className={"delivery_text"}>{deliveryCardText.CARD_TITLE}#{deliveryNumber}</div>
+      <div className={"delivery_text"}>{DELIVERIES_CARD_TEXT.CARD_TITLE}#{deliveryNumber}</div>
       <div className={"delivery_update"}>
-          {deliveryCardText.ORDER_ID_TITLE}{delivery.id} <br />
-          {deliveryCardText.DELIVERY_TIME_TITLE}
+          {DELIVERIES_CARD_TEXT.ORDER_ID_TITLE}{delivery.id} <br />
+          {DELIVERIES_CARD_TEXT.DELIVERY_TIME_TITLE}
       </div>
       <div className={"delivery_time"}>
         {deliveryTime && `${deliveryTime} seconds`}
@@ -54,7 +54,7 @@ const DeliveryCard: React.FC<{
       <div
         className={emptyDelivery ? "delivery_screen empty" : "delivery_screen"}
       >
-        {emptyDelivery ? deliveryCardText.WAITING_STATUS_TEXT : deliveryCardText.DELIVERING_STATUS_TEXT}
+        {emptyDelivery ? DELIVERIES_CARD_TEXT.WAITING_STATUS : DELIVERIES_CARD_TEXT.DELIVERING_STATUS}
       </div>
     </div>
   ) : (

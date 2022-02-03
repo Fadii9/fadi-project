@@ -7,7 +7,7 @@ import "./SlotCard.css";
 import mealsData from "../../data/mealsData";
 import ingsData from "../../data/ingredientsData";
 
-import { slotText } from "../../data/stringsFile";
+import { SLOT_TEXT } from "./constants/strings";
 
 import { slotsActions } from "../../store/slots";
 import { queuesActions } from "../../store/queues";
@@ -95,20 +95,20 @@ const SlotCard: React.FC<{
         )}
       </div>
       <div className={"slot_details"}>
-        <span className={"title"}>{slotText.ORDER_ID_TITLE}</span>
+        <span className={"title"}>{SLOT_TEXT.ORDER_ID_TITLE}</span>
         {slot.id} <br />
-        <span className={"title"}>{slotText.PRODUICONG_TITLE}</span>
+        <span className={"title"}>{SLOT_TEXT.PRODUICONG_TITLE}</span>
         {slot.order} <br />
-        <span className={"title"}>{slotText.EST_TIME_TITLE}</span>{" "}
+        <span className={"title"}>{SLOT_TEXT.EST_TIME_TITLE}</span>{" "}
         {estTime > 0 && `${estTime} Seconds`}
       </div>
       <div className={"slot_status"}>
-        <div className={"slot_status_text"}>{ slotText.PRODUCTION_STATUS_TITLE }</div>
+        <div className={"slot_status_text"}>{ SLOT_TEXT.PRODUCTION_STATUS_TITLE }</div>
         <div className={"slot_status_ings"}>{showIngs}</div>
       </div>
     </div>
   ) : (
-    <div className={"slot"}>{ slotText.NOT_IN_USE }</div>
+    <div className={"slot"}>{ SLOT_TEXT.NOT_IN_USE }</div>
   );
 };
 

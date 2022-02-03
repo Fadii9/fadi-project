@@ -5,7 +5,7 @@ import {Customer, RootState } from "../../store/index";
 import QueueCard from "./QueueCard";
 import "./Customers.css";
 
-import { customersQueuesText } from "../../data/stringsFile"
+import { CUSTOMERS_QUEUE_TEXT } from "./constants/strings"
 
 import { queuesActions } from "../../store/queues";
 import { customersActions } from "../../store/customers";
@@ -33,19 +33,16 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
     firstCustomer = waitingCustomers[0];
 
     //check if there is availble space in one of the queues
-    const availableSlot = !!queues.filter((queue) => queue.length < 5);
-
-
-
-    const shortestQueue: any = queues.reduce(function(p,c) {return p.length>c.length?c:p;},{length:Infinity});
+    const availablePlaceInQueue = !!queues.filter((queue) => queue.length < fullQueue);
+    const shortestQueue = queues.reduce(function(p,c) {return p.length>c.length?c:p;});
     const shortestQueueIndex = queues.indexOf(shortestQueue) + 1;
 
-    const readyToAddCustomer: boolean = availableSlot && time != 0 && time % 2 == 0;
+    const readyToAddCustomer: boolean = availablePlaceInQueue && time != 0 && time % 2 == 0;
 
     if (readyToAddCustomer) {
       dispatch(customersActions.takeOrder());
-      dispatch(queuesActions.addToQueue({firstCustomer, queue: `${shortestQueueIndex}`}))}
-
+      dispatch(queuesActions.addToQueue({firstCustomer, queue: `${shortestQueueIndex}`}))
+    }
   }, [time]);
 
   const queuesCountArray = Array.from(
@@ -59,7 +56,7 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
 
   return (
     <div className={"customers_status"}>
-      <div className={"customers_text"}>{ customersQueuesText.TITLE }</div>
+      <div className={"customers_text"}>{ CUSTOMERS_QUEUE_TEXT.TITLE }</div>
       <div className={"queues_container"}>{queueComponent}</div>
     </div>
   );

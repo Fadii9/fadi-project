@@ -15,7 +15,7 @@ export const removeFromDelivery = (
     action: PayloadAction<{ delivery: string }>
 ) => {
     let stateName = action.payload.delivery;
-    let returnedState: any = { ...state };
+    let returnedState: Record<string, object> = { ...state };
     returnedState[stateName] = {};
     return returnedState;
 };

@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { customersStateText } from "../data/stringsFile"
+import { CUSTOMERS_STATE_TEXT } from "./constants/strings"
 import customersData from "../data/customersData";
 
 const customersSlice = createSlice({
-  name: customersStateText.STATE_NAME,
+  name: CUSTOMERS_STATE_TEXT.STATE_NAME,
   initialState: {
     customersState: customersData,
   },
