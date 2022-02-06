@@ -64,8 +64,8 @@ const ingredients: IngredientsList = [
   {
     id: "i9",
     ing: "Dough",
-    amount: 50,
-    prepTime: 1,
+    amount: 0,
+    prepTime: 4,
   },
 
   {
