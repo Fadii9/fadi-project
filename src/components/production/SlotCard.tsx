@@ -21,21 +21,24 @@ const SlotCard: React.FC<{
   slotNumber: number;
 }> = ({ key, inUse, time, slotNumber }) => {
   const dispatch = useDispatch();
-  let meal, imageUrl, showIngs;
+  let meal, imageUrl, showIngs, availableDelivery, availableDeliveryIndex;
   let estTime = 0;
   let ingredients: string[] = [];
-  let mealIngs: string[] = [];
-  let availableIngs:boolean = true;
-  let preparedAllMeals:boolean = false;
+  let mealIngredients: string[] = [];
+  let availableIngs: boolean = true;
+  let preparedAllMeals: boolean = false;
   let producing: boolean = false;
-  let availableDelivery
-  let availableDeliveryIndex
   const [startTime, setStartTime] = useState(0);
-  const slot = useSelector((state: RootState) => { return state.slotsSlice[slotNumber] })
-  const emptySlot = !slot.id
 
-  const deliveriesState = useSelector((state: RootState) => state.deliveriesSlice);
-  const deliveriesStatesArray = buildDeliveriesArray(deliveriesState, deliveriesNumber)
+  const slot = useSelector((state: RootState) => state.slotsSlice[slotNumber]);
+  const deliveriesState = useSelector(
+    (state: RootState) => state.deliveriesSlice
+  );
+  const deliveriesStatesArray = buildDeliveriesArray(
+    deliveriesState,
+    deliveriesNumber
+  );
+  const emptySlot = !slot.id;
 
   for (let i = 0; i < deliveriesNumber; i++) {
     if (JSON.stringify(deliveriesStatesArray[i]) == "{}") {
@@ -58,20 +61,23 @@ const SlotCard: React.FC<{
       meal = meals[0];
       for (let i in mealsData) {
         if (mealsData[i].mealName == meal) {
-          mealIngs = mealsData[i].ingredients;
+          mealIngredients = mealsData[i].ingredients;
           imageUrl = mealsData[i].imageUrl;
         }
       }
-      mealIngs.map((ing) => ingsData.map((ingData) => {
-        ing == ingData.ing && ingredients.push(ingData.ing);
-        if (ing == ingData.ing && ingData.amount == 0) {
-          availableIngs = false}
-      }))
 
-      showIngs = mealIngs.join(" ");
+      mealIngredients.map((ing) =>
+        ingsData.map((ingData) => {
+          ing == ingData.ing && ingredients.push(ingData.ing);
+          if (ing == ingData.ing && ingData.amount == 0) {
+            availableIngs = false;
+          }
+        })
+      );
 
+      showIngs = mealIngredients.join(" ");
 
-      mealIngs.map((ing: string) => {
+      mealIngredients.map((ing: string) => {
         estTime += ingsData.find((o) => o.ing === ing)!.prepTime;
       });
       estTime -= time - startTime;
@@ -82,18 +88,25 @@ const SlotCard: React.FC<{
     if (estTime === 0) {
       meals = meals.slice(1);
       dispatch(
-      slotsActions.addToSlot({
-        slot: slotNumber,
-        customer: { ...slot, order: meals },
-      })
+        slotsActions.addToSlot({
+          slot: slotNumber,
+          customer: { ...slot, order: meals },
+        })
       );
     }
   }
 
-  !availableIngs && time == startTime + 5 && dispatch(slotsActions.addToSlot({slot: slotNumber,
-    customer:{ ...slot, order: slot.order.slice(1) }}));
+  !availableIngs &&
+    time == startTime + 5 &&
+    dispatch(
+      slotsActions.addToSlot({
+        slot: slotNumber,
+        customer: { ...slot, order: slot.order.slice(1) },
+      })
+    );
 
-  const finishedProducingMeal: boolean = !emptySlot && producing && preparedAllMeals && estTime === 0;
+  const finishedProducingMeal: boolean =
+    !emptySlot && producing && preparedAllMeals && estTime === 0;
   if (finishedProducingMeal && availableDelivery) {
     producing = false;
     dispatch(
@@ -104,33 +117,39 @@ const SlotCard: React.FC<{
     );
     dispatch(slotsActions.emptySlot({ slot: slotNumber }));
   }
+  const slotClass = availableIngs? !slot.vip ? !emptySlot? "slot producing-slot": "slot" :  "slot vip-slot"  : "slot canceled-slot"
+
   return inUse ? (
-    <div className={"slot"}>
-      <div className={"slot_image_container"}>
-        {emptySlot ? (
-          "Empty Slot"
-        ) : (
-          <img src={imageUrl} alt="Preparing!" className={"slot_image"} />
-        )}
-      </div>
-      <div className={"slot_details"}>
-        <span className={"title"}>{SLOT_TEXT.ORDER_ID_TITLE}</span>
-        {slot.id} <br />
-        <span className={"title"}>{SLOT_TEXT.PRODUICONG_TITLE}</span>
-        {meal} <br />
-        <span className={"title"}>{SLOT_TEXT.EST_TIME_TITLE}</span>{" "}
-        {estTime > 0 && `${estTime} Seconds`}
-      </div>
-      <div className={"slot_status"}>
-        <div className={"slot_status_text"}>
-          {SLOT_TEXT.PRODUCTION_STATUS_TITLE}
+      <div className={slotClass}>
+        <div className={"slot_image_container"}>
+          {emptySlot ? (
+              "Empty Slot"
+          ) : (
+              <img src={imageUrl} alt="Preparing!" className={"slot_image"} />
+          )}
         </div>
-        <div className={"slot_status_ings"}>{showIngs}</div>
+        <div className={"slot_details"}>
+          <span className={"title"}>Order ID: </span>
+          {slot.id} <br />
+          <span className={"title"}>Producing: </span>
+          {meal} <br />
+          <span className={"title"}>Estimated Time: </span>{" "}
+          {estTime > 0 && availableIngs && `${estTime} Seconds`}
+        </div>
+        {availableIngs?
+            <div className={"slot_status"}>
+              {slot.vip && <div className={"vip-customer"}>&#11088; VIP &#11088;</div> }
+              <div className={"slot_status_text"}>Production Status:</div>
+              <div className={"slot_status_ings"}>{showIngs}</div>
+            </div>
+            :
+            <div className={"canceled"}>&#10060; Canceled Meal &#10060;<br/> Out of ingredients!</div>
+        }
       </div>
-    </div>
   ) : (
-    <div className={"slot"}>{SLOT_TEXT.NOT_IN_USE}</div>
+      <div className={"slot"}>Not In Use</div>
   );
 };
+
 
 export default SlotCard;

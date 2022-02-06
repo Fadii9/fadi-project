@@ -1,6 +1,7 @@
 export type customersList = {
   id: string;
   name: string;
+  vip?: boolean;
   order: Product[];
 }[];
 
@@ -17,6 +18,7 @@ const customers: customersList = [
   {
     id: "c1",
     name: "Customer1",
+    vip: true,
     order: [Product.Hamburger, Product.Pizza],
   },
 

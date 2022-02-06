@@ -8,6 +8,7 @@
     justify-content: space-around;
     align-items: center;
     font-size: 2vw;
+
 }
 
 .circle {
@@ -23,8 +24,20 @@
     box-shadow: 0 0 0 0.5rem aliceblue;
 }
 
+@keyframes greenCircle {
+    from {background-color: aliceblue;
+        box-shadow: 0 0 0 0.5rem aliceblue;}
+    to {background-color: #1ea41e;;
+        box-shadow: 0 0 0 0.5rem black;}
+}
 .green {
-    background-color: #6fd108;
+    animation-name: greenCircle;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+.red {
+    background-color: #c1213c;
     box-shadow: 0 0 0 0.5rem black;
 }
 
@@ -33,6 +46,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.queue-button{
+    padding: 1.3rem;
+    margin: 1rem;
 }
 
 @media screen and (max-width:880px) {

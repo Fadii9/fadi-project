@@ -5,7 +5,7 @@ import { CUSTOMERS_QUEUE_TEXT } from "./constants/strings";
 
 interface QueueCardProps {
   key: number;
-  queue: { id: string }[];
+  queue: { id: string, vip?: boolean }[];
   inUse: boolean;
 }
 
@@ -27,6 +27,11 @@ const QueueCard: React.FC<QueueCardProps> = ({ key, queue, inUse }) => {
           }
       >{i === 0 && firstName}</div>)
   }
+
+  circles[circles.length - 1] = <div
+      className={queue.length > 0 ? queue[0].vip? `circle red`: `circle green` : 'circle'}>
+      {firstName}
+  </div>
   return inUse ? (
     <div className={"queue"}>{circles}</div>
   ) : (

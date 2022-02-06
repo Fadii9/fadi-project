@@ -1,17 +1,57 @@
-:root {
-    --slot-text-size: 1.4vw;
-}
-
 .slot {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     background-color: lightslategray;
     height: 30%;
     margin: 0.25rem 1.5rem;
     border: black solid 3px;
     border-radius: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     font-size: 2vw;
+
+}
+
+
+@keyframes producingSlot {
+    from {background-color: lightslategray;}
+    to {background-color: #1ea41e;}
+}
+
+.producing-slot {
+    animation-name: producingSlot;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes vipSlot {
+    from {background-color: lightslategray;}
+    to {background-color: #c1213c;}
+}
+
+.vip-slot {
+    animation-name: vipSlot;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes canceledSlot {
+    from {background-color: lightslategray;}
+    to {background-color: #ed9f1a;}
+}
+
+.canceled-slot{
+    animation-name: canceledSlot;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+}
+.vip-customer {
+    font-size: 4rem;
+}
+
+.canceled {
+    text-align: center;
+    width: 50%;
+    font-size: 3.5rem;
 
 }
 
@@ -44,7 +84,7 @@
     height: 100%;
     width: 27.5%;
     border-right: black solid 3px ;
-    font-size: var(--slot-text-size);
+    font-size: 1.4vw;
     text-align: center;
 
 }

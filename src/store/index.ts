@@ -25,6 +25,7 @@ export interface Customer {
   id: string ;
   name?: string;
   order: string[];
+  vip?: boolean;
   addedTime?: number;
 }
 
