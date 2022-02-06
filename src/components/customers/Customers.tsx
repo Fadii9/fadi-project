@@ -9,6 +9,7 @@ import { CUSTOMERS_QUEUE_TEXT } from "./constants/strings"
 
 import { queuesActions } from "../../store/queues";
 import { customersActions } from "../../store/customers";
+import { buildQueuesArray } from "../utils/functions";
 
 const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
   time,
@@ -20,16 +21,9 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
   const allQueuesState = useSelector((state: RootState) => state.queuesSlice);
   const waitingCustomers = useSelector((state: RootState) => state.customersSlice.customersState);
 
-  const buildQueues = (queuesState: Customer[][]) => {
-    let queuesArray = [];
-    for (let i = 1; i <= queuesNumber; i++) {
-      queuesArray.push(queuesState[i]);
-    }
-    return queuesArray;
-  };
-  const queues = buildQueues(allQueuesState);
-  useEffect(() => {
+  const queues: Customer[][] = buildQueuesArray(allQueuesState, queuesNumber);
 
+  useEffect(() => {
     const availablePlaceInQueue: boolean = !!queues.filter((queue) => queue.length < maximumQueueCapacity);
     const shortestQueue: Customer[] = queues.reduce(function(queue1,queue2) { return queue1.length > queue2.length? queue2 : queue1 });
     const shortestQueueIndex: number = queues.indexOf(shortestQueue) + 1;
@@ -37,7 +31,7 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
     const readyToAddCustomer: boolean = availablePlaceInQueue && time != 0 && time % 2 == 0;
 
     if (readyToAddCustomer) {
-      dispatch(queuesActions.addToQueue({ firstCustomer: waitingCustomers[0] , queue: shortestQueueIndex }))
+      dispatch(queuesActions.addToQueue({ firstCustomer: {...waitingCustomers[0], addedTime: time} , queue: shortestQueueIndex }))
       dispatch(customersActions.takeOrder())
 
     }

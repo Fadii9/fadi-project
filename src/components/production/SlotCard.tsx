@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Customer, RootState } from "../../store/index";
-import { queuesNumber, deliveriesNumber } from "../../data/stationsNumber";
+import { deliveriesNumber } from "../../data/stationsNumber";
 
 import "./SlotCard.css";
 
@@ -11,7 +11,6 @@ import ingsData from "../../data/ingredientsData";
 import { SLOT_TEXT } from "./constants/strings";
 
 import { slotsActions } from "../../store/slots";
-import { queuesActions } from "../../store/queues";
 import { deliveriesActions } from "../../store/deliveries";
 
 const SlotCard: React.FC<{
@@ -28,20 +27,13 @@ const SlotCard: React.FC<{
   const slot = useSelector((state: RootState) => { return state.slotsSlice[slotNumber] })
   const emptySlot = !slot.id
 
-  // const queue: Customer[] = useSelector(
-  //   (state: RootState) => state.queuesSlice[slotNumber]
-  // );
-
-
-
-  const delivery = useSelector(
+   const delivery = useSelector(
     (state: RootState) => state.deliveriesSlice[slotNumber]
   );
 
   useEffect(() => {
     setStartTime(time);
   }, [slot]);
-
 
   if (!emptySlot) {
     const products = slot.order;
