@@ -20,3 +20,13 @@ export const removeFromQueue = (
   returnedState[stateName] = returnedState[stateName].slice(1);
   return returnedState;
 };
+
+export const addVip = (
+    state: Record<string, Customer[]>,
+    action: PayloadAction<{ queue: number; firstCustomer: Customer }>
+) => {
+  const stateName = action.payload.queue;
+  const returnedState: Record<number, Customer[]> = state ;
+  returnedState[stateName].unshift(action.payload.firstCustomer)
+  return returnedState;
+};

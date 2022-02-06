@@ -27,13 +27,18 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
     const availablePlaceInQueue: boolean = !!queues.filter((queue) => queue.length < maximumQueueCapacity);
     const shortestQueue: Customer[] = queues.reduce(function(queue1,queue2) { return queue1.length > queue2.length? queue2 : queue1 });
     const shortestQueueIndex: number = queues.indexOf(shortestQueue) + 1;
-
-    const readyToAddCustomer: boolean = availablePlaceInQueue && time != 0 && time % 2 == 0;
+    const readyToAddCustomer: boolean = time != 0 && availablePlaceInQueue && waitingCustomers.length > 0 && time % 2 == 0
 
     if (readyToAddCustomer) {
-      dispatch(queuesActions.addToQueue({ firstCustomer: {...waitingCustomers[0], addedTime: time} , queue: shortestQueueIndex }))
-      dispatch(customersActions.takeOrder())
+      const firstCustomer = waitingCustomers[0]
 
+      if (firstCustomer.vip) {
+        dispatch(customersActions.takeOrder())
+        dispatch(queuesActions.addVip({ firstCustomer: {...firstCustomer, addedTime: 0} , queue: shortestQueueIndex }))
+      } else {
+        dispatch(customersActions.takeOrder())
+        dispatch(queuesActions.addToQueue({ firstCustomer: {...firstCustomer, addedTime: time} , queue: shortestQueueIndex }))
+      }
     }
   }, [time]);
 

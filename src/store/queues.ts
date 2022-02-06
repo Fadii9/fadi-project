@@ -1,7 +1,7 @@
 import { createSlice, Slice } from "@reduxjs/toolkit";
 import { DELIVERIES_STATE_TEXT } from "./constants/strings";
 import { queuesNumber } from "../data/stationsNumber";
-import { addToQueue, removeFromQueue } from "./reducers/queueReducer";
+import { addToQueue, addVip, removeFromQueue } from "./reducers/queueReducer";
 import { Customer } from "./index";
 import { createInitialQueuesState } from "./utils/functions";
 
@@ -13,6 +13,7 @@ const queuesSlice: Slice = createSlice({
   reducers: {
     addToQueue: addToQueue,
     removeFromQueue: removeFromQueue,
+    addVip: addVip
   },
 });
 
