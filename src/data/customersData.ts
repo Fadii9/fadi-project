@@ -17,7 +17,7 @@ const customers: customersList = [
   {
     id: "c1",
     name: "Customer1",
-    order: [Product.Hamburger],
+    order: [Product.Hamburger, Product.Pizza],
   },
 
   {

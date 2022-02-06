@@ -3,11 +3,9 @@ import { useTimer } from "use-timer";
 
 import "./Restaurant.css";
 
-
 import Delivery from "../../components/delivery/Delivery";
 import Customers from "../../components/customers/Customers";
 import Production from "../../components/production/Production";
-
 
 import {
   queuesNumber,
@@ -26,9 +24,11 @@ const Restaurant: React.FC = () => {
   return (
     <div className={"container"}>
       <div className={"buttons_container"}>
-        <button onClick={start}>{ RESTURANT_BUTTON_TEXT.START }</button>
-        <button onClick={pause}>{ RESTURANT_BUTTON_TEXT.PAUSE }</button>
-        <button onClick={() => window.location.reload()}>{ RESTURANT_BUTTON_TEXT.RESET }</button>
+        <button onClick={start}>{RESTURANT_BUTTON_TEXT.START}</button>
+        <button onClick={pause}>{RESTURANT_BUTTON_TEXT.PAUSE}</button>
+        <button onClick={() => window.location.reload()}>
+          {RESTURANT_BUTTON_TEXT.RESET}
+        </button>
       </div>
       <div className={"container__left"}>
         <Customers time={time} queuesNumber={queuesNumber} />

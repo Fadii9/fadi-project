@@ -1,4 +1,5 @@
-import { Customer, DeliveryState } from "../../store";
+import { useSelector } from "react-redux";
+import { Customer, DeliveryState, RootState } from "../../store";
 
 export const buildQueuesArray = (queuesState: Customer[][], queuesNumber: number) => {
     let queuesArray = [];

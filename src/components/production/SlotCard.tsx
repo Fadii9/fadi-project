@@ -21,11 +21,15 @@ const SlotCard: React.FC<{
   slotNumber: number;
 }> = ({ key, inUse, time, slotNumber }) => {
   const dispatch = useDispatch();
-  let imageUrl, showIngs;
+  let meal, imageUrl, showIngs;
   let estTime = 0;
+  let ingredients: string[] = [];
+  let mealIngs: string[] = [];
+  let availableIngs:boolean = true;
+  let preparedAllMeals:boolean = false;
+  let producing: boolean = false;
   let availableDelivery
   let availableDeliveryIndex
-  let producing: boolean = false;
   const [startTime, setStartTime] = useState(0);
   const slot = useSelector((state: RootState) => { return state.slotsSlice[slotNumber] })
   const emptySlot = !slot.id
@@ -33,7 +37,7 @@ const SlotCard: React.FC<{
   const deliveriesState = useSelector((state: RootState) => state.deliveriesSlice);
   const deliveriesStatesArray = buildDeliveriesArray(deliveriesState, deliveriesNumber)
 
-  for (let i = 0; i <= deliveriesNumber; i++) {
+  for (let i = 0; i < deliveriesNumber; i++) {
     if (JSON.stringify(deliveriesStatesArray[i]) == "{}") {
       availableDelivery = true;
       availableDeliveryIndex = i + 1;
@@ -48,33 +52,48 @@ const SlotCard: React.FC<{
   }, [slot]);
 
   if (!emptySlot) {
-    const products = slot.order;
-
-    const mealsIngs = products.map((meal: string) => {
-      for (let i in mealsData) {
-        if (mealsData[i].mealName === meal) return mealsData[i].ingredients;
-      }
-    });
-
-    const image = products.map((meal: string) => {
-      for (let i in mealsData) {
-        if (mealsData[i].mealName === meal) return mealsData[i];
-      }
-    });
-    imageUrl = image[0]?.imageUrl;
-
-    showIngs = mealsIngs.join(",");
-
-    mealsIngs[0]?.map((ingredient: string) => {
-      estTime += ingsData.find((meal) => meal.ing === ingredient)!.prepTime;
-    });
-
-    estTime -= time - startTime;
-
     producing = true;
+    let meals = slot.order;
+    if (meals.length > 0) {
+      meal = meals[0];
+      for (let i in mealsData) {
+        if (mealsData[i].mealName == meal) {
+          mealIngs = mealsData[i].ingredients;
+          imageUrl = mealsData[i].imageUrl;
+        }
+      }
+      mealIngs.map((ing) => ingsData.map((ingData) => {
+        ing == ingData.ing && ingredients.push(ingData.ing);
+        if (ing == ingData.ing && ingData.amount == 0) {
+          availableIngs = false}
+      }))
+
+      showIngs = mealIngs.join(" ");
+
+
+      mealIngs.map((ing: string) => {
+        estTime += ingsData.find((o) => o.ing === ing)!.prepTime;
+      });
+      estTime -= time - startTime;
+    } else {
+      preparedAllMeals = true;
+    }
+
+    if (estTime === 0) {
+      meals = meals.slice(1);
+      dispatch(
+      slotsActions.addToSlot({
+        slot: slotNumber,
+        customer: { ...slot, order: meals },
+      })
+      );
+    }
   }
 
-  const finishedProducingMeal: boolean = !emptySlot && producing && estTime === 0;
+  !availableIngs && time == startTime + 5 && dispatch(slotsActions.addToSlot({slot: slotNumber,
+    customer:{ ...slot, order: slot.order.slice(1) }}));
+
+  const finishedProducingMeal: boolean = !emptySlot && producing && preparedAllMeals && estTime === 0;
   if (finishedProducingMeal && availableDelivery) {
     producing = false;
     dispatch(
@@ -98,7 +117,7 @@ const SlotCard: React.FC<{
         <span className={"title"}>{SLOT_TEXT.ORDER_ID_TITLE}</span>
         {slot.id} <br />
         <span className={"title"}>{SLOT_TEXT.PRODUICONG_TITLE}</span>
-        {slot.order} <br />
+        {meal} <br />
         <span className={"title"}>{SLOT_TEXT.EST_TIME_TITLE}</span>{" "}
         {estTime > 0 && `${estTime} Seconds`}
       </div>
