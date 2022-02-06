@@ -8,7 +8,7 @@
     justify-content: space-around;
     align-items: center;
     font-size: 2vw;
-
+    /*border: black solid 3px;*/
 }
 
 .circle {
@@ -24,21 +24,19 @@
     box-shadow: 0 0 0 0.5rem aliceblue;
 }
 
-@keyframes greenCircle {
-    from {background-color: aliceblue;
-        box-shadow: 0 0 0 0.5rem aliceblue;}
-    to {background-color: #1ea41e;;
-        box-shadow: 0 0 0 0.5rem black;}
-}
 .green {
-    animation-name: greenCircle;
-    animation-duration: 0.3s;
-    -webkit-animation-fill-mode: forwards;
+    background-color: #6fd108;
+    box-shadow: 0 0 0 0.5rem black;
 }
 
 .red {
     background-color: #c1213c;
     box-shadow: 0 0 0 0.5rem black;
+}
+
+
+.green:hover{
+    cursor: help;
 }
 
 .not_in_use {
@@ -51,6 +49,11 @@
 .queue-button{
     padding: 1.3rem;
     margin: 1rem;
+}
+
+.edit-screen{
+    z-index: 9999;
+    position: absolute;
 }
 
 @media screen and (max-width:880px) {

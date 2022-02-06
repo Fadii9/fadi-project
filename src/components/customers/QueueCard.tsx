@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./QueueCard.css";
 
 import { CUSTOMERS_QUEUE_TEXT } from "./constants/strings";
 import { Customer } from "../../store";
+import { queuesActions } from "../../store/queues";
+import { useDispatch } from "react-redux";
 
 interface QueueCardProps {
-  key: number;
+  QueueNumber: number;
   queue: Customer[];
   inUse: boolean;
 }
 
-const QueueCard: React.FC<QueueCardProps> = ({ key, queue, inUse }) => {
+const QueueCard: React.FC<QueueCardProps> = ({ QueueNumber, queue, inUse }) => {
+  const dispatch = useDispatch();
   let firstInqueue, firstName;
+  const [editing, setEditing] = useState(false);
 
   if (queue.length > 0) {
     firstInqueue = queue[0];
     firstName = firstInqueue.id;
   }
+
+  const toggleEditing = () => {
+    setEditing((prev) => !prev);
+  };
+
+  const RemoveCustomer = () => {
+    dispatch(queuesActions.removeFromQueue({ queue: QueueNumber + 1 }));
+    setEditing((prev) => !prev);
+  };
 
   const circlesCount = 5;
   let circles = [];
@@ -38,15 +51,36 @@ const QueueCard: React.FC<QueueCardProps> = ({ key, queue, inUse }) => {
             : `circle green`
           : "circle"
       }
+      onClick={() => {
+        queue.length > 0 && toggleEditing();
+      }}
     >
       {firstName}
     </div>
-  )
+  );
 
-  return inUse ? (
+  return !editing ? (
     <div className={"queue"}>{circles}</div>
   ) : (
-    <div className={"queue"}>{CUSTOMERS_QUEUE_TEXT.NOT_IN_USE}</div>
+    <div className={"queue"}>
+      <button
+        className={"queue-button"}
+        onClick={() => {
+          toggleEditing();
+        }}
+      >
+        Back
+      </button>
+
+      <button
+        onClick={() => {
+          RemoveCustomer();
+        }}
+        className={"queue-button"}
+      >
+        Remove Customer
+      </button>
+    </div>
   );
 };
 

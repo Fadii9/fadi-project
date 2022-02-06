@@ -48,7 +48,7 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
   );
 
   const queuesComponents = queuesCountArray.map((number) => (
-    <QueueCard key={number} inUse={true} queue={queues[number]} />
+    <QueueCard key={number} QueueNumber={number} inUse={true} queue={queues[number]} />
   ));
 
   return (
