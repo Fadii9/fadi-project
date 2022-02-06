@@ -30,14 +30,14 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
   const queues = buildQueues(allQueuesState);
   useEffect(() => {
 
-    const availablePlaceInQueue = !!queues.filter((queue) => queue.length < maximumQueueCapacity);
-    const shortestQueue = queues.reduce(function(p,c) {return p.length>c.length?c:p;});
-    const shortestQueueIndex = queues.indexOf(shortestQueue) + 1;
+    const availablePlaceInQueue: boolean = !!queues.filter((queue) => queue.length < maximumQueueCapacity);
+    const shortestQueue: Customer[] = queues.reduce(function(queue1,queue2) { return queue1.length > queue2.length? queue2 : queue1 });
+    const shortestQueueIndex: number = queues.indexOf(shortestQueue) + 1;
 
     const readyToAddCustomer: boolean = availablePlaceInQueue && time != 0 && time % 2 == 0;
 
     if (readyToAddCustomer) {
-      dispatch(queuesActions.addToQueue({ firstCustomer: waitingCustomers[0] , queue: `${shortestQueueIndex}`}))
+      dispatch(queuesActions.addToQueue({ firstCustomer: waitingCustomers[0] , queue: shortestQueueIndex }))
       dispatch(customersActions.takeOrder())
 
     }
@@ -48,14 +48,14 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
     (_, i) => i
   );
 
-  const queueComponent = queuesCountArray.map((number) => (
+  const queuesComponents = queuesCountArray.map((number) => (
     <QueueCard key={number} inUse={true} queue={queues[number]} />
   ));
 
   return (
     <div className={"customers_status"}>
       <div className={"customers_text"}>{ CUSTOMERS_QUEUE_TEXT.TITLE }</div>
-      <div className={"queues_container"}>{queueComponent}</div>
+      <div className={"queues_container"}>{queuesComponents}</div>
     </div>
   );
 };

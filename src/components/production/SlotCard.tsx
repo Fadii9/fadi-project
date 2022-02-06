@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Customer, RootState } from "../../store/index";
+import { queuesNumber, deliveriesNumber } from "../../data/stationsNumber";
 
 import "./SlotCard.css";
 
@@ -24,14 +25,14 @@ const SlotCard: React.FC<{
   let estTime = 0;
   let producing: boolean = false;
   const [startTime, setStartTime] = useState(0);
-  const slot = useSelector((state: RootState) => {
-    return state.slotsSlice[slotNumber];
-  });
-  const emptySlot = !slot.id;
+  const slot = useSelector((state: RootState) => { return state.slotsSlice[slotNumber] })
+  const emptySlot = !slot.id
 
-  const queue: Customer[] = useSelector(
-    (state: RootState) => state.queuesSlice[slotNumber]
-  );
+  // const queue: Customer[] = useSelector(
+  //   (state: RootState) => state.queuesSlice[slotNumber]
+  // );
+
+
 
   const delivery = useSelector(
     (state: RootState) => state.deliveriesSlice[slotNumber]
@@ -41,16 +42,6 @@ const SlotCard: React.FC<{
     setStartTime(time);
   }, [slot]);
 
-  useEffect(() => {
-    const readyToTakeCustomerOrder: boolean =
-      !!queue.length && emptySlot && time % 2 === 0;
-    if (readyToTakeCustomerOrder) {
-      dispatch(
-        slotsActions.addToSlot({ slot: slotNumber, customer: queue[0] })
-      );
-      dispatch(queuesActions.removeFromQueue({ queue: slotNumber }));
-    }
-  }, [queue]);
 
   if (!emptySlot) {
     const products = slot.order;
