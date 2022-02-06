@@ -12,6 +12,7 @@ import { SLOT_TEXT } from "./constants/strings";
 
 import { slotsActions } from "../../store/slots";
 import { deliveriesActions } from "../../store/deliveries";
+import { buildDeliveriesArray } from "../utils/functions";
 
 const SlotCard: React.FC<{
   key: number;
@@ -22,14 +23,25 @@ const SlotCard: React.FC<{
   const dispatch = useDispatch();
   let imageUrl, showIngs;
   let estTime = 0;
+  let availableDelivery
+  let availableDeliveryIndex
   let producing: boolean = false;
   const [startTime, setStartTime] = useState(0);
   const slot = useSelector((state: RootState) => { return state.slotsSlice[slotNumber] })
   const emptySlot = !slot.id
 
-   const delivery = useSelector(
-    (state: RootState) => state.deliveriesSlice[slotNumber]
-  );
+  const deliveriesState = useSelector((state: RootState) => state.deliveriesSlice);
+  const deliveriesStatesArray = buildDeliveriesArray(deliveriesState, deliveriesNumber)
+
+  for (let i = 0; i <= deliveriesNumber; i++) {
+    if (JSON.stringify(deliveriesStatesArray[i]) == "{}") {
+      availableDelivery = true;
+      availableDeliveryIndex = i + 1;
+      break;
+    } else {
+      availableDelivery = false;
+    }
+  }
 
   useEffect(() => {
     setStartTime(time);
@@ -62,13 +74,12 @@ const SlotCard: React.FC<{
     producing = true;
   }
 
-  const finishedProducingMeal: boolean =
-    !emptySlot && producing && estTime === 0;
-  if (finishedProducingMeal) {
+  const finishedProducingMeal: boolean = !emptySlot && producing && estTime === 0;
+  if (finishedProducingMeal && availableDelivery) {
     producing = false;
     dispatch(
       deliveriesActions.addToDelivery({
-        delivery: slotNumber,
+        delivery: availableDeliveryIndex,
         customer: slot,
       })
     );

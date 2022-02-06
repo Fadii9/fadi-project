@@ -12,8 +12,8 @@ export const createInitialSlotsState = (statesNumber: number) => {
     return initState
 }
 
-export const createInitialDeliverisState = (statesNumber: number) => {
-    const initState: Record<number, DeliveryState> = {};
-    for (let i = 1; i <= statesNumber; i++) {initState[i] = {};}
+export const createInitialDeliverisState = (deliveriesNumber: number) => {
+    let initState: Record<number, DeliveryState> = {};
+    for (let i = 1; i <= deliveriesNumber; i++) {initState[i] = {};}
     return initState
 }

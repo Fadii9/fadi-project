@@ -3,7 +3,6 @@ import { deliveriesNumber } from "../data/stationsNumber";
 import { DELIVERIES_STATE_TEXT } from "./constants/strings"
 import { createInitialDeliverisState } from "./utils/functions";
 import { addToDelivery, removeFromDelivery } from "./reducers/deliveriesReducer";
-import { Customer } from "./index"
 
 let initState = createInitialDeliverisState(deliveriesNumber)
 
