@@ -16,6 +16,7 @@ const QueueCard: React.FC<QueueCardProps> = ({ QueueNumber, queue, inUse }) => {
   const dispatch = useDispatch();
   let firstInqueue, firstName;
   const [editing, setEditing] = useState(false);
+  const [isCanceled, setIsCanceled] = useState(false)
 
   if (queue.length > 0) {
     firstInqueue = queue[0];
@@ -26,8 +27,14 @@ const QueueCard: React.FC<QueueCardProps> = ({ QueueNumber, queue, inUse }) => {
     setEditing((prev) => !prev);
   };
 
-  const RemoveCustomer = () => {
+  const removeCustomer = () => {
     dispatch(queuesActions.removeFromQueue({ queue: QueueNumber + 1 }));
+    setEditing((prev) => !prev);
+  };
+
+  const cancelQueue = () => {
+    dispatch(queuesActions.cancelQueue({ queue: QueueNumber + 1 }));
+    setIsCanceled((prev) => !prev);
     setEditing((prev) => !prev);
   };
 
@@ -59,29 +66,37 @@ const QueueCard: React.FC<QueueCardProps> = ({ QueueNumber, queue, inUse }) => {
     </div>
   );
 
-  return !editing ? (
-    <div className={"queue"}>{circles}</div>
-  ) : (
-    <div className={"queue"}>
-      <button
-        className={"queue-button"}
-        onClick={() => {
-          toggleEditing();
-        }}
-      >
-        Back
-      </button>
 
-      <button
-        onClick={() => {
-          RemoveCustomer();
-        }}
-        className={"queue-button"}
-      >
-        Remove Customer
-      </button>
-    </div>
-  );
+    return !isCanceled? (!editing ? (    <div className={"queue"}>{circles}</div>
+    ) : (
+        <div className={"queue"}>
+            <button
+                className={"queue-button"}
+                onClick={() => {
+                    toggleEditing();
+                }}
+            >
+                Back
+            </button>
+            <button
+                className={"queue-button"}
+                onClick={() => {
+                    cancelQueue();
+                }}
+            >
+                Cancel Queue
+            </button>
+
+            <button
+                onClick={() => {
+                    removeCustomer();
+                }}
+                className={"queue-button"}
+            >
+                Remove Customer
+            </button>
+        </div>
+    )): <div className={"queue canceled"}>Not in use</div>
 };
 
 export default QueueCard;
