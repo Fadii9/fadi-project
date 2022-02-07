@@ -1,7 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { DeliveryState } from "../index";
 
-type DeliveriesSlice = Record<number, DeliveryState>;
+export type DeliveriesState = Record<number, DeliveryState>;
 type AddToDeliveryAction = PayloadAction<{
     delivery: number;
     customer: DeliveryState;
@@ -9,7 +9,7 @@ type AddToDeliveryAction = PayloadAction<{
 type RemoveFromDeliveryAction = PayloadAction<{ delivery: number }>;
 
 export const addToDelivery = (
-  state: DeliveriesSlice,
+  state: DeliveriesState,
   action: AddToDeliveryAction
 ) => {
   const stateName = action.payload.delivery;
@@ -19,11 +19,11 @@ export const addToDelivery = (
 };
 
 export const removeFromDelivery = (
-  state: DeliveriesSlice,
+  state: DeliveriesState,
   action: RemoveFromDeliveryAction
 ) => {
   const stateName = action.payload.delivery;
-  const returnedState: DeliveriesSlice = { ...state };
+  const returnedState: DeliveriesState = { ...state };
   returnedState[stateName] = {};
   return returnedState;
 };

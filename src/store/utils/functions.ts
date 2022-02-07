@@ -1,29 +1,33 @@
 import {Customer, DeliveryState, SlotState } from "..";
 import { queuesNumber } from "../../data/stationsNumber";
+import { DeliveriesState } from "../reducers/deliveriesReducer";
+import { QueuesState } from "../reducers/queueReducer";
+import { SlotsState } from "../reducers/slotsReducer";
 
 export const createInitialQueuesState = (queuesNumber: number) => {
-    const initState: Record<number, Customer[]> = {};
+    const initState: QueuesState = {};
     for (let i = 1; i <= queuesNumber; i++) initState[i] = [];
     return initState
 }
 
 export const createInitialSlotsState = (statesNumber: number) => {
-    const initState: Record<number, SlotState> = {};
+    const initState: SlotsState = {};
     for (let i = 1; i <= statesNumber; i++) initState[i] = {}
     return initState
 }
 
 export const createInitialDeliverisState = (deliveriesNumber: number) => {
-    let initState: Record<number, DeliveryState> = {};
+    let initState: DeliveriesState = {};
     for (let i = 1; i <= deliveriesNumber; i++) initState[i] = {}
     return initState
 }
 
-export const cancelQueueFunction = (state: Record<number, Customer[]>, queueNumber: number) => {
-    let returnedState = state;
-    let customersInCanceledQueue: Customer[] = state[queueNumber];
+export const cancelQueueFunction = (state: QueuesState, queueNumber: number) => {
+    const returnedState = state;
+    const customersInCanceledQueue: Customer[] = state[queueNumber];
+    const temporaryQueues: Customer[][] = []
     delete returnedState[queueNumber]
-    let temporaryQueues: Customer[][] = []
+
     for (let i = 0; i < queuesNumber - 1; i++) temporaryQueues[i] = []
     for (let i = 0 ; i < customersInCanceledQueue.length ; i++){
         const k = i < temporaryQueues.length? i : i - temporaryQueues.length
