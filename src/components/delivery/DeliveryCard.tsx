@@ -4,40 +4,50 @@ import { RootState } from "../../store/index";
 
 import "./DeliveryCard.css";
 
-import { delivery1Actions } from "../../store/delivery1";
+import { DELIVERIES_CARD_TEXT } from "./constants/strings";
+import { deliveriesActions } from "../../store/deliveries";
 
 const DeliveryCard: React.FC<{
-  slotNumber: number;
+  key: number;
+  deliveryNumber: number;
   inUse: boolean;
   time: number;
-}> = ({ slotNumber, inUse, time }) => {
+}> = ({ key, deliveryNumber, inUse, time }) => {
   const dispatch = useDispatch();
-  const delivery1 = useSelector(
-    (state: RootState) => state.delivery1Slice.delivery1State
+  const delivery = useSelector(
+    (state: RootState) => state.deliveriesSlice[deliveryNumber]
   );
-  const emptyDelivery = JSON.stringify(delivery1) === "{}";
+  const emptyDelivery = !delivery.id;
   const [startTime, setStartTime] = useState(0);
   const [isUsed, setIsUsed] = useState(false);
   let deliveryTime = 0;
 
   useEffect(() => {
     setStartTime(time);
-  }, [delivery1]);
+  }, [delivery]);
 
-  if (!emptyDelivery && deliveryTime == 0) {
+  if (!emptyDelivery && deliveryTime === 0) {
     deliveryTime = 5;
   }
 
-  if (deliveryTime != 0) {
+  if (deliveryTime !== 0) {
     deliveryTime -= time - startTime;
+  }
+
+  if (deliveryTime === 0 && !emptyDelivery) {
+    const deliveryStateName = deliveryNumber.toString();
+    dispatch(deliveriesActions.emptyDelivery({ delivery: deliveryStateName }));
   }
 
   return inUse ? (
     <div className={"delivery"}>
-      <div className={"delivery_text"}>Delivery #{slotNumber}</div>
+      <div className={"delivery_text"}>
+        {DELIVERIES_CARD_TEXT.CARD_TITLE}#{deliveryNumber}
+      </div>
       <div className={"delivery_update"}>
-        Order ID: {delivery1.id} <br />
-        Delivery Time:
+        {DELIVERIES_CARD_TEXT.ORDER_ID_TITLE}
+        {delivery.id} <br />
+        {DELIVERIES_CARD_TEXT.DELIVERY_TIME_TITLE}
       </div>
       <div className={"delivery_time"}>
         {deliveryTime && `${deliveryTime} seconds`}
@@ -45,7 +55,9 @@ const DeliveryCard: React.FC<{
       <div
         className={emptyDelivery ? "delivery_screen empty" : "delivery_screen"}
       >
-        {emptyDelivery ? "Waiting..." : "Delivering"}
+        {emptyDelivery
+          ? DELIVERIES_CARD_TEXT.WAITING_STATUS
+          : DELIVERIES_CARD_TEXT.DELIVERING_STATUS}
       </div>
     </div>
   ) : (

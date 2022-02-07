@@ -1,22 +1,37 @@
-import React from 'react';
+import React from "react";
 import "./QueueCard.css";
 
+import { CUSTOMERS_QUEUE_TEXT } from "./constants/strings";
 
-const QueueCard: React.FC<{queue : [], inUse :boolean}> = ({ queue, inUse }) => {
-
-    return (
-        inUse ?
-        <div className={"queue"}>
-            <div className={queue.length > 4 ? `circle green` : "circle"}></div>
-            <div className={queue.length > 3 ? `circle green` : "circle"}></div>
-            <div className={queue.length > 2 ? `circle green` : "circle"}></div>
-            <div className={queue.length > 1 ? `circle green` : "circle"}></div>
-            <div className={queue.length > 0 ? `circle green` : "circle"}></div>
-        </div> :
-            <div className={"queue"}>
-                Not In Use
-            </div>
-    )
+interface QueueCardProps {
+  key: number;
+  queue: { id: string }[];
+  inUse: boolean;
 }
+
+const QueueCard: React.FC<QueueCardProps> = ({ key, queue, inUse }) => {
+  let firstInqueue, firstName;
+
+  if (queue.length > 0) {
+    firstInqueue = queue[0];
+    firstName = firstInqueue.id;
+  }
+
+  const circlesCount = 5;
+  let circles = [];
+
+  for (let i = (circlesCount-1) ; i >= 0 ; i--){
+      circles.push(
+      <div className={queue.length > i ? `circle green` : `circle`}>
+          {i === 0 && firstName}
+      </div>)
+  }
+
+  return inUse ? (
+    <div className={"queue"}>{circles}</div>
+  ) : (
+    <div className={"queue"}>{CUSTOMERS_QUEUE_TEXT.NOT_IN_USE}</div>
+  );
+};
 
 export default QueueCard;

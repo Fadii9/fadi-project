@@ -1,130 +1,256 @@
 export type customersList = {
-    id: string;
-    name: string;
-    order: string[]
-}[]
+  id: string;
+  name: string;
+  order: Product[];
+}[];
+
+export enum Product {
+  Hamburger = "Hamburger",
+  Salad = "Salad",
+  Pizza = "Pizza" ,
+  Steak = "Steak",
+  Spaghetti = "Spaghetti",
+  Baguette = "Baguette"
+}
 
 const customers: customersList = [
-    {
-        id: "c1",
-        name: "Customer1",
-        order: ["Hamburger"]
-    },
+  {
+    id: "c1",
+    name: "Customer1",
+    order: [Product.Hamburger],
+  },
 
-    {
-        id: "c2",
-        name: "Customer2",
-        order: ["Salad"]
-    },
+  {
+    id: "c2",
+    name: "Customer2",
+    order: [Product.Salad],
+  },
 
-    {
-        id: "c3",
-        name: "Customer3",
-        order: ["Steak"]
-    },
+  {
+    id: "c3",
+    name: "Customer3",
+    order: [Product.Steak],
+  },
 
-    {
-        id: "c4",
-        name: "Customer4",
-        order: ["Pizza"]
-    },
+  {
+    id: "c4",
+    name: "Customer4",
+    order: [Product.Pizza],
+  },
 
-    {
-        id: "c5",
-        name: "Customer5",
-        order: ["Spaghetti", "Pizza"]
-    },
+  {
+    id: "c5",
+    name: "Customer5",
+    order: [Product.Spaghetti],
+  },
 
-    {
-        id: "c6",
-        name: "Customer6",
-        order: ["Salad", "Pizza"]
-    },
+  {
+    id: "c6",
+    name: "Customer6",
+    order: [Product.Salad],
+  },
 
-    {
-        id: "c7",
-        name: "Customer7",
-        order: ["Spaghetti", "Pizza", "Hamburger"]
-    },
+  {
+    id: "c7",
+    name: "Customer7",
+    order: [Product.Hamburger],
+  },
 
-    {
-        id: "c8",
-        name: "Customer8",
-        order: ["Spaghetti", "Pizza", "Steak"]
-    },
+  {
+    id: "c8",
+    name: "Customer8",
+    order: [Product.Steak],
+  },
 
-    {
-        id: "c9",
-        name: "Customer9",
-        order: ["Baguette"]
-    },
+  {
+    id: "c9",
+    name: "Customer9",
+    order: [Product.Baguette],
+  },
 
-    {
-        id: "c10",
-        name: "Customer10",
-        order: ["Spaghetti", "Salad"]
-    },
-    {
-        id: "c11",
-        name: "Customer11",
-        order: ["Hamburger", "Salad"]
-    },
+  {
+    id: "c10",
+    name: "Customer10",
+    order: [Product.Salad],
+  },
+  {
+    id: "c11",
+    name: "Customer11",
+    order: [Product.Salad],
+  },
 
-    {
-        id: "c12",
-        name: "Customer12",
-        order: ["Salad"]
-    },
+  {
+    id: "c12",
+    name: "Customer12",
+    order: [Product.Hamburger],
+  },
 
-    {
-        id: "c13",
-        name: "Customer13",
-        order: ["Steak"]
-    },
+  {
+    id: "c13",
+    name: "Customer13",
+    order: [Product.Pizza],
+  },
 
-    {
-        id: "c14",
-        name: "Customer14",
-        order: ["Pizza", "Hamburger"]
-    },
+  {
+    id: "c14",
+    name: "Customer14",
+    order: [Product.Hamburger],
+  },
 
-    {
-        id: "c15",
-        name: "Customer15",
-        order: ["Spaghetti", "Pizza"]
-    },
+  {
+    id: "c15",
+    name: "Customer15",
+    order: [Product.Spaghetti],
+  },
 
-    {
-        id: "c16",
-        name: "Customer16",
-        order: ["Salad", "Pizza"]
-    },
+  {
+    id: "c16",
+    name: "Customer16",
+    order: [Product.Pizza],
+  },
 
-    {
-        id: "c17",
-        name: "Customer17",
-        order: ["Spaghetti", "Pizza", "Hamburger"]
-    },
+  {
+    id: "c17",
+    name: "Customer17",
+    order: [Product.Hamburger],
+  },
 
-    {
-        id: "c18",
-        name: "Customer18",
-        order: ["Spaghetti", "Pizza", "Steak"]
-    },
+  {
+    id: "c18",
+    name: "Customer18",
+    order: [Product.Spaghetti],
+  },
 
-    {
-        id: "c19",
-        name: "Customer19",
-        order: ["Baguette"]
-    },
+  {
+    id: "c19",
+    name: "Customer19",
+    order: [Product.Baguette],
+  },
 
-    {
-        id: "c20",
-        name: "Customer20",
-        order: ["Spaghetti", "Salad"]
-    },
+  {
+    id: "c20",
+    name: "Customer20",
+    order: [Product.Spaghetti],
+  },
 
+  {
+    id: "c21",
+    name: "Customer21",
+    order: [Product.Hamburger],
+  },
+
+  {
+    id: "c22",
+    name: "Customer22",
+    order: [Product.Salad],
+  },
+
+  {
+    id: "c23",
+    name: "Customer23",
+    order: [Product.Steak],
+  },
+
+  {
+    id: "c24",
+    name: "Customer24",
+    order: [Product.Pizza],
+  },
+
+  {
+    id: "c25",
+    name: "Customer25",
+    order: [Product.Spaghetti],
+  },
+
+  {
+    id: "c26",
+    name: "Customer26",
+    order: [Product.Salad],
+  },
+
+  {
+    id: "c27",
+    name: "Customer27",
+    order: [Product.Hamburger],
+  },
+
+  {
+    id: "c28",
+    name: "Customer28",
+    order: [Product.Steak],
+  },
+
+  {
+    id: "c29",
+    name: "Customer29",
+    order: [Product.Baguette],
+  },
+
+  {
+    id: "c30",
+    name: "Customer30",
+    order: [Product.Salad],
+  },
+  {
+    id: "c31",
+    name: "Customer31",
+    order: [Product.Salad],
+  },
+
+  {
+    id: "c32",
+    name: "Customer32",
+    order: [Product.Hamburger],
+  },
+
+  {
+    id: "c33",
+    name: "Customer33",
+    order: [Product.Pizza],
+  },
+
+  {
+    id: "c34",
+    name: "Customer34",
+    order: [Product.Hamburger],
+  },
+
+  {
+    id: "c35",
+    name: "Customer35",
+    order: [Product.Spaghetti],
+  },
+
+  {
+    id: "c36",
+    name: "Customer36",
+    order: [Product.Pizza],
+  },
+
+  {
+    id: "c37",
+    name: "Customer37",
+    order: [Product.Hamburger],
+  },
+
+  {
+    id: "c38",
+    name: "Customer38",
+    order: [Product.Spaghetti],
+  },
+
+  {
+    id: "c39",
+    name: "Customer39",
+    order: [Product.Baguette],
+  },
+
+  {
+    id: "c40",
+    name: "Customer40",
+    order: [Product.Spaghetti],
+  },
 ];
 
 export default customers;
-
