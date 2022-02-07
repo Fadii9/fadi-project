@@ -9,21 +9,21 @@ type AddToDeliveryAction = PayloadAction<{
 type RemoveFromDeliveryAction = PayloadAction<{ delivery: number }>;
 
 export const addToDelivery = (
-    state: DeliveriesSlice,
-    action: AddToDeliveryAction
+  state: DeliveriesSlice,
+  action: AddToDeliveryAction
 ) => {
-    const stateName = action.payload.delivery;
-    const returnedState = { ...state };
-    returnedState[stateName] = action.payload.customer;
-    return returnedState;
+  const stateName = action.payload.delivery;
+  const returnedState = { ...state };
+  returnedState[stateName] = action.payload.customer;
+  return returnedState;
 };
 
 export const removeFromDelivery = (
-    state: DeliveriesSlice,
-    action: RemoveFromDeliveryAction
+  state: DeliveriesSlice,
+  action: RemoveFromDeliveryAction
 ) => {
-    const stateName = action.payload.delivery;
-    const returnedState: DeliveriesSlice = { ...state };
-    returnedState[stateName] = {};
-    return returnedState;
+  const stateName = action.payload.delivery;
+  const returnedState: DeliveriesSlice = { ...state };
+  returnedState[stateName] = {};
+  return returnedState;
 };

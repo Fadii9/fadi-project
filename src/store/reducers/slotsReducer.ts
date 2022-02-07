@@ -1,11 +1,11 @@
 import { CaseReducer, PayloadAction } from "@reduxjs/toolkit";
-import { SlotState } from "../index";
+import { Customer, DeliveryState, SlotState } from "../index";
 
 type SlotsSlice = Record<number, SlotState>;
 type AddtoSlot = CaseReducer<
-  Record<number, SlotState>,
-  PayloadAction<{ slot: number; customer: SlotState }>
->
+    Record<number, SlotState>,
+    PayloadAction<{ slot: number; customer: SlotState }>
+    >
 type AddtoSlotAction = PayloadAction<{ slot: number; customer: SlotState }>
 type EmptySlotAction = PayloadAction<{ slot: number }>
 
@@ -20,8 +20,8 @@ export const addToSlot: AddtoSlot = (
 };
 
 export const emptySlot = (
-  state: SlotsSlice,
-  action: EmptySlotAction
+    state: SlotsSlice,
+    action: EmptySlotAction
 ) => {
   const stateName = action.payload.slot;
   const returnedState: SlotsSlice = { ...state };

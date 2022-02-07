@@ -10,14 +10,13 @@ type AddToQueueAction = PayloadAction<{
 type AddVipAction = PayloadAction<{ queue: number; firstCustomer: Customer }>;
 type RemoveOrCancelQueueAction = PayloadAction<{ queue: number }>;
 
-
-export const addToQueue = (
-  state: QueuesSlice,
-  action: AddToQueueAction
-) => {
+export const addToQueue = (state: QueuesSlice, action: AddToQueueAction) => {
   const stateName = action.payload.queue;
-  const returnedState: QueuesSlice = state ;
-  returnedState[stateName] = [ ...returnedState[stateName], action.payload.firstCustomer ];
+  const returnedState: QueuesSlice = state;
+  returnedState[stateName] = [
+    ...returnedState[stateName],
+    action.payload.firstCustomer,
+  ];
   return returnedState;
 };
 
@@ -26,7 +25,7 @@ export const removeFromQueue = (
   action: RemoveOrCancelQueueAction
 ) => {
   const stateName = action.payload.queue;
-  const returnedState: QueuesSlice = state ;
+  const returnedState: QueuesSlice = state;
   returnedState[stateName] = returnedState[stateName].slice(1);
   return returnedState;
 };
