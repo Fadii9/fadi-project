@@ -1,5 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import {Customer, DeliveryState } from "../index";
+import { DeliveryState } from "../index";
 
 type DeliveriesSlice = Record<number, DeliveryState>;
 type AddToDeliveryAction = PayloadAction<{

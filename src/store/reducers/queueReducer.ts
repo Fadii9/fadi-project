@@ -1,6 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { Customer } from "../index";
-import { queuesNumber } from "../../data/stationsNumber";
 import { cancelQueueFunction } from "../utils/functions";
 
 type QueuesSlice = Record<number, Customer[]>;
@@ -46,9 +45,6 @@ export const cancelQueue = (
     state: QueuesSlice,
     action: RemoveOrCancelQueueAction
 ) => {
-  // const returnedState = cancelQueueFunction(state, action.payload.queue)
-  const stateName = action.payload.queue;
-  const returnedState: QueuesSlice = state ;
-  returnedState[stateName] = []
+  const returnedState = cancelQueueFunction(state, action.payload.queue)
   return returnedState;
 };

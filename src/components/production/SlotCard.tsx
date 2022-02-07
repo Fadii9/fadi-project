@@ -8,8 +8,6 @@ import "./SlotCard.css";
 import mealsData from "../../data/mealsData";
 import ingsData from "../../data/ingredientsData";
 
-import { SLOT_TEXT } from "./constants/strings";
-
 import { slotsActions } from "../../store/slots";
 import { deliveriesActions } from "../../store/deliveries";
 import { buildDeliveriesArray } from "../utils/functions";
@@ -41,7 +39,7 @@ const SlotCard: React.FC<{
   const emptySlot = !slot.id;
 
   for (let i = 0; i < deliveriesNumber; i++) {
-    if (JSON.stringify(deliveriesStatesArray[i]) == "{}") {
+    if (JSON.stringify(deliveriesStatesArray[i]) === "{}") {
       availableDelivery = true;
       availableDeliveryIndex = i + 1;
       break;
@@ -60,7 +58,7 @@ const SlotCard: React.FC<{
     if (meals.length > 0) {
       meal = meals[0];
       for (let i in mealsData) {
-        if (mealsData[i].mealName == meal) {
+        if (mealsData[i].mealName === meal) {
           mealIngredients = mealsData[i].ingredients;
           imageUrl = mealsData[i].imageUrl;
         }
@@ -68,8 +66,8 @@ const SlotCard: React.FC<{
 
       mealIngredients.map((ing) =>
         ingsData.map((ingData) => {
-          ing == ingData.ing && ingredients.push(ingData.ing);
-          if (ing == ingData.ing && ingData.amount == 0) {
+          ing === ingData.ing && ingredients.push(ingData.ing);
+          if (ing === ingData.ing && ingData.amount === 0) {
             availableIngs = false;
           }
         })
@@ -97,7 +95,7 @@ const SlotCard: React.FC<{
   }
 
   !availableIngs &&
-    time == startTime + 5 &&
+    time === startTime + 5 &&
     dispatch(
       slotsActions.emptySlot({
         slot: slotNumber,

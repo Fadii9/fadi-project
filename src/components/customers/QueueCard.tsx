@@ -1,22 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./QueueCard.css";
 
 import { CUSTOMERS_QUEUE_TEXT } from "./constants/strings";
-import { Customer } from "../../store";
+import { Customer, RootState } from "../../store";
 import { queuesActions } from "../../store/queues";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 interface QueueCardProps {
-  QueueNumber: number;
+  queueNumber: number;
   queue: Customer[];
   inUse: boolean;
 }
 
-const QueueCard: React.FC<QueueCardProps> = ({ QueueNumber, queue, inUse }) => {
+const QueueCard: React.FC<QueueCardProps> = ({ queueNumber, queue, inUse }) => {
   const dispatch = useDispatch();
   let firstInqueue, firstName;
   const [editing, setEditing] = useState(false);
-  const [isCanceled, setIsCanceled] = useState(false)
+  const [isCanceled, setIsCanceled] = useState(false);
+  const allQueuesState = useSelector((state: RootState) => state.queuesSlice);
 
   if (queue.length > 0) {
     firstInqueue = queue[0];
@@ -28,12 +29,12 @@ const QueueCard: React.FC<QueueCardProps> = ({ QueueNumber, queue, inUse }) => {
   };
 
   const removeCustomer = () => {
-    dispatch(queuesActions.removeFromQueue({ queue: QueueNumber + 1 }));
+    dispatch(queuesActions.removeFromQueue({ queue: queueNumber + 1 }));
     setEditing((prev) => !prev);
   };
 
   const cancelQueue = () => {
-    dispatch(queuesActions.cancelQueue({ queue: QueueNumber + 1 }));
+    dispatch(queuesActions.cancelQueue({ queue: queueNumber + 1 }));
     setIsCanceled((prev) => !prev);
     setEditing((prev) => !prev);
   };
@@ -66,37 +67,41 @@ const QueueCard: React.FC<QueueCardProps> = ({ QueueNumber, queue, inUse }) => {
     </div>
   );
 
-
-    return !isCanceled? (!editing ? (    <div className={"queue"}>{circles}</div>
+  return !isCanceled ? (
+    !editing ? (
+      <div className={"queue"}>{circles}</div>
     ) : (
-        <div className={"queue"}>
-            <button
-                className={"queue-button"}
-                onClick={() => {
-                    toggleEditing();
-                }}
-            >
-                Back
-            </button>
-            <button
-                className={"queue-button"}
-                onClick={() => {
-                    cancelQueue();
-                }}
-            >
-                Cancel Queue
-            </button>
+      <div className={"queue"}>
+        <button
+          className={"queue-button"}
+          onClick={() => {
+            toggleEditing();
+          }}
+        >
+          Back
+        </button>
+        <button
+          className={"queue-button"}
+          onClick={() => {
+            cancelQueue();
+          }}
+        >
+          Cancel Queue
+        </button>
 
-            <button
-                onClick={() => {
-                    removeCustomer();
-                }}
-                className={"queue-button"}
-            >
-                Remove Customer
-            </button>
-        </div>
-    )): <div className={"queue canceled"}>Not in use</div>
+        <button
+          onClick={() => {
+            removeCustomer();
+          }}
+          className={"queue-button"}
+        >
+          Remove Customer
+        </button>
+      </div>
+    )
+  ) : (
+    <div className={"queue canceled"}>Not in use</div>
+  );
 };
 
 export default QueueCard;

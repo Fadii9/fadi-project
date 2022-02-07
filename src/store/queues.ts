@@ -2,7 +2,6 @@ import { createSlice, Slice } from "@reduxjs/toolkit";
 import { DELIVERIES_STATE_TEXT } from "./constants/strings";
 import { queuesNumber } from "../data/stationsNumber";
 import { addToQueue, addVip, cancelQueue, removeFromQueue } from "./reducers/queueReducer";
-import { Customer } from "./index";
 import { createInitialQueuesState } from "./utils/functions";
 
 const initialState = createInitialQueuesState(queuesNumber)

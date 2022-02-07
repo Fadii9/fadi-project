@@ -4,7 +4,6 @@ import customersReducer from "./customers";
 import slotsReducer from "./slots";
 import deliveriesReducer from "./deliveries";
 import queuesSlice from "./queues";
-import { Product } from "../data/customersData";
 
 const store = configureStore({
   reducer: {

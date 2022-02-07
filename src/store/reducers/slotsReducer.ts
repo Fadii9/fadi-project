@@ -1,5 +1,5 @@
 import { CaseReducer, PayloadAction } from "@reduxjs/toolkit";
-import { Customer, DeliveryState, SlotState } from "../index";
+import { SlotState } from "../index";
 
 type SlotsSlice = Record<number, SlotState>;
 type AddtoSlot = CaseReducer<

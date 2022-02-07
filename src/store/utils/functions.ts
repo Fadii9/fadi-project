@@ -19,11 +19,29 @@ export const createInitialDeliverisState = (deliveriesNumber: number) => {
     return initState
 }
 
+// export const cancelQueueFunction = (state: Record<number, Customer[]>, queueNumber: number) => {
+//     let returnedState = state;
+//     let customersInCanceledQueue: Customer[] = state[queueNumber];
+//     // delete returnedState[queueNumber]
+//     let temporaryQueues: Customer[][] = []
+//     for (let i = 0; i < queuesNumber - 1; i++) temporaryQueues[i] = []
+//     for (let i = 0 ; i < customersInCanceledQueue.length ; i++){
+//         const k = i < temporaryQueues.length? i : i - temporaryQueues.length
+//         temporaryQueues[k].push(customersInCanceledQueue[i])
+//     }
+//     for (let i = 1; i <= queuesNumber - 1; i++) {
+//         if (i !== queueNumber){
+//             returnedState[i] = [...returnedState[i], ...temporaryQueues[i - 1]]
+//         } else {
+//             returnedState[i + 1] = [...returnedState[i + 1], ...temporaryQueues[i - 1]]        }
+//     }
+//     return returnedState
+// }
+
 export const cancelQueueFunction = (state: Record<number, Customer[]>, queueNumber: number) => {
     let returnedState = state;
     let customersInCanceledQueue: Customer[] = state[queueNumber];
     delete returnedState[queueNumber]
-    const initState: Record<number, Customer[]> = {};
     let temporaryQueues: Customer[][] = []
     for (let i = 0; i < queuesNumber - 1; i++) temporaryQueues[i] = []
     for (let i = 0 ; i < customersInCanceledQueue.length ; i++){
@@ -35,7 +53,6 @@ export const cancelQueueFunction = (state: Record<number, Customer[]>, queueNumb
             returnedState[i] = [...returnedState[i], ...temporaryQueues[i - 1]]
         } else {
             returnedState[i + 1] = [...returnedState[i + 1], ...temporaryQueues[i - 1]]        }
-
     }
     return returnedState
 }

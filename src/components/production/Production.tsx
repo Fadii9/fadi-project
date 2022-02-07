@@ -18,8 +18,8 @@ const Production: React.FC<{ time: number; slotsNumber: number }> = ({
   slotsNumber,
 }) => {
   const dispatch = useDispatch();
-  let firstCustomerQueue: Customer[];
-  let firstCustomerQueueIndex: number;
+  let queueWithFirstCustomer: Customer[];
+  let queueWithFirstCustomerIndex: number;
   let availableSlot: boolean = false;
   let availableSlotIndex: number;
   let readyToTakeCustomerOrder: boolean;
@@ -29,13 +29,13 @@ const Production: React.FC<{ time: number; slotsNumber: number }> = ({
 
   const allQueuesState = useSelector((state: RootState) => state.queuesSlice);
   const queuesStatesArray = buildQueuesArray(allQueuesState, queuesNumber);
-  const queuesWithCustomers = queuesStatesArray.filter((e) => e.length);
+  const queuesWithCustomers = queuesStatesArray.filter((queue) => queue?.length);
 
   if (queuesWithCustomers.length > 0) {
-    firstCustomerQueue = queuesWithCustomers.reduce(function (queue1, queue2) {
+    queueWithFirstCustomer = queuesWithCustomers.reduce(function (queue1, queue2) {
       return queue1[0].addedTime! < queue2[0].addedTime! ? queue2 : queue1;
     });
-    firstCustomerQueueIndex = queuesStatesArray.indexOf(firstCustomerQueue) + 1;
+    queueWithFirstCustomerIndex = queuesStatesArray.indexOf(queueWithFirstCustomer) + 1;
   }
 
   useEffect(() => {
@@ -50,25 +50,25 @@ const Production: React.FC<{ time: number; slotsNumber: number }> = ({
     }
 
     if (queuesWithCustomers.length > 0) {
-      firstCustomerQueue = queuesWithCustomers.reduce(function (
+      queueWithFirstCustomer = queuesWithCustomers.reduce(function (
         queue1,
         queue2
       ) { return queue1[0].addedTime! < queue2[0].addedTime! ? queue1 : queue2 });
 
-      firstCustomerQueueIndex = queuesStatesArray.indexOf(firstCustomerQueue) + 1;
+      queueWithFirstCustomerIndex = queuesStatesArray.indexOf(queueWithFirstCustomer) + 1;
 
-      readyToTakeCustomerOrder = !!firstCustomerQueue.length && availableSlot && time % 3 === 0;
+      readyToTakeCustomerOrder = !!queueWithFirstCustomer.length && availableSlot && time % 3 === 0;
     }
 
     if (readyToTakeCustomerOrder) {
       dispatch(
         slotsActions.addToSlot({
           slot: availableSlotIndex,
-          customer: firstCustomerQueue[0],
+          customer: queueWithFirstCustomer[0],
         })
       );
       dispatch(
-        queuesActions.removeFromQueue({ queue: firstCustomerQueueIndex })
+        queuesActions.removeFromQueue({ queue: queueWithFirstCustomerIndex })
       );
     }
   }, [time]);
