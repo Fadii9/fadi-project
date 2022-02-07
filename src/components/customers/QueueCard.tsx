@@ -21,12 +21,12 @@ const QueueCard: React.FC<QueueCardProps> = ({ key, queue, inUse }) => {
   let circles = [];
 
   for (let i = (circlesCount-1) ; i >= 0 ; i--){
-      circles.push(<div
-          className={
-              queue.length > i ? `circle green` : `circle`
-          }
-      >{i === 0 && firstName}</div>)
+      circles.push(
+      <div className={queue.length > i ? `circle green` : `circle`}>
+          {i === 0 && firstName}
+      </div>)
   }
+
   return inUse ? (
     <div className={"queue"}>{circles}</div>
   ) : (
