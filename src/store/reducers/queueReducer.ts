@@ -3,44 +3,52 @@ import { Customer } from "../index";
 import { queuesNumber } from "../../data/stationsNumber";
 import { cancelQueueFunction } from "../utils/functions";
 
+type QueuesSlice = Record<number, Customer[]>;
+type AddToQueueAction = PayloadAction<{
+  queue: number;
+  firstCustomer: Customer;
+}>
+type AddVipAction = PayloadAction<{ queue: number; firstCustomer: Customer }>;
+type RemoveOrCancelQueueAction = PayloadAction<{ queue: number }>;
+
 
 export const addToQueue = (
-  state: Record<string, Customer[]>,
-  action: PayloadAction<{ queue: number; firstCustomer: Customer }>
+  state: QueuesSlice,
+  action: AddToQueueAction
 ) => {
   const stateName = action.payload.queue;
-  const returnedState: Record<number, Customer[]> = state ;
+  const returnedState: QueuesSlice = state ;
   returnedState[stateName] = [ ...returnedState[stateName], action.payload.firstCustomer ];
   return returnedState;
 };
 
 export const removeFromQueue = (
-  state: Record<number, Customer[]>,
-  action: PayloadAction<{ queue: number }>
+  state: QueuesSlice,
+  action: RemoveOrCancelQueueAction
 ) => {
   const stateName = action.payload.queue;
-  const returnedState: Record<number, Customer[]> = state ;
+  const returnedState: QueuesSlice = state ;
   returnedState[stateName] = returnedState[stateName].slice(1);
   return returnedState;
 };
 
 export const addVip = (
-    state: Record<string, Customer[]>,
-    action: PayloadAction<{ queue: number; firstCustomer: Customer }>
+    state: QueuesSlice,
+    action: AddVipAction
 ) => {
   const stateName = action.payload.queue;
-  const returnedState: Record<number, Customer[]> = state ;
+  const returnedState: QueuesSlice = state ;
   returnedState[stateName].unshift(action.payload.firstCustomer)
   return returnedState;
 };
 
 export const cancelQueue = (
-    state: Record<string, Customer[]>,
-    action: PayloadAction<{ queue: number }>
+    state: QueuesSlice,
+    action: RemoveOrCancelQueueAction
 ) => {
   // const returnedState = cancelQueueFunction(state, action.payload.queue)
   const stateName = action.payload.queue;
-  const returnedState: Record<number, Customer[]> = state ;
+  const returnedState: QueuesSlice = state ;
   returnedState[stateName] = []
   return returnedState;
 };
