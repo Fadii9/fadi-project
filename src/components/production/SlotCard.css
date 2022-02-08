@@ -8,8 +8,9 @@
     border: black solid 3px;
     border-radius: 20px;
     font-size: 2vw;
-
 }
+
+
 
 
 @keyframes producingSlot {
@@ -21,6 +22,15 @@
     animation-name: producingSlot;
     animation-duration: 1s;
     -webkit-animation-fill-mode: forwards;
+}
+
+.producing-slot:hover{
+    cursor: help;
+}
+
+.slot-button {
+    padding: 2rem 4rem;
+    margin: 1rem;
 }
 
 @keyframes vipSlot {

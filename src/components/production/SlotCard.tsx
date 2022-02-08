@@ -26,7 +26,7 @@ const SlotCard: React.FC<{
   let preparedAllMeals: boolean = false;
   let producing: boolean = false;
   const [startTime, setStartTime] = useState(0);
-
+  const [editing, setEditing] = useState(false);
 
   const slot = useSelector((state: RootState) => state.slotsSlice[slotNumber]);
   const deliveriesState = useSelector(
@@ -117,6 +117,15 @@ const SlotCard: React.FC<{
     );
     dispatch(slotsActions.emptySlot({ slot: slotNumber }));
   }
+
+  const toggleEditing = () => {
+    setEditing((prev) => !prev);
+  };
+  const cancelSlot = () => {
+    dispatch(slotsActions.emptySlot({ slot: slotNumber }));
+    setEditing((prev) => !prev);
+  };
+
   const slotClass = availableIngs
     ? !slot.vip
       ? !emptySlot
@@ -125,8 +134,10 @@ const SlotCard: React.FC<{
       : "slot vip-slot"
     : "slot canceled-slot";
 
-  return (
-    <div className={slotClass}>
+  return !editing? (
+    <div className={slotClass} onClick={() => {
+      producing && availableIngs && !slot.vip && toggleEditing();
+    }}>
       <div className={"slot_image_container"}>
         {emptySlot ? (
           "Empty Slot"
@@ -157,6 +168,23 @@ const SlotCard: React.FC<{
         </div>
       )}
     </div>
+  ): (
+      <div className={"slot"}><button
+          className={"slot-button"}
+          onClick={() => {
+            toggleEditing();
+          }}
+      >
+        Back
+      </button>
+        <button
+            className={"slot-button"}
+            onClick={() => {
+              cancelSlot();
+            }}
+        >
+          Cancel Order
+        </button></div>
   )
 };
 
