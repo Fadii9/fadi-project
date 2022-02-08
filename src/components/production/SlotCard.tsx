@@ -169,7 +169,7 @@ const SlotCard: React.FC<{
       )}
     </div>
   ): (
-      <div className={"slot"}><button
+      <div className={"slot editing-slot"}><button
           className={"slot-button"}
           onClick={() => {
             toggleEditing();

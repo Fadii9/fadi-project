@@ -10,7 +10,17 @@
     font-size: 2vw;
 }
 
+@keyframes editingSlot {
+    from {background-color: #1ea41e;}
+    to {background-color: #109e63;}
+}
 
+
+.editing-slot {
+    animation-name: editingSlot;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+}
 
 
 @keyframes producingSlot {

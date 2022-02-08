@@ -48,15 +48,8 @@
     cursor: not-allowed;
 }
 
-.green:hover{
+.first:hover{
     cursor: help;
-}
-
-.not_in_use {
-    font-size: 1.8vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .queue-button{
