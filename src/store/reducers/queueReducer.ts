@@ -6,7 +6,7 @@ export type QueuesState = Record<number, Customer[]>;
 type AddToQueueAction = PayloadAction<{
   queue: number;
   firstCustomer: Customer;
-}>
+}>;
 type AddVipAction = PayloadAction<{ queue: number; firstCustomer: Customer }>;
 type RemoveOrCancelQueueAction = PayloadAction<{ queue: number }>;
 
@@ -30,20 +30,17 @@ export const removeFromQueue = (
   return returnedState;
 };
 
-export const addVip = (
-    state: QueuesState,
-    action: AddVipAction
-) => {
+export const addVip = (state: QueuesState, action: AddVipAction) => {
   const stateName = action.payload.queue;
-  const returnedState: QueuesState = state ;
-  returnedState[stateName].unshift(action.payload.firstCustomer)
+  const returnedState: QueuesState = state;
+  returnedState[stateName].unshift(action.payload.firstCustomer);
   return returnedState;
 };
 
 export const cancelQueue = (
-    state: QueuesState,
-    action: RemoveOrCancelQueueAction
+  state: QueuesState,
+  action: RemoveOrCancelQueueAction
 ) => {
-  const returnedState = cancelQueueFunction(state, action.payload.queue)
+  const returnedState = cancelQueueFunction(state, action.payload.queue);
   return returnedState;
 };

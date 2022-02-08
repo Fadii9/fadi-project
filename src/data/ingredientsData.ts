@@ -28,7 +28,7 @@ const ingredients: IngredientsList = [
 
   {
     id: "i4",
-    ing: "pickles",
+    ing: "Pickles",
     amount: 50,
     prepTime: 1,
   },
@@ -49,22 +49,22 @@ const ingredients: IngredientsList = [
 
   {
     id: "i7",
-    ing: "onions",
+    ing: "Onions",
     amount: 50,
     prepTime: 1,
   },
 
   {
     id: "i8",
-    ing: "meat",
-    amount: 50,
+    ing: "Meat",
+    amount: 0,
     prepTime: 10,
   },
 
   {
     id: "i9",
     ing: "Dough",
-    amount: 0,
+    amount: 50,
     prepTime: 4,
   },
 

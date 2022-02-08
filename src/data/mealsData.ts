@@ -9,21 +9,21 @@ const meals: mealsList = [
   {
     id: "m1",
     mealName: "Hamburger",
-    ingredients: ["Bread", "Patty", "Tomato", "pickles", "Lettuce", "onions"],
+    ingredients: ["Bread", "Patty", "Tomato", "Pickles", "Lettuce", "Onions"],
     imageUrl:
       "https://granddigital.com.au/wp-content/uploads/2017/08/Hamburger-Thumbnail-1.jpg",
   },
   {
     id: "m2",
     mealName: "Salad",
-    ingredients: ["Tomato", "Cucumber", "Lettuce", "onions"],
+    ingredients: ["Tomato", "Cucumber", "Lettuce", "Onions"],
     imageUrl:
       "https://static.vecteezy.com/system/resources/thumbnails/002/552/508/small_2x/bowl-with-salad-tomato-lettuce-health-food-flat-style-icon-free-vector.jpg",
   },
   {
     id: "m3",
     mealName: "Steak",
-    ingredients: ["meat"],
+    ingredients: ["Meat"],
     imageUrl:
       "https://i.pinimg.com/originals/27/a4/d6/27a4d623a10de5292f293fa8a1216cdb.jpg",
   },

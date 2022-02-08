@@ -14,10 +14,9 @@ import { buildDeliveriesArray } from "../utils/functions";
 
 const SlotCard: React.FC<{
   key: number;
-  inUse: boolean;
   time: number;
   slotNumber: number;
-}> = ({ key, inUse, time, slotNumber }) => {
+}> = ({ key, time, slotNumber }) => {
   const dispatch = useDispatch();
   let meal, imageUrl, showIngs, availableDelivery, availableDeliveryIndex;
   let estTime = 0;
@@ -27,6 +26,7 @@ const SlotCard: React.FC<{
   let preparedAllMeals: boolean = false;
   let producing: boolean = false;
   const [startTime, setStartTime] = useState(0);
+
 
   const slot = useSelector((state: RootState) => state.slotsSlice[slotNumber]);
   const deliveriesState = useSelector(
@@ -39,7 +39,8 @@ const SlotCard: React.FC<{
   const emptySlot = !slot.id;
 
   for (let i = 0; i < deliveriesNumber; i++) {
-    if (JSON.stringify(deliveriesStatesArray[i]) === "{}") {
+    const emptyDelivery: boolean = JSON.stringify(deliveriesStatesArray[i]) === "{}"
+    if (emptyDelivery) {
       availableDelivery = true;
       availableDeliveryIndex = i + 1;
       break;
@@ -76,7 +77,9 @@ const SlotCard: React.FC<{
       showIngs = mealIngredients.join(" ");
 
       mealIngredients.map((mealIngredient: string) => {
-        estTime += ingsData.find((ingredientsData) => ingredientsData.ing === mealIngredient)!.prepTime;
+        estTime += ingsData.find(
+          (ingredientsData) => ingredientsData.ing === mealIngredient
+        )!.prepTime;
       });
       estTime -= time - startTime;
     } else {
@@ -102,7 +105,8 @@ const SlotCard: React.FC<{
       })
     );
 
-  const finishedProducingMeal: boolean =  !emptySlot && producing && preparedAllMeals && estTime === 0;
+  const finishedProducingMeal: boolean =
+    !emptySlot && producing && preparedAllMeals && estTime === 0;
   if (finishedProducingMeal && availableDelivery) {
     producing = false;
     dispatch(
@@ -121,7 +125,7 @@ const SlotCard: React.FC<{
       : "slot vip-slot"
     : "slot canceled-slot";
 
-  return inUse ? (
+  return (
     <div className={slotClass}>
       <div className={"slot_image_container"}>
         {emptySlot ? (
@@ -153,9 +157,7 @@ const SlotCard: React.FC<{
         </div>
       )}
     </div>
-  ) : (
-    <div className={"slot"}>Not In Use</div>
-  );
+  )
 };
 
 export default SlotCard;

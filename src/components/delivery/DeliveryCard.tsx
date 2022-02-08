@@ -10,9 +10,8 @@ import { deliveriesActions } from "../../store/deliveries";
 const DeliveryCard: React.FC<{
   key: number;
   deliveryNumber: number;
-  inUse: boolean;
   time: number;
-}> = ({ key, deliveryNumber, inUse, time }) => {
+}> = ({ key, deliveryNumber, time }) => {
   const dispatch = useDispatch();
   const delivery = useSelector(
     (state: RootState) => state.deliveriesSlice[deliveryNumber]
@@ -39,7 +38,7 @@ const DeliveryCard: React.FC<{
     dispatch(deliveriesActions.emptyDelivery({ delivery: deliveryStateName }));
   }
 
-  return inUse ? (
+  return (
     <div className={"delivery"}>
       <div className={"delivery_text"}>
         {DELIVERIES_CARD_TEXT.CARD_TITLE}#{deliveryNumber}
@@ -60,8 +59,6 @@ const DeliveryCard: React.FC<{
           : DELIVERIES_CARD_TEXT.DELIVERING_STATUS}
       </div>
     </div>
-  ) : (
-    <div className={"delivery not_in_use"}>Not In Use</div>
   );
 };
 

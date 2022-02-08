@@ -18,31 +18,26 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
   const dispatch = useDispatch();
   const maximumQueueCapacity = 5;
   let queuesCountArray: number[] = [];
-
   const allQueuesState = useSelector((state: RootState) => state.queuesSlice);
   const waitingCustomers = useSelector(
     (state: RootState) => state.customersSlice.customersState
   );
 
   const queues: Customer[][] = buildQueuesArray(allQueuesState, queuesNumber);
-    const availablePlaceInQueue = !!queues.filter((queue) => queue?.length < maximumQueueCapacity);
-    const shortestQueue = queues.reduce(function(queue1,queue2) { return queue1?.length > queue2?.length? queue2 : queue1 });
-    const shortestQueueIndex = queues.indexOf(shortestQueue) + 1;
+  const availablePlaceInQueue: boolean = !!queues.filter(
+    (queue) => queue?.length < maximumQueueCapacity
+  );
+  const shortestQueue: Customer[] = queues.reduce(function (queue1, queue2) {
+    return queue1?.length > queue2?.length ? queue2 : queue1;
+  });
+  const shortestQueueIndex: number = queues.indexOf(shortestQueue) + 1;
+  const readyToAddCustomer: boolean =
+    time !== 0 &&
+    availablePlaceInQueue &&
+    waitingCustomers.length > 0 &&
+    time % 2 === 0;
 
   useEffect(() => {
-    const availablePlaceInQueue: boolean = !!queues.filter(
-      (queue) => queue?.length < maximumQueueCapacity
-    );
-    const shortestQueue: Customer[] = queues.reduce(function (queue1, queue2) {
-      return queue1?.length > queue2?.length ? queue2 : queue1;
-    });
-    const shortestQueueIndex: number = queues.indexOf(shortestQueue) + 1;
-    const readyToAddCustomer: boolean =
-      time != 0 &&
-      availablePlaceInQueue &&
-      waitingCustomers.length > 0 &&
-      time % 2 == 0;
-
     if (readyToAddCustomer) {
       const firstCustomer = waitingCustomers[0];
 
@@ -74,18 +69,12 @@ const Customers: React.FC<{ time: number; queuesNumber: number }> = ({
   });
 
   const queuesComponents = filteredQueuesCountArray.map((number) => (
-    <QueueCard
-      key={number}
-      queueNumber={number}
-      inUse={true}
-      queue={queues[number]}
-    />
-
+    <QueueCard key={number} queueNumber={number} queue={queues[number]} />
   ));
 
   return (
     <div className={"customers_status"}>
-      <div className={"customers_text"}>{ CUSTOMERS_QUEUE_TEXT.TITLE }</div>
+      <div className={"customers_text"}>{CUSTOMERS_QUEUE_TEXT.TITLE}</div>
       <div className={"queues_container"}>{queuesComponents}</div>
     </div>
   );

@@ -9,14 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 interface QueueCardProps {
   queueNumber: number;
   queue: Customer[];
-  inUse: boolean;
 }
 
-const QueueCard: React.FC<QueueCardProps> = ({ queueNumber, queue, inUse }) => {
+const QueueCard: React.FC<QueueCardProps> = ({ queueNumber, queue }) => {
   const dispatch = useDispatch();
   let firstInqueue, firstName;
   const [editing, setEditing] = useState(false);
-  const [isCanceled, setIsCanceled] = useState(false);
   const allQueuesState = useSelector((state: RootState) => state.queuesSlice);
 
   if (queue.length > 0) {
@@ -35,7 +33,6 @@ const QueueCard: React.FC<QueueCardProps> = ({ queueNumber, queue, inUse }) => {
 
   const cancelQueue = () => {
     dispatch(queuesActions.cancelQueue({ queue: queueNumber + 1 }));
-    setIsCanceled((prev) => !prev);
     setEditing((prev) => !prev);
   };
 
@@ -67,40 +64,36 @@ const QueueCard: React.FC<QueueCardProps> = ({ queueNumber, queue, inUse }) => {
     </div>
   );
 
-  return !isCanceled ? (
-    !editing ? (
-      <div className={"queue"}>{circles}</div>
-    ) : (
-      <div className={"queue"}>
-        <button
-          className={"queue-button"}
-          onClick={() => {
-            toggleEditing();
-          }}
-        >
-          Back
-        </button>
-        <button
-          className={"queue-button"}
-          onClick={() => {
-            cancelQueue();
-          }}
-        >
-          Cancel Queue
-        </button>
-
-        <button
-          onClick={() => {
-            removeCustomer();
-          }}
-          className={"queue-button"}
-        >
-          Remove Customer
-        </button>
-      </div>
-    )
+  return !editing ? (
+    <div className={"queue"}>{circles}</div>
   ) : (
-    <div className={"queue canceled"}>Not in use</div>
+    <div className={"queue"}>
+      <button
+        className={"queue-button"}
+        onClick={() => {
+          toggleEditing();
+        }}
+      >
+        Back
+      </button>
+      <button
+        className={"queue-button"}
+        onClick={() => {
+          cancelQueue();
+        }}
+      >
+        Cancel Queue
+      </button>
+
+      <button
+        onClick={() => {
+          removeCustomer();
+        }}
+        className={"queue-button"}
+      >
+        Remove Customer
+      </button>
+    </div>
   );
 };
 
