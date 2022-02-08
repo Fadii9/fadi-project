@@ -57,7 +57,7 @@ const QueueCard: React.FC<QueueCardProps> = ({ queueNumber, queue }) => {
           : "circle"
       }
       onClick={() => {
-        queue.length > 0 && toggleEditing();
+        queue.length > 0 && !queue[0].vip && toggleEditing();
       }}
     >
       {firstName}

@@ -8,8 +8,12 @@
     justify-content: space-around;
     align-items: center;
     font-size: 2vw;
+
 }
 
+.canceled{
+    font-size: 2rem;
+}
 .circle {
     display: flex;
     justify-content: center;
@@ -23,9 +27,16 @@
     box-shadow: 0 0 0 0.5rem aliceblue;
 }
 
+@keyframes greenCircle {
+    from {background-color: aliceblue;
+        box-shadow: 0 0 0 0.5rem aliceblue;}
+    to {background-color: #1ea41e;;
+        box-shadow: 0 0 0 0.5rem black;}
+}
 .green {
-    background-color: #6fd108;
-    box-shadow: 0 0 0 0.5rem black;
+    animation-name: greenCircle;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: forwards;
 }
 
 .red {
@@ -33,6 +44,9 @@
     box-shadow: 0 0 0 0.5rem black;
 }
 
+.red:hover{
+    cursor: not-allowed;
+}
 
 .green:hover{
     cursor: help;
